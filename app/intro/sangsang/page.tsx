@@ -1,4 +1,5 @@
 import Nav from "@/components/root/Nav";
+import YoutubePopup from "@/components/util/youtube/popup/YoutubePopup";
 import Image from "next/image";
 
 export default function Home() {
@@ -9,15 +10,15 @@ export default function Home() {
       </header>
       <div className="flex justify-center items-center">
         <div className="flex justify-center items-center w-full bg-gray-300">
-          {/* <YoutubePopupImage> */}
-          <Image
-            width={1200}
-            height={720}
-            src={`/images/intro/sangsang/1.webp`}
-            alt=""
-            // className="cursor-pointer"
-          />
-          {/* </YoutubePopupImage> */}
+          <YoutubePopup videoId="QykE0eswFH0">
+            <Image
+              width={1200}
+              height={720}
+              src={`/images/intro/sangsang/1.webp`}
+              alt=""
+              // className="cursor-pointer"
+            />
+          </YoutubePopup>
         </div>
       </div>
 
@@ -222,44 +223,44 @@ export default function Home() {
         </div>
         <div className="w-full flex justify-center items-center">
           <div className="flex justify-center items-center basis-1/4">
-            {/* <YoutubePopupImage> */}
-            <Image
-              width={260}
-              height={300}
-              src={`/images/intro/sangsang/9-2.jpg`}
-              alt=""
-            />
-            {/* </YoutubePopupImage> */}
+            <YoutubePopup videoId="3vzq2_NzF_s">
+              <Image
+                width={260}
+                height={300}
+                src={`/images/intro/sangsang/9-2.jpg`}
+                alt=""
+              />
+            </YoutubePopup>
           </div>
           <div className="flex justify-center items-center basis-1/4">
-            {/* <YoutubePopupImage> */}
-            <Image
-              width={260}
-              height={300}
-              src={`/images/intro/sangsang/9-3.jpg`}
-              alt=""
-            />
-            {/* </YoutubePopupImage> */}
+            <YoutubePopup videoId="GCjN8Y62tls">
+              <Image
+                width={260}
+                height={300}
+                src={`/images/intro/sangsang/9-3.jpg`}
+                alt=""
+              />
+            </YoutubePopup>
           </div>
           <div className="flex justify-center items-center basis-1/4">
-            {/* <YoutubePopupImage> */}
-            <Image
-              width={260}
-              height={300}
-              src={`/images/intro/sangsang/9-4.jpg`}
-              alt=""
-            />
-            {/* </YoutubePopupImage> */}
+            <YoutubePopup videoId="M-A5KDPFTr8">
+              <Image
+                width={260}
+                height={300}
+                src={`/images/intro/sangsang/9-4.jpg`}
+                alt=""
+              />
+            </YoutubePopup>
           </div>
           <div className="flex justify-center items-center basis-1/4">
-            {/* <YoutubePopupImage> */}
-            <Image
-              width={260}
-              height={300}
-              src={`/images/intro/sangsang/9-5.jpg`}
-              alt=""
-            />
-            {/* </YoutubePopupImage> */}
+            <YoutubePopup videoId="fDQ6q2cv5b4">
+              <Image
+                width={260}
+                height={300}
+                src={`/images/intro/sangsang/9-5.jpg`}
+                alt=""
+              />
+            </YoutubePopup>
           </div>
         </div>
         <div className="h-[200px] flex justify-center items-center">
