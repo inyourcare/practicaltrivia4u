@@ -4,8 +4,8 @@ import { Nanum_Gothic } from "next/font/google";
 const nanumGothic = Nanum_Gothic({ weight: "400", subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "4U - 사소하지만 유용한 - 과외",
-  description: "수학 과외, 영어 과외, 국어 과외 등 과외 구하기. 학생, 학부모, 선생님을 생각하는 과외.",
+  title: "과외4U",
+  description: "4U쌤과 함께 수학 과외, 영어 과외, 국어 과외 등 과외 구하기. 학생, 학부모, 선생님을 생각하는 과외.",
 };
 
 export default function RootLayout({
