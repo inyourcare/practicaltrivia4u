@@ -19,6 +19,7 @@ function Nav() {
           height={460}
           style={{width:200,height:150}}
           src={`/images/logo/practical4u-logo2.png`}
+          priority
           alt=""
         />
       </a>
