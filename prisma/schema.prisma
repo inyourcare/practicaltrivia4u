@@ -12,13 +12,26 @@ datasource db {
 }
 
 model ContactInfo {
-  id    Int     @id @default(autoincrement())
-  name  String?
-  kind  String?
-  phone  String?
-  address  String?
-  address2  String?
-  description  String?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id          Int      @id @default(autoincrement())
+  name        String?
+  kind        String?
+  phone       String?
+  address     String?
+  address2    String?
+  description String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model BusinessInfo {
+  id                    Int      @id @default(autoincrement())
+  name                  String?
+  bossName              String?
+  buisinessRegistNumber String?
+  phone                 String?
+  worktime              String?
+  address               String?
+  partners              String?
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
 }
