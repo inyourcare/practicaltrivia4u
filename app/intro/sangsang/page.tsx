@@ -5,9 +5,6 @@ import Image from "next/image";
 export default function Home() {
   return (
     <main>
-      <header className="w-full flex flex-col py-5 bg-[rgba(35,46,82,0)]">
-        <Nav />
-      </header>
       <div className="flex justify-center items-center">
         <div className="flex justify-center items-center w-full bg-gray-300">
           <YoutubePopup videoId="QykE0eswFH0">

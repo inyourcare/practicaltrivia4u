@@ -20,6 +20,8 @@ function Nav() {
 
         <Link href={"/"} className="m-0 text-xs sm:text-lg md:text-lg lg:text-lg xl:text-lg 2xl:text-lg">과외4U</Link>
         <Link href={"/intro/sangsang"} className="m-0 text-xs sm:text-lg md:text-lg lg:text-lg xl:text-lg 2xl:text-lg">상상코칭</Link>
+        <Link href={"/intro/howcoding"} className="m-0 text-xs sm:text-lg md:text-lg lg:text-lg xl:text-lg 2xl:text-lg">하우코딩</Link>
+        <Link href={"/intro/goodo"} className="m-0 text-xs sm:text-lg md:text-lg lg:text-lg xl:text-lg 2xl:text-lg">공부구도</Link>
         {/* <Link href={"/post/tag/tutoring"} className="m-0 text-xs sm:text-lg md:text-lg lg:text-lg xl:text-lg 2xl:text-lg">과외</Link>
         <Link href={"/post/tag/academy"} className="m-0 text-xs sm:text-lg md:text-lg lg:text-lg xl:text-lg 2xl:text-lg">학원</Link>
         <Link href={"/post/tag/conversation"} className="m-0 text-xs sm:text-lg md:text-lg lg:text-lg xl:text-lg 2xl:text-lg">회화</Link>
