@@ -77,11 +77,11 @@ export default function Home() {
       <br />
       <br />
       <br />
-      <div className="flex justify-center items-center">
+      {/* <div className="flex justify-center items-center">
         <p className="prose font-light text-gray-500 dark:text-gray-400">
           합리적인 가격. 철저한 관리. 지금 문의 주세요.
         </p>
-      </div>
+      </div> */}
     </main>
   );
 }
