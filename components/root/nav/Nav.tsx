@@ -7,21 +7,23 @@ export const subMapKeySelector = {
   fun: "fun"
 };
 function Nav() {
+  
+  const navLinks = useRef<HTMLAnchorElement[]>([]);
+  const navContainer = useRef<HTMLDivElement>(null);
   const [subVisibility, setSubVisibility] = useState(false);
   const [isMouseOver, setIsMouseOver] = useState(false);
   const [subMapKey, setSubMapKey] = useState("education");
-  const navLinks = useRef<HTMLAnchorElement[]>([]);
   useEffect(() => {
+    navContainer.current?.addEventListener('mouseover',()=>setIsMouseOver(true))
+    navContainer.current?.addEventListener('mouseout',()=>setIsMouseOver(false))
     navLinks.current.map((ref, i) => {
       ref.addEventListener("mouseover", (e) => {
-        setIsMouseOver(true);
         if (i === 0) setSubMapKey(subMapKeySelector.education);
         else if (i === 1) setSubMapKey(subMapKeySelector.education);
         else if (i === 2) setSubMapKey(subMapKeySelector.fun);
         else setSubMapKey("");
       });
       ref.addEventListener("mouseout", (e) => {
-        setIsMouseOver(false);
       });
       ref.addEventListener("click", (e) => {
         setSubVisibility(!subVisibility);
@@ -29,7 +31,7 @@ function Nav() {
     });
   }, [subVisibility]);
   return (
-    <div>
+    <div className="relative" ref={navContainer}>
       <nav className="gap-3 sm:gap-5 md:gap-10 lg:gap-10 xl:gap-10 2xl:gap-10 inline-flex justify-center sm:justify-center md:justify-right mt-5 sm:mt-5 md:mt-0 lg:mt-0 xl:mt-0 2xl:mt-0  items-start text-left font-medium">
         <Link
           href={"/"}
