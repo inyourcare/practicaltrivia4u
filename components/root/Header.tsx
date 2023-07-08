@@ -28,32 +28,32 @@ function Header() {
       <Nav/>
       
       <div className="hidden sm:hidden md:hidden lg:flex xl:flex 2xl:flex flex-row justify-between items-center">
-        <Link href="#" target="_blank" aria-disabled>
+        {/* <Link href="#" target="_blank" aria-disabled>
           {" "}
           <FaFacebookF className="mx-3 " />{" "}
-        </Link>
-        <Link href="#" target="_blank" aria-disabled>
+        </Link> */}
+        {/* <Link href="#" target="_blank" aria-disabled>
           {" "}
           <FaInstagram className="mx-3 " />{" "}
-        </Link>
-        <Link href="https://blog.naver.com/hellothankyoubye" target="_blank">
+        </Link> */}
+        {/* <Link href="https://blog.naver.com/hellothankyoubye" target="_blank">
           {" "}
           <FaBlogger className="mx-3 " />{" "}
-        </Link>
-        <Link
+        </Link> */}
+        {/* <Link
           href="https://www.youtube.com/channel/UCrNg2TpybX3TRVK45DhZgdA"
           target="_blank"
         >
           {" "}
           <FaYoutube className="mx-3 " />{" "}
-        </Link>
+        </Link> */}
 
-        <button
+        {/* <button
           type="button"
           className="px-5 mx-auto py-2.5 w-[150px] gap-2.5 inline-flex flex-col justify-center items-center rounded-lg text-center font-medium bg-[#dce8fc] text-[rgba(35,46,82,1)]"
         >
           Subscribe
-        </button>
+        </button> */}
       </div>
     </div>
   );
