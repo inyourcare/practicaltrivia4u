@@ -16,9 +16,8 @@ declare global {
 }
 
 export const metadata: Metadata = {
-  title: "과외4U",
-  description:
-    "4U쌤과 함께 수학 과외, 영어 과외, 국어 과외 등 과외 구하기. 학생, 학부모, 선생님을 생각하는 과외.",
+  title: "4U - 사소하지만 유용한 Practical Trivia",
+  description: "교육 서비스 및 사소하지만 유용한 것들을 다룹니다.",
 };
 
 export default function RootLayout({
@@ -59,6 +58,36 @@ export default function RootLayout({
           // strategy="beforeInteractive"
           strategy="lazyOnload"
         />
+        {/* 네이버 */}
+        <script
+          defer
+          src={`https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=${process.env.NEXT_PUBLIC_NAVER_CLIENT_ID}`}
+        />
+        <meta
+          name="naver-site-verification"
+          content="2bcce2baa1fc6bf384c15035f653a7c768d5e6bc"
+        />
+        {/* 구글 */}
+        {/* <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8425397323378076"
+          // crossorigin="anonymous"
+          crossOrigin="anonymous"
+        ></script> */}
+        {/* <!-- Google tag (gtag.js) --> */}
+        <Script
+          strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtag/js?id=G-08E5CNK7PL"
+        ></Script>
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){window.dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'GA_MEASUREMENT_ID');
+        `}
+        </Script>
         {/* sortable */}
         <script defer src="/js/sortable/Sortable.min.js"></script>
       </head>
