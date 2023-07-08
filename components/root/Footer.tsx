@@ -3,11 +3,22 @@ import React from "react";
 
 async function Footer() {
   const prisma = new PrismaClient();
-  const businessInfo = await prisma.businessInfo.findFirst({
-    orderBy: {
-      createdAt: "desc",
-    },
-  });
+  const businessInfo =
+    process.env.NODE_ENV === "development"
+      ? {
+          name: "test",
+          bossName: "boss",
+          buisinessRegistNumber: "00",
+          phone: "00",
+          worktime: "00",
+          address: "00",
+          partners: "00",
+        }
+      : await prisma.businessInfo.findFirst({
+          orderBy: {
+            createdAt: "desc",
+          },
+        });
   return (
     <footer>
       {/* {businessInfo?.bossName} */}
