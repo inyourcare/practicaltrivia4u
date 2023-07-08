@@ -1,4 +1,3 @@
-import Nav from "@/components/root/Nav";
 import YoutubePopup from "@/components/util/youtube/popup/YoutubePopup";
 import Image from "next/image";
 
