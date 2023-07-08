@@ -22,7 +22,7 @@ async function Footer() {
         </p>
         <p className="my-1">
           <strong>대표전화</strong> {businessInfo?.phone} |{" "}
-          {businessInfo?.worktime} |{businessInfo?.address}
+          {businessInfo?.worktime} | {businessInfo?.address}
         </p>
         <p className="my-1">
           <strong>제휴사</strong> {businessInfo?.partners}
