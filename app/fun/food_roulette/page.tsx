@@ -1,5 +1,5 @@
 import FoodRoulette from "@/components/fun/food_roulette/FoodRoulette";
-import Nav from "@/components/root/Nav";
+import Nav from "@/components/root/nav/Nav";
 
 declare global {
   interface Window {

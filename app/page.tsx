@@ -1,4 +1,4 @@
-import Nav from "@/components/root/Nav";
+import Nav from "@/components/root/nav/Nav";
 import Image from "next/image";
 
 export default function Home() {

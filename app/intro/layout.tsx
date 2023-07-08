@@ -1,4 +1,4 @@
-import Nav from "@/components/root/Nav";
+import Nav from "@/components/root/nav/Nav";
 import type { Metadata } from "next";
 import { Nanum_Gothic } from "next/font/google";
 const nanumGothic = Nanum_Gothic({ weight: "400", subsets: ["latin"] });
