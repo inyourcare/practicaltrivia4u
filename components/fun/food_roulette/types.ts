@@ -1,8 +1,3 @@
-export type TranslatedWords = {
-  [key: string]: string;
-};
-
-
 export type RestaurantInterface = {
   address_name: string;
   category_group_code: string;

@@ -23,6 +23,7 @@ function Nav() {
         <Link href={"/intro/howcoding"} className="m-0 text-xs sm:text-lg md:text-lg lg:text-lg xl:text-lg 2xl:text-lg">하우코딩</Link>
         <Link href={"/intro/goodo"} className="m-0 text-xs sm:text-lg md:text-lg lg:text-lg xl:text-lg 2xl:text-lg">공부구도</Link>
         <Link href={"/intro/wawa"} className="m-0 text-xs sm:text-lg md:text-lg lg:text-lg xl:text-lg 2xl:text-lg">학원</Link>
+        <Link href={"/fun/food_roulette"} className="m-0 text-xs sm:text-lg md:text-lg lg:text-lg xl:text-lg 2xl:text-lg">점심룰렛</Link>
 
       </nav>
       <div className="hidden sm:hidden md:hidden lg:flex xl:flex 2xl:flex flex-row justify-between items-center">

@@ -1,0 +1,40 @@
+.roulette-selecting {
+  background-color: #febf70
+}
+.roulette-selected {
+  background-color: #fffddd;
+  animation-duration: 5s;
+  animation-name: selected-animation;
+  /* animation-fill-mode: forwards; */
+  animation-iteration-count: infinite;
+}
+.not-filtered {
+  /* visibility: collapse; */
+  display: none;
+}
+.filtered {
+  /* visibility: visible; */
+  display: block;
+}
+
+@keyframes selected-animation {
+  from {
+    background-color: #34fddd;
+  }
+
+  25% {
+    background-color: #ff56dd;
+  }
+
+  50% {
+    background-color: #fffd78;
+  }
+
+  75% {
+    background-color: #12fddd;
+  }
+
+  to {
+    background-color: #34fddd;
+  }
+}

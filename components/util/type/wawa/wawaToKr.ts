@@ -1,4 +1,4 @@
-import { TranslatedWords } from "../TranslatedWords";
+import { TranslatedWords } from "../types";
 
 const wawaToKr: TranslatedWords = {
   alphacity: "알파시티",
