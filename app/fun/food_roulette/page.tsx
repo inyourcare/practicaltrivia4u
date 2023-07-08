@@ -1,5 +1,5 @@
 import FoodRoulette from "@/components/fun/food_roulette/FoodRoulette";
-import Nav from "@/components/root/nav/Nav";
+import Header from "@/components/root/Header";
 
 declare global {
   interface Window {
@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <>
       <header className="w-full flex flex-col py-5 bg-[rgba(35,46,82,0)]">
-        <Nav />
+        <Header />
       </header>
       <div className="py-12 flex justify-center">
         <div className="w-full max-w-screen-lg">

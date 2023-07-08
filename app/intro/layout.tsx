@@ -1,4 +1,4 @@
-import Nav from "@/components/root/nav/Nav";
+import Header from "@/components/root/Header";
 import type { Metadata } from "next";
 import { Nanum_Gothic } from "next/font/google";
 const nanumGothic = Nanum_Gothic({ weight: "400", subsets: ["latin"] });
@@ -17,7 +17,7 @@ export default function IntroLayout({
   return (
     <section>
       <header className="w-full flex flex-col py-5 bg-[rgba(35,46,82,0)]">
-        <Nav />
+        <Header />
       </header>
       {children}
     </section>
