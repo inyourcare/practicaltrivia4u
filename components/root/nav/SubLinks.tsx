@@ -19,7 +19,7 @@ function SubLinks({ subMapKey }: { subMapKey: string }) {
     { href: "/fun/food_roulette", tagName: "점심추천" },
   ]);
   return (
-    <nav className={`absolute flex space-x-4 bg-gray-200 p-3`}>
+    <nav className={`absolute flex flex-wrap bg-gray-200 p-3`}>
       {subMap.get(subMapKey)?.map((sublink) => (
         <Link
           key={sublink.tagName}
