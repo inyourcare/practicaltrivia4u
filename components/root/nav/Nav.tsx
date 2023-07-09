@@ -22,7 +22,7 @@ function Nav() {
       <nav className="gap-3 sm:gap-5 md:gap-10 lg:gap-10 xl:gap-10 2xl:gap-10 inline-flex justify-center sm:justify-center md:justify-right mt-5 sm:mt-5 md:mt-0 lg:mt-0 xl:mt-0 2xl:mt-0  items-start text-left font-medium">
         <div className="relative">
           <Link
-            href={"/"}
+            href={"/edu4u"}
             className="m-0 text-xs whitespace-nowrap sm:text-lg md:text-lg lg:text-lg xl:text-lg 2xl:text-lg"
             onMouseOver={() => setSubMapKey(subMapKeySelector.edu4u)}
           >
