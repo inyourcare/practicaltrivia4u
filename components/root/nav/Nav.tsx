@@ -6,35 +6,12 @@ export const subMapKeySelector = {
   education: "education",
   academy: "academy",
   fun: "fun",
+  post: "post",
 };
 function Nav() {
-  // const navLinks = useRef<HTMLAnchorElement[]>([]);
-  // const navContainer = useRef<HTMLDivElement>(null);
-  // const [subVisibility, setSubVisibility] = useState(false);
   const [isMouseOver, setIsMouseOver] = useState(false);
   const [subMapKey, setSubMapKey] = useState("");
-  // useEffect(() => {
-  // navContainer.current?.addEventListener("mouseover", () =>
-  //   setIsMouseOver(true)
-  // );
-  // navContainer.current?.addEventListener("mouseout", () =>
-  //   setIsMouseOver(false)
-  // );
-  // navLinks.current.map((ref, i) => {
-  //   ref.addEventListener("mouseover", (e) => {
-  //     if (i === 0) setSubMapKey(subMapKeySelector.education);
-  //     else if (i === 1) setSubMapKey(subMapKeySelector.academy);
-  //     else if (i === 2) setSubMapKey(subMapKeySelector.fun);
-  //     else setSubMapKey("");
-  //   });
-  //   // ref.addEventListener("mouseout", (e) => {});
-  //   // ref.addEventListener("click", (e) => {
-  //   //   setSubVisibility(!subVisibility);
-  //   // });
-  // });
-  // }, []);
   return (
-    // <div className="relative" ref={navContainer}>
     <div
       className="relative"
       onMouseOver={() => setIsMouseOver(true)}
@@ -45,9 +22,6 @@ function Nav() {
           <Link
             href={"/"}
             className="m-0 text-xs whitespace-nowrap sm:text-lg md:text-lg lg:text-lg xl:text-lg 2xl:text-lg"
-            // ref={(elem) => {
-            //   navLinks.current[0] = elem as HTMLAnchorElement;
-            // }}
             onMouseOver={() => setSubMapKey(subMapKeySelector.education)}
           >
             과외
@@ -60,9 +34,6 @@ function Nav() {
           <Link
             href={"/intro/wawa"}
             className="m-0 text-xs whitespace-nowrap sm:text-lg md:text-lg lg:text-lg xl:text-lg 2xl:text-lg"
-            // ref={(elem) => {
-            //   navLinks.current[1] = elem as HTMLAnchorElement;
-            // }}
             onMouseOver={() => setSubMapKey(subMapKeySelector.academy)}
           >
             학원
@@ -73,11 +44,20 @@ function Nav() {
         </div>
         <div className="relative">
           <Link
+            href={"/post/"}
+            className="m-0 text-xs whitespace-nowrap sm:text-lg md:text-lg lg:text-lg xl:text-lg 2xl:text-lg"
+            onMouseOver={() => setSubMapKey(subMapKeySelector.post)}
+          >
+            POST
+          </Link>
+          {isMouseOver && subMapKey === subMapKeySelector.post && (
+            <SubLinks subMapKey={subMapKeySelector.post} />
+          )}
+        </div>
+        <div className="relative">
+          <Link
             href={"/fun/food_roulette"}
             className="m-0 text-xs whitespace-nowrap sm:text-lg md:text-lg lg:text-lg xl:text-lg 2xl:text-lg"
-            // ref={(elem) => {
-            //   navLinks.current[2] = elem as HTMLAnchorElement;
-            // }}
             onMouseOver={() => setSubMapKey(subMapKeySelector.fun)}
           >
             점심추천
@@ -87,9 +67,6 @@ function Nav() {
           )}
         </div>
       </nav>
-      {/* {(subVisibility || isMouseOver) && <SubLinks subMapKey={subMapKey} />} */}
-      {/* {(isMouseOver) && <SubLinks subMapKey={subMapKey} />} */}
-      {/* {<SubLinks subMapKey={subMapKeySelector.fun} />} */}
     </div>
   );
 }

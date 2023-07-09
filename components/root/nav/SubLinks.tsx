@@ -19,17 +19,21 @@ function SubLinks({ subMapKey }: { subMapKey: string }) {
     { href: "/fun/food_roulette", tagName: "점심추천" },
   ]);
   return (
-    <nav className={`absolute flex flex-wrap bg-gray-200 p-3`}>
-      {subMap.get(subMapKey)?.map((sublink) => (
-        <Link
-          key={sublink.tagName}
-          href={sublink.href}
-          className="m-0 text-xs sm:text-base md:text-base lg:text-base xl:text-base 2xl:text-base whitespace-nowrap"
-        >
-          {sublink.tagName}
-        </Link>
-      ))}
-    </nav>
+    <>
+      {subMap.get(subMapKey) && (
+        <nav className={`absolute flex flex-wrap bg-gray-200 p-3`}>
+          {subMap.get(subMapKey)?.map((sublink) => (
+            <Link
+              key={sublink.tagName}
+              href={sublink.href}
+              className="m-0 text-xs sm:text-base md:text-base lg:text-base xl:text-base 2xl:text-base whitespace-nowrap"
+            >
+              {sublink.tagName}
+            </Link>
+          ))}
+        </nav>
+      )}
+    </>
   );
 }
 
