@@ -12,11 +12,14 @@ function SubLinks({ subMapKey }: { subMapKey: string }) {
     { href: "/intro/howcoding", tagName: "하우코딩" },
     { href: "/intro/goodo", tagName: "공부구도" },
   ]);
+  subMap.set(subMapKeySelector.academy, [
+    { href: "/intro/wawa", tagName: "와와" },
+  ]);
   subMap.set(subMapKeySelector.fun, [
     { href: "/fun/food_roulette", tagName: "점심추천" },
   ]);
   return (
-    <nav className={`absolute min-w-[500px] grid grid-cols-8 gap-x-8`}>
+    <nav className={`absolute flex space-x-4 bg-gray-200 p-3`}>
       {subMap.get(subMapKey)?.map((sublink) => (
         <Link
           key={sublink.tagName}
