@@ -5,7 +5,7 @@ type SubLink = {
   href: string;
   tagName: string;
 };
-function SubLinks({ subMapKey }: { subMapKey: string }) {
+function SubLinks({ subMapKey,isOpen }: { subMapKey: string,isOpen:boolean }) {
   const subMap = new Map<string, Array<SubLink>>();
   subMap.set(subMapKeySelector.partners, [
     { href: "/intro/sangsang", tagName: "상상코칭" },
@@ -19,7 +19,7 @@ function SubLinks({ subMapKey }: { subMapKey: string }) {
   return (
     <>
       {subMap.get(subMapKey) && (
-        <nav className={`absolute flex flex-wrap bg-gray-200 p-3`}>
+        <nav className={`absolute flex flex-wrap bg-gray-200 p-3 transition ease-in-out delay-150 origin-top ${isOpen? 'scale-y-100' : 'scale-y-0'}`}>
           {subMap.get(subMapKey)?.map((sublink) => (
             <Link
               key={sublink.tagName}
