@@ -7,12 +7,10 @@ type SubLink = {
 };
 function SubLinks({ subMapKey }: { subMapKey: string }) {
   const subMap = new Map<string, Array<SubLink>>();
-  subMap.set(subMapKeySelector.education, [
+  subMap.set(subMapKeySelector.partners, [
     { href: "/intro/sangsang", tagName: "상상코칭" },
     { href: "/intro/howcoding", tagName: "하우코딩" },
     { href: "/intro/goodo", tagName: "공부구도" },
-  ]);
-  subMap.set(subMapKeySelector.academy, [
     { href: "/intro/wawa", tagName: "와와" },
   ]);
   subMap.set(subMapKeySelector.fun, [
