@@ -16,6 +16,9 @@ export default function Home() {
             <div className="py-[70%] bg-[url('/images/edu4u/enrichment.png')] bg-no-repeat bg-center bg-contain hover:cursor-pointer"></div>
           </div>
         </div>
+        <div className="relative w-[60vw] ">
+          <div className="w-full py-[60%] bg-[url('/images/edu4u/why4u.png')] bg-no-repeat bg-center bg-contain"></div>
+        </div>
       </div>
     </main>
   );
