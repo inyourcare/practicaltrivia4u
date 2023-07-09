@@ -7,7 +7,7 @@ export const metadata: Metadata = {
     "4U쌤과 함께 수학 과외, 영어 과외, 국어 과외 등 과외 구하기. 학생, 학부모, 선생님을 생각하는 과외.",
 };
 
-export default function IntroLayout({
+export default function Edu4ULayout({
   children,
 }: {
   children: React.ReactNode;
