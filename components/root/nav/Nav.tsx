@@ -2,14 +2,8 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import SubLinks from "./SubLinks";
-export const subMapKeySelector = {
-  // education: "education",
-  // academy: "academy",
-  edu4u: "edu4u",
-  partners: "partners",
-  fun: "fun",
-  post: "post",
-};
+import { linkMap, rootLinks } from "./links";
+
 function Nav() {
   const [isMouseOver, setIsMouseOver] = useState(false);
   const [subMapKey, setSubMapKey] = useState("");
@@ -22,54 +16,54 @@ function Nav() {
       <nav className="gap-3 sm:gap-5 md:gap-10 lg:gap-10 xl:gap-10 2xl:gap-10 inline-flex justify-center sm:justify-center md:justify-right mt-5 sm:mt-5 md:mt-0 lg:mt-0 xl:mt-0 2xl:mt-0  items-start text-left font-medium">
         <div className="relative">
           <Link
-            href={"/edu4u"}
+            href={linkMap.get(rootLinks.edu4u)?.href as string}
             className="m-0 text-xs whitespace-nowrap sm:text-lg md:text-lg lg:text-lg xl:text-lg 2xl:text-lg"
-            onMouseOver={() => setSubMapKey(subMapKeySelector.edu4u)}
+            onMouseOver={() => setSubMapKey(rootLinks.edu4u)}
           >
-            과외4U
+            {linkMap.get(rootLinks.edu4u)?.tagName as string}
           </Link>
           <SubLinks
-            subMapKey={subMapKeySelector.edu4u}
-            isOpen={isMouseOver && subMapKey === subMapKeySelector.edu4u}
+            subMapKey={rootLinks.edu4u}
+            isOpen={isMouseOver && subMapKey === rootLinks.edu4u}
           />
         </div>
         <div className="relative">
           <Link
-            href={"/intro/sangsang"}
+            href={linkMap.get(rootLinks.partners)?.href as string}
             className="m-0 text-xs whitespace-nowrap sm:text-lg md:text-lg lg:text-lg xl:text-lg 2xl:text-lg"
-            onMouseOver={() => setSubMapKey(subMapKeySelector.partners)}
+            onMouseOver={() => setSubMapKey(rootLinks.partners)}
           >
-            파트너스
+            {linkMap.get(rootLinks.partners)?.tagName as string}
           </Link>
           <SubLinks
-            subMapKey={subMapKeySelector.partners}
-            isOpen={isMouseOver && subMapKey === subMapKeySelector.partners}
+            subMapKey={rootLinks.partners}
+            isOpen={isMouseOver && subMapKey === rootLinks.partners}
           />
         </div>
         <div className="relative">
           <Link
-            href={"/post/"}
+            href={linkMap.get(rootLinks.post)?.href as string}
             className="m-0 text-xs whitespace-nowrap sm:text-lg md:text-lg lg:text-lg xl:text-lg 2xl:text-lg"
-            onMouseOver={() => setSubMapKey(subMapKeySelector.post)}
+            onMouseOver={() => setSubMapKey(rootLinks.post)}
           >
-            POST
+            {linkMap.get(rootLinks.post)?.tagName as string}
           </Link>
           <SubLinks
-            subMapKey={subMapKeySelector.post}
-            isOpen={isMouseOver && subMapKey === subMapKeySelector.post}
+            subMapKey={rootLinks.post}
+            isOpen={isMouseOver && subMapKey === rootLinks.post}
           />
         </div>
         <div className="relative">
           <Link
-            href={"/fun/food_roulette"}
+            href={linkMap.get(rootLinks.fun)?.href as string}
             className="m-0 text-xs whitespace-nowrap sm:text-lg md:text-lg lg:text-lg xl:text-lg 2xl:text-lg"
-            onMouseOver={() => setSubMapKey(subMapKeySelector.fun)}
+            onMouseOver={() => setSubMapKey(rootLinks.fun)}
           >
-            점심추천
+            {linkMap.get(rootLinks.fun)?.tagName as string}
           </Link>
           <SubLinks
-            subMapKey={subMapKeySelector.fun}
-            isOpen={isMouseOver && subMapKey === subMapKeySelector.fun}
+            subMapKey={rootLinks.fun}
+            isOpen={isMouseOver && subMapKey === rootLinks.fun}
           />
         </div>
       </nav>

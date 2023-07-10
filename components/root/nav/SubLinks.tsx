@@ -1,25 +1,21 @@
 import Link from "next/link";
-import { subMapKeySelector } from "./Nav";
+import { subMap } from "./links";
 
-type SubLink = {
-  href: string;
-  tagName: string;
-};
-function SubLinks({ subMapKey,isOpen }: { subMapKey: string,isOpen:boolean }) {
-  const subMap = new Map<string, Array<SubLink>>();
-  subMap.set(subMapKeySelector.partners, [
-    { href: "/intro/sangsang", tagName: "상상코칭" },
-    { href: "/intro/howcoding", tagName: "하우코딩" },
-    { href: "/intro/goodo", tagName: "공부구도" },
-    { href: "/intro/wawa", tagName: "와와" },
-  ]);
-  subMap.set(subMapKeySelector.fun, [
-    { href: "/fun/food_roulette", tagName: "점심추천" },
-  ]);
+function SubLinks({
+  subMapKey,
+  isOpen,
+}: {
+  subMapKey: string;
+  isOpen: boolean;
+}) {
   return (
     <>
       {subMap.get(subMapKey) && (
-        <nav className={`absolute flex flex-wrap bg-gray-200 p-3 transition ease-in-out delay-150 origin-top ${isOpen? 'scale-y-100' : 'scale-y-0'}`}>
+        <nav
+          className={`absolute flex flex-wrap bg-gray-200 p-3 transition ease-in-out delay-150 origin-top ${
+            isOpen ? "scale-y-100" : "scale-y-0"
+          }`}
+        >
           {subMap.get(subMapKey)?.map((sublink) => (
             <Link
               key={sublink.tagName}
