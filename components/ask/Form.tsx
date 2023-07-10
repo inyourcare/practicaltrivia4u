@@ -1,6 +1,7 @@
 "use client";
 
 import emailjs from "@emailjs/browser";
+import Image from "next/image";
 import {
   FormEvent,
   useRef,
@@ -44,11 +45,13 @@ export default function Form({
 
   const onSubmitForm = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (!privateInfoAgree){
-      alert('이용약관을 동의 해 주세요.')
-      const checkbox = document.getElementById('privateInfoAgreeInputId') as HTMLInputElement
-      checkbox.focus()
-      return
+    if (!privateInfoAgree) {
+      alert("이용약관을 동의 해 주세요.");
+      const checkbox = document.getElementById(
+        "privateInfoAgreeInputId"
+      ) as HTMLInputElement;
+      checkbox.focus();
+      return;
     }
     setIsProcessing(true);
     try {
@@ -123,10 +126,20 @@ export default function Form({
     "//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"
   );
   return (
-    <div className="w-[80vw] bg-gray-100 py-10 px-5 max-w-[650px] rounded-lg shadow-lg">
-      <header className="w-full h-20 bg-gray-200 border-b-2 border-gray-400 flex justify-center items-center font-black text-2xl rounded-md shadow-md">
+    <div className="w-[80vw] bg-gray-100 pb-10 pt-3 px-5 max-w-[650px] rounded-lg shadow-lg">
+      <header className="w-full h-20 bg-gray-200 border-b-2 border-gray-300 flex justify-center items-center text-2xl text-slate-600">
         상담신청
       </header>
+      <div className="p-1 bg-gray-200 border-b-2 border-gray-300">
+        <Image
+          width={1080}
+          height={1080}
+          style={{maxHeight:'150px'}}
+          className="rounded-md"
+          src={`/images/edu4u/bg_asktop.png`}
+          alt=""
+        />
+      </div>
       <form
         className="bg-gray-200 rounded-md shadow-md px-3 pt-3 pb-8 w-full text-xs"
         ref={form}
