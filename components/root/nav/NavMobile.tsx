@@ -12,7 +12,7 @@ export default function NavMobile({ listOpen }: { listOpen: boolean }) {
     <div
       className={`block absolute w-full md:hidden transition ease-in-out delay-150 origin-left ${
         listOpen ? "scale-x-100" : "scale-x-0"
-      }`}
+      } z-50`}
     >
       <ul className={ulClassName}>
         <li className={liClassName}>
