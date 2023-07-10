@@ -19,6 +19,7 @@ export default function Form({
   const [isProcessing, setIsProcessing] = useState(false);
   const [selectedKind, setSelectedKind] = useState("");
   const [address, setAddress] = useState("");
+  const [privateInfoAgree, setPrivateInfoAgree] = useState(false);
 
   const form = useRef<HTMLFormElement>(null);
 
@@ -43,6 +44,12 @@ export default function Form({
 
   const onSubmitForm = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if (!privateInfoAgree){
+      alert('이용약관을 동의 해 주세요.')
+      const checkbox = document.getElementById('privateInfoAgreeInputId') as HTMLInputElement
+      checkbox.focus()
+      return
+    }
     setIsProcessing(true);
     try {
       const fetchBody = {
@@ -116,7 +123,7 @@ export default function Form({
     "//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"
   );
   return (
-    <>
+    <div className="w-[60vw]">
       <form
         className="bg-gray-200 shadow-md rounded px-3 pt-3 pb-8 w-full text-xs"
         ref={form}
@@ -153,16 +160,12 @@ export default function Form({
                 <option value={"/sangsang"}>{`상상코칭`}</option>
                 <option value={"/goodo"}>{`공부구도`}</option>
                 <option value={"/howcoding"}>{`하우코딩`}</option>
-                <option value={"/mindfulness"}>
-                  {`마음키움`}
-                </option>
+                <option value={"/mindfulness"}>{`마음키움`}</option>
                 <option value={"/ipsi"}>{`입시`}</option>
               </optgroup>
 
               <optgroup label="회화">
-                <option value={"/conversation"}>
-                  {`회화`}
-                </option>
+                <option value={"/conversation"}>{`회화`}</option>
               </optgroup>
 
               <optgroup label="학원">
@@ -219,7 +222,31 @@ export default function Form({
           placeholder="전화 가능 시간, 수업이 필요한 이유, 약점과 강점, 공부 성향 등"
           name="description"
         />
-        <div className={"w-full h-24 flex flex-row-reverse items-end mt-5"}>
+        <textarea
+          className="shadow appearance-none border rounded w-full py-2 px-1 text-black mt-5"
+          rows={4}
+          readOnly
+          value={`1. 수집하는 개인정보의 항목: 이름, 학년, 핸드폰번호, 거주지역
+2. 개인정보의 수집 이용 목적: 상담신청에 대한 응대
+3. 개인정보의 보유 및 이용기간: 상담신청 정보는 신청일을 기준으로 2개월 동안 보관 후 삭제합니다.
+4. 개인정보의 파기: 수집 및 이용목적 달성 또는 동의철회를 하는 경우, 분쇄/소각 등 재생 불가능한 방법으로 지체 없이 파기 함
+5. 위와 같이 개인정보를 수집/이용에 대한 동의를 거부할 권리가 있습니다. 동의를 거부할 경우 무료상담을 받으실 수 없음을 알려드립니다.
+☞ 고객의 개인정보는 당사의 기술적 관리적 보호조치에 따라 안전하게 보관됨을 알려드립니다.
+☞ 고객의 개인정보처리지침에 대한 자세한 내용은 당사 홈페이지 내 개인정보처리방침을 참고하시기 바랍니다.`}
+        />
+        <div className="w-full flex flex-row-reverse">
+          <label className="flex justify-center items-center">
+            <input
+              id="privateInfoAgreeInputId"
+              type="checkbox"
+              className="mx-1 flex justify-center items-center"
+              checked={privateInfoAgree}
+              onChange={(e) => setPrivateInfoAgree(e.target.checked)}
+            />
+            개인정보동의, 수집하는 개인정보 항목 이용에 모두 동의합니다.
+          </label>
+        </div>
+        <div className={"w-full h-10 flex flex-row-reverse items-end mt-5"}>
           <button
             className={
               // "absolute bottom-2 right-10 rounded-xl bg-gray-300 p-2 min-w-[90px] justify-center items-center border text-xs font-bold " +
@@ -235,6 +262,6 @@ export default function Form({
           </button>
         </div>
       </form>
-    </>
+    </div>
   );
 }
