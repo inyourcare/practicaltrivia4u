@@ -153,11 +153,13 @@ export default function Home() {
             </p>
           </div>
         </div>
-        <div
-          className="w-[80vw] h-[100px] p-10 text-center flex justify-center items-center bg-slate-500 mt-10 font-black text-5xl text-white cursor-pointer rounded-lg"
-          onClick={() => setAskDialogOpen(true)}
-        >
-          상담 문의하기
+        <div className="hidden md:block ">
+          <div
+            className="w-[80vw] h-[100px] p-10 text-center flex justify-center items-center bg-slate-500 mt-10 font-black text-5xl text-white cursor-pointer rounded-lg"
+            onClick={() => setAskDialogOpen(true)}
+          >
+            상담 문의하기
+          </div>
         </div>
       </div>
     </main>
