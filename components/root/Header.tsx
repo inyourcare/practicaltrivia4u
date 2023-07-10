@@ -11,10 +11,9 @@ import {
   FaBlogger,
 } from "react-icons/fa";
 import Nav from "./nav/Nav";
+import NavMobile from "./nav/NavMobile";
 
 function Header() {
-  const ulClassName = `bg-white h-[100vh]`;
-  const liClassName = `h-[50px] border-b-2 ml-10 border-gray-200 flex justify-left items-center`;
   const [listOpen, setListOpen] = useState(false);
   return (
     <>
@@ -91,34 +90,7 @@ function Header() {
           </div>
         </div>
 
-        <div
-          className={`block absolute w-full md:hidden transition ease-in-out delay-150 origin-left ${
-            listOpen ? "scale-x-100" : "scale-x-0"
-          }`}
-        >
-          <ul className={ulClassName}>
-            <li className={liClassName}>
-              <Link href={"/edu4u"} className="">
-                과외4U
-              </Link>
-            </li>
-            <li className={liClassName}>
-              <Link href={"/intro/sangsang"} className="">
-                파트너스
-              </Link>
-            </li>
-            <li className={liClassName}>
-              <Link href={"/post/"} className="">
-                POST
-              </Link>
-            </li>
-            <li className={liClassName}>
-              <Link href={"/fun/food_roulette"} className="">
-                점심추천
-              </Link>
-            </li>
-          </ul>
-        </div>
+        <NavMobile listOpen={listOpen} />
       </div>
     </>
   );
