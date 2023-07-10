@@ -1,6 +1,7 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import {
   FaFacebookF,
   FaInstagram,
@@ -12,6 +13,9 @@ import {
 import Nav from "./nav/Nav";
 
 function Header() {
+  const ulClassName = `bg-white h-[100vh]`;
+  const liClassName = `h-[50px] border-b-2 ml-10 border-gray-200 flex justify-left items-center`;
+  const [listOpen, setListOpen] = useState(false);
   return (
     <>
       <div className="hidden md:block ">
@@ -71,7 +75,10 @@ function Header() {
               alt=""
             />
           </a>
-          <a href="/" className="text-2xl text-center flex justify-center items-center px-3 pt-3">
+          <div
+            className="text-2xl text-center flex justify-center items-center px-3 pt-3 cursor-pointer"
+            onClick={() => setListOpen(!listOpen)}
+          >
             <Image
               width={24}
               height={18}
@@ -81,7 +88,36 @@ function Header() {
               alt=""
               className=""
             />
-          </a>
+          </div>
+        </div>
+
+        <div
+          className={`block absolute w-full md:hidden transition ease-in-out delay-150 origin-left ${
+            listOpen ? "scale-x-100" : "scale-x-0"
+          }`}
+        >
+          <ul className={ulClassName}>
+            <li className={liClassName}>
+              <Link href={"/edu4u"} className="">
+                과외4U
+              </Link>
+            </li>
+            <li className={liClassName}>
+              <Link href={"/intro/sangsang"} className="">
+                파트너스
+              </Link>
+            </li>
+            <li className={liClassName}>
+              <Link href={"/post/"} className="">
+                POST
+              </Link>
+            </li>
+            <li className={liClassName}>
+              <Link href={"/fun/food_roulette"} className="">
+                점심추천
+              </Link>
+            </li>
+          </ul>
         </div>
       </div>
     </>
