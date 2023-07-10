@@ -1,10 +1,17 @@
+"use client";
+import TopDownDialog from "@/components/dialog/TopDownDialog";
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 
 export default function Home() {
+  const [askDialogOpen, setAskDialogOpen] = useState(true);
   return (
     <main>
       <div className="w-full flex flex-col justify-center items-center ">
+        <TopDownDialog open={askDialogOpen} setOpen={setAskDialogOpen}>
+          dialog
+        </TopDownDialog>
         <div className="w-[60vw] h-[300px] bg-[url('/images/edu4u/main.png')] bg-no-repeat bg-center bg-cover"></div>
         <div className="w-[80vw]">
           <div className="grid grid-cols-2 lg:grid-cols-4">
@@ -145,7 +152,10 @@ export default function Home() {
             </p>
           </div>
         </div>
-        <div className="w-[80vw] h-[100px] p-10 text-center flex justify-center items-center bg-slate-500 mt-10 font-black text-5xl text-white cursor-pointer rounded-lg">
+        <div
+          className="w-[80vw] h-[100px] p-10 text-center flex justify-center items-center bg-slate-500 mt-10 font-black text-5xl text-white cursor-pointer rounded-lg"
+          onClick={() => setAskDialogOpen(true)}
+        >
           상담 문의하기
         </div>
       </div>
