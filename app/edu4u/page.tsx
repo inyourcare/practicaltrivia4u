@@ -1,4 +1,5 @@
 "use client";
+import AskForm from "@/components/ask/Form";
 import TopDownDialog from "@/components/dialog/TopDownDialog";
 import Image from "next/image";
 import Link from "next/link";
@@ -10,7 +11,7 @@ export default function Home() {
     <main>
       <div className="w-full flex flex-col justify-center items-center ">
         <TopDownDialog open={askDialogOpen} setOpen={setAskDialogOpen}>
-          dialog
+          <AskForm setIsOpen={setAskDialogOpen} />
         </TopDownDialog>
         <div className="w-[60vw] h-[300px] bg-[url('/images/edu4u/main.png')] bg-no-repeat bg-center bg-cover"></div>
         <div className="w-[80vw]">
