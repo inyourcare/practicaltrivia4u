@@ -33,6 +33,9 @@ export default function Home() {
         <div className="w-full flex justify-center items-center ">
           <div className="w-[60vw] pt-[50%] bg-[url('/images/edu4u/why4u.png')] bg-no-repeat bg-center bg-contain"></div>
         </div>
+        <div className="w-full flex justify-center items-center mt-10">
+          <div className="w-[80vw] pt-[20%] bg-[url('/images/edu4u/review/review_title.png')] bg-no-repeat bg-center bg-contain"></div>
+        </div>
         <div className="w-[80vw] h-[550px] overflow-x-auto px-20 flex flex-row flex-nowrap snap-x">
           <div className="min-w-[350px] h-[520px] bg-gray-100 flex flex-col justify-center items-center snap-center p-3">
             <Image
