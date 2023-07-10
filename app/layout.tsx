@@ -68,26 +68,32 @@ export default function RootLayout({
           content="2bcce2baa1fc6bf384c15035f653a7c768d5e6bc"
         />
         {/* 구글 */}
-        <script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8425397323378076"
-          // crossorigin="anonymous"
-          crossOrigin="anonymous"
-        ></script>
+        {process.env.NODE_ENV !== "development" && (
+          <script
+            async
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8425397323378076"
+            // crossorigin="anonymous"
+            crossOrigin="anonymous"
+          ></script>
+        )}
         {/* <!-- Google tag (gtag.js) --> */}
-        <Script
-          strategy="afterInteractive"
-          src="https://www.googletagmanager.com/gtag/js?id=G-08E5CNK7PL"
-        ></Script>
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
+        {process.env.NODE_ENV !== "development" && (
+          <Script
+            strategy="afterInteractive"
+            src="https://www.googletagmanager.com/gtag/js?id=G-08E5CNK7PL"
+          ></Script>
+        )}
+        {process.env.NODE_ENV !== "development" && (
+          <Script id="google-analytics" strategy="afterInteractive">
+            {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){window.dataLayer.push(arguments);}
           gtag('js', new Date());
 
           gtag('config', 'GA_MEASUREMENT_ID');
         `}
-        </Script>
+          </Script>
+        )}
         {/* sortable */}
         <script defer src="/js/sortable/Sortable.min.js"></script>
       </head>
