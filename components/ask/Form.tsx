@@ -123,16 +123,19 @@ export default function Form({
     "//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"
   );
   return (
-    <div className="w-[60vw]">
+    <div className="w-[80vw] bg-gray-100 py-10 px-5 max-w-[650px] rounded-lg shadow-lg">
+      <header className="w-full h-20 bg-gray-200 border-b-2 border-gray-400 flex justify-center items-center font-black text-2xl rounded-md shadow-md">
+        상담신청
+      </header>
       <form
-        className="bg-gray-200 shadow-md rounded px-3 pt-3 pb-8 w-full text-xs"
+        className="bg-gray-200 rounded-md shadow-md px-3 pt-3 pb-8 w-full text-xs"
         ref={form}
         onSubmit={(e) => onSubmitForm(e)}
       >
         <div className="w-full flex flex-nowrap justify-between">
           <span className="w-1/2">
             <label
-              className="block text-black text-xs font-bold my-1"
+              className="block text-black text-xs font-bold my-1 truncate"
               // onClick={() => test()}
             >
               상담 받으실 분 성함
@@ -145,7 +148,7 @@ export default function Form({
             />
           </span>
           <span className="w-1/2">
-            <label className="block text-black text-xs font-bold my-1">
+            <label className="block text-black text-xs font-bold my-1 truncate">
               문의하실 분야
             </label>
             <select
