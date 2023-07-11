@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   FaFacebookF,
   FaInstagram,
@@ -12,9 +12,14 @@ import {
 } from "react-icons/fa";
 import Nav from "./nav/Nav";
 import NavMobile from "./nav/NavMobile";
+import { usePathname } from "next/navigation";
 
 function Header() {
   const [listOpen, setListOpen] = useState(false);
+  const pathname = usePathname();
+  useEffect(() => {
+    setListOpen(false);
+  }, [pathname, setListOpen]);
   return (
     <>
       <div className="hidden md:block ">
