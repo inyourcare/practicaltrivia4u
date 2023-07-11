@@ -134,7 +134,7 @@ export default function Form({
         <Image
           width={1080}
           height={1080}
-          style={{maxHeight:'150px'}}
+          style={{ maxHeight: "150px" }}
           className="rounded-md"
           src={`/images/edu4u/bg_asktop.png`}
           alt=""
@@ -172,27 +172,21 @@ export default function Form({
               required
             >
               <option value={""}>선택없음</option>
-              <optgroup label="과외">
-                <option value={"/sangsang"}>{`상상코칭`}</option>
-                <option value={"/goodo"}>{`공부구도`}</option>
-                <option value={"/howcoding"}>{`하우코딩`}</option>
-                <option value={"/mindfulness"}>{`마음키움`}</option>
-                <option value={"/ipsi"}>{`입시`}</option>
-              </optgroup>
 
-              <optgroup label="회화">
-                <option value={"/conversation"}>{`회화`}</option>
+              <optgroup label="4U">
+                <option value={"4u"}>{`과외4U`}</option>
               </optgroup>
-
-              <optgroup label="학원">
-                <option value={"/wawa"}>{`와와`}</option>
-              </optgroup>
-
-              <optgroup label="유학">
-                <option value={"/solute"}>{`솔루트`}</option>
-              </optgroup>
-              <optgroup label="기타">
-                <option value={"/developing"}>{`개발`}</option>
+              <optgroup label="파트너스">
+                <option value={"sangsang"}>{`상상코칭`}</option>
+                <option value={"goodo"}>{`공부구도`}</option>
+                <option value={"howcoding"}>{`하우코딩`}</option>
+                <option value={"mindfulness"}>{`마음키움`}</option>
+                <option value={"ipsi"}>{`입시`}</option>
+                <option value={"power_english"}>{`파워잉글리쉬`}</option>
+                <option value={"power_japan"}>{`파워재팬`}</option>
+                <option value={"power_china"}>{`파워차이나`}</option>
+                <option value={"wawa"}>{`와와`}</option>
+                <option value={"solute"}>{`솔루트유학`}</option>
               </optgroup>
             </select>
           </span>
