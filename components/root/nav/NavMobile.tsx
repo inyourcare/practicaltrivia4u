@@ -6,7 +6,8 @@ import { useState } from "react";
 
 export default function NavMobile({ listOpen }: { listOpen: boolean }) {
   const ulClassName = `bg-white h-[100vh]`;
-  const liClassName = `h-[50px] border-b-2 ml-10 border-gray-200 flex justify-left items-center transition ease-in-out delay-150 origin-top`;
+  const parentLiHeight = `h-[50px] `
+  const liClassName = `border-b-2 ml-10 border-gray-200 flex justify-left items-center transition ease-in-out delay-150 origin-top`;
   const [subOpenSet, setSubOpenSet] = useState(new Set());
   return (
     <div
@@ -15,7 +16,7 @@ export default function NavMobile({ listOpen }: { listOpen: boolean }) {
       } z-50`}
     >
       <ul className={ulClassName}>
-        <li className={liClassName}>
+        <li className={parentLiHeight + '' + liClassName}>
           <div
             // href={linkMap.get(rootLinks.edu4u)?.href as string}
             className="cursor-pointer"
@@ -35,7 +36,7 @@ export default function NavMobile({ listOpen }: { listOpen: boolean }) {
           isOpen={subOpenSet.has(rootLinks.edu4u)}
           liClassName={liClassName}
         />
-        <li className={liClassName}>
+        <li className={parentLiHeight + '' + liClassName}>
           <div
             // href={linkMap.get(rootLinks.partners)?.href as string}
             className="cursor-pointer"
@@ -57,7 +58,7 @@ export default function NavMobile({ listOpen }: { listOpen: boolean }) {
           isOpen={subOpenSet.has(rootLinks.partners)}
           liClassName={liClassName}
         />
-        <li className={liClassName}>
+        <li className={parentLiHeight + '' + liClassName}>
           <div
             // href={linkMap.get(rootLinks.post)?.href as string}
             className="cursor-pointer"
@@ -77,7 +78,7 @@ export default function NavMobile({ listOpen }: { listOpen: boolean }) {
           isOpen={subOpenSet.has(rootLinks.post)}
           liClassName={liClassName}
         />
-        <li className={liClassName}>
+        <li className={parentLiHeight + '' + liClassName}>
           <div
             // href={linkMap.get(rootLinks.fun)?.href as string}
             className="cursor-pointer"
