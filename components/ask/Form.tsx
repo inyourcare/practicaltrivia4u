@@ -178,14 +178,14 @@ export default function Form({
               </optgroup>
               <optgroup label="파트너스">
                 <option value={"sangsang"}>{`상상코칭`}</option>
-                <option value={"goodo"}>{`공부구도`}</option>
                 <option value={"howcoding"}>{`하우코딩`}</option>
+                <option value={"goodo"}>{`공부구도`}</option>
+                <option value={"wawa"}>{`와와`}</option>
                 <option value={"mindfulness"}>{`마음키움`}</option>
                 <option value={"ipsi"}>{`입시`}</option>
                 <option value={"power_english"}>{`파워잉글리쉬`}</option>
                 <option value={"power_japan"}>{`파워재팬`}</option>
                 <option value={"power_china"}>{`파워차이나`}</option>
-                <option value={"wawa"}>{`와와`}</option>
                 <option value={"solute"}>{`솔루트유학`}</option>
               </optgroup>
             </select>

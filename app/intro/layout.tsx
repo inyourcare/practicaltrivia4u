@@ -1,3 +1,4 @@
+import PartnersFooter from "@/components/partners/Footer";
 import Header from "@/components/root/Header";
 import type { Metadata } from "next";
 
@@ -18,6 +19,7 @@ export default function IntroLayout({
         <Header />
       </header>
       {children}
+      <PartnersFooter />
     </section>
   );
 }
