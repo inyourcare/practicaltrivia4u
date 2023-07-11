@@ -7,6 +7,7 @@ import { linkMap, rootLinks } from "./links";
 function Nav() {
   const [isMouseOver, setIsMouseOver] = useState(false);
   const [subMapKey, setSubMapKey] = useState("");
+  const navLinkClassName = `m-0 text-xs whitespace-nowrap sm:text-lg md:text-lg lg:text-lg xl:text-lg 2xl:text-lg`
   return (
     <div
       className="relative"
@@ -17,7 +18,7 @@ function Nav() {
         <div className="relative">
           <Link
             href={linkMap.get(rootLinks.edu4u)?.href as string}
-            className="m-0 text-xs whitespace-nowrap sm:text-lg md:text-lg lg:text-lg xl:text-lg 2xl:text-lg"
+            className={navLinkClassName}
             onMouseOver={() => setSubMapKey(rootLinks.edu4u)}
           >
             {linkMap.get(rootLinks.edu4u)?.tagName as string}
@@ -30,7 +31,7 @@ function Nav() {
         <div className="relative">
           <Link
             href={linkMap.get(rootLinks.partners)?.href as string}
-            className="m-0 text-xs whitespace-nowrap sm:text-lg md:text-lg lg:text-lg xl:text-lg 2xl:text-lg"
+            className={navLinkClassName}
             onMouseOver={() => setSubMapKey(rootLinks.partners)}
           >
             {linkMap.get(rootLinks.partners)?.tagName as string}
@@ -43,7 +44,7 @@ function Nav() {
         <div className="relative">
           <Link
             href={linkMap.get(rootLinks.post)?.href as string}
-            className="m-0 text-xs whitespace-nowrap sm:text-lg md:text-lg lg:text-lg xl:text-lg 2xl:text-lg"
+            className={navLinkClassName}
             onMouseOver={() => setSubMapKey(rootLinks.post)}
           >
             {linkMap.get(rootLinks.post)?.tagName as string}
@@ -56,7 +57,7 @@ function Nav() {
         <div className="relative">
           <Link
             href={linkMap.get(rootLinks.fun)?.href as string}
-            className="m-0 text-xs whitespace-nowrap sm:text-lg md:text-lg lg:text-lg xl:text-lg 2xl:text-lg"
+            className={navLinkClassName}
             onMouseOver={() => setSubMapKey(rootLinks.fun)}
           >
             {linkMap.get(rootLinks.fun)?.tagName as string}
