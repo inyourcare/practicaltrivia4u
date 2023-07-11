@@ -1,10 +1,24 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TopDownDialog from "../dialog/TopDownDialog";
 import AskForm from "@/components/ask/Form";
 
 export default function Edu4UFooter() {
   const [askDialogOpen, setAskDialogOpen] = useState(false);
+  useEffect(() => {
+    // const date = new Date()
+    // console.log(date.getFullYear(),date.getMonth(),date.getDate())
+    // const key = `${date.getFullYear()}_${date.getMonth()}_${date.getDate()}_askDialogOpen`
+    const key = "askDialogOpen";
+    const val = sessionStorage.getItem(key);
+    if (!val) {
+      console.log("not opened");
+      sessionStorage.setItem(key, "opend");
+      setAskDialogOpen(true);
+    } else {
+      console.log(" opened");
+    }
+  }, []);
   return (
     <>
       <TopDownDialog open={askDialogOpen} setOpen={setAskDialogOpen}>
@@ -12,12 +26,12 @@ export default function Edu4UFooter() {
       </TopDownDialog>
       <div className="hidden md:block ">
         <div className="w-full flex justify-center items-center">
-        <div
-          className="w-[80vw] h-[100px] p-10 text-center flex justify-center items-center bg-slate-500 mt-10 font-black text-5xl text-white cursor-pointer rounded-lg"
-          onClick={() => setAskDialogOpen(true)}
-        >
-          상담 문의하기
-        </div>
+          <div
+            className="w-[80vw] h-[100px] p-10 text-center flex justify-center items-center bg-slate-500 mt-10 font-black text-5xl text-white cursor-pointer rounded-lg"
+            onClick={() => setAskDialogOpen(true)}
+          >
+            상담 문의하기
+          </div>
         </div>
       </div>
       <div
