@@ -1,18 +1,11 @@
-"use client";
-import AskForm from "@/components/ask/Form";
-import TopDownDialog from "@/components/dialog/TopDownDialog";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
 
 export default function Home() {
-  const [askDialogOpen, setAskDialogOpen] = useState(true);
   return (
     <main>
       <div className="w-full flex flex-col justify-center items-center ">
-        <TopDownDialog open={askDialogOpen} setOpen={setAskDialogOpen}>
-          <AskForm setIsOpen={setAskDialogOpen} />
-        </TopDownDialog>
+        
         <div className="w-[60vw] h-[300px] bg-[url('/images/edu4u/main.png')] bg-no-repeat bg-center bg-cover"></div>
         <div className="w-[80vw]">
           <div className="grid grid-cols-2 lg:grid-cols-4">
@@ -154,27 +147,6 @@ export default function Home() {
               수업을 알아봤습니다. 그런데 코로나가 확산되는 시기였기 때문에
               대면수업에 대한 부담을 느껴서 화상1:1 수업을 시작했습니다.
             </p>
-          </div>
-        </div>
-        <div className="hidden md:block ">
-          <div
-            className="w-[80vw] h-[100px] p-10 text-center flex justify-center items-center bg-slate-500 mt-10 font-black text-5xl text-white cursor-pointer rounded-lg"
-            onClick={() => setAskDialogOpen(true)}
-          >
-            상담 문의하기
-          </div>
-        </div>
-        <div className={`block md:hidden w-full cursor-pointer ${askDialogOpen && 'origin-bottom scale-y-0'}`}>
-          <div className={`fixed bottom-0 w-full h-[70px] bg-blue-100 flex flex-row `}>
-            <div className="w-1/2 p-10 text-center flex justify-center items-center bg-green-300 font-black text-2xl text-white cursor-pointer rounded-lg">
-              <a href="tel:27197294">전화상담</a>
-            </div>
-            <div
-              className="w-1/2 p-10 text-center flex justify-center items-center bg-rose-500 font-black text-2xl text-white cursor-pointer rounded-lg"
-              onClick={() => setAskDialogOpen(!askDialogOpen)}
-            >
-              상담문의
-            </div>
           </div>
         </div>
       </div>
