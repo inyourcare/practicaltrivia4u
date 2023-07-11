@@ -18,7 +18,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="h-[400px] flex justify-center items-center">
+      <div className="h-[200px] md:h-[400px] flex justify-center items-center">
         <Image
           width={1040}
           height={161}
@@ -27,8 +27,8 @@ export default function Home() {
         />
       </div>
 
-      <div className="flex justify-center flex-col items-center bg-gray-300 p-20 pb-40">
-        <div className="h-[400px] flex justify-center items-center">
+      <div className="flex justify-center flex-col items-center bg-gray-300 px-20 pb-10 md:py-20 md:pb-40">
+        <div className="h-[200px] md:h-[400px] flex justify-center items-center">
           <Image
             width={650}
             height={108}
@@ -79,7 +79,7 @@ export default function Home() {
       </div>
 
       <div className="flex justify-center items-center flex-col">
-        <div className="h-[400px] flex justify-center items-center">
+        <div className="h-[200px] md:h-[400px] flex justify-center items-center">
           <Image
             width={477}
             height={103}
@@ -88,7 +88,7 @@ export default function Home() {
           />
         </div>
         <div className="flex justify-center items-center flex-row ">
-          <div className="h-[400px] flex justify-center items-center flex-1">
+          <div className="h-[200px] md:h-[400px] flex justify-center items-center flex-1">
             <Image
               width={414}
               height={174}
@@ -115,8 +115,8 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="flex justify-center flex-col items-center bg-gray-300 p-20 pb-40">
-        <div className="h-[400px] flex justify-center items-center">
+      <div className="flex justify-center flex-col items-center bg-gray-300 px-20 pb-10 md:py-20 md:pb-40">
+        <div className="h-[200px] md:h-[400px] flex justify-center items-center">
           <Image
             width={559}
             height={225}
@@ -124,7 +124,7 @@ export default function Home() {
             alt=""
           />
         </div>
-        <div className="h-[400px] flex justify-center items-center">
+        <div className="h-[200px] md:h-[400px] flex justify-center items-center">
           <Image
             width={1200}
             height={347}
@@ -134,8 +134,8 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="flex justify-center flex-col items-center p-20 pb-40">
-        <div className="h-[400px] flex justify-center items-center">
+      <div className="flex justify-center flex-col items-center px-20 pb-10 md:py-20 md:pb-40">
+        <div className="h-[200px] md:h-[400px] flex justify-center items-center">
           <Image
             width={490}
             height={103}
@@ -143,7 +143,7 @@ export default function Home() {
             alt=""
           />
         </div>
-        <div className="h-[400px] flex justify-center items-center">
+        <div className="h-[200px] md:h-[400px] flex justify-center items-center">
           <Image
             width={1200}
             height={354}
@@ -153,8 +153,8 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="flex justify-center flex-col items-center bg-gray-300 p-20 pb-40">
-        <div className="h-[400px] flex justify-center items-center">
+      <div className="flex justify-center flex-col items-center bg-gray-300 px-20 pb-10 md:py-20 md:pb-40">
+        <div className="h-[200px] md:h-[400px] flex justify-center items-center">
           <Image
             width={608}
             height={104}
@@ -163,7 +163,7 @@ export default function Home() {
           />
         </div>
         <div className="w-full flex justify-center items-center">
-          <div className="h-[400px] flex justify-center items-center flex-1">
+          <div className="h-[200px] md:h-[400px] flex justify-center items-center flex-1">
             <Image
               width={636}
               height={271}
@@ -171,7 +171,7 @@ export default function Home() {
               alt=""
             />
           </div>
-          <div className="h-[400px] flex justify-center items-center flex-1">
+          <div className="h-[200px] md:h-[400px] flex justify-center items-center flex-1">
             <Image
               width={600}
               height={400}
@@ -200,7 +200,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="flex justify-center flex-col items-center p-20 pb-40">
+      <div className="flex justify-center flex-col items-center px-20 pb-10 md:py-20 md:pb-40">
         <div className="h-[200px] flex justify-center items-center">
           <Image
             width={481}
