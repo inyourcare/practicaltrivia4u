@@ -270,6 +270,17 @@ export default function Form({
           >
             문의하기
           </button>
+          <div
+            className={
+              // "absolute bottom-2 right-10 rounded-xl bg-gray-300 p-2 min-w-[90px] justify-center items-center border text-xs font-bold " +
+              " rounded-xl bg-rose-500 p-2 min-w-[90px] justify-center items-center border text-xs font-bold " +
+              "max-h-[80px] h-10 flex justify-center items-center"
+              // (isProcessing ? "disabled" : "")
+            }
+            onClick={() => setIsOpen && isProcessing === false && setIsOpen(false)}
+          >
+            취소
+          </div>
         </div>
       </form>
     </div>
