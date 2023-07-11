@@ -80,18 +80,39 @@ function Header() {
             />
           </a>
           <div
-            className="text-2xl text-center flex justify-center items-center px-3 pt-3 cursor-pointer"
+            className="text-2xl text-center flex justify-center items-center px-3 cursor-pointer"
             onClick={() => setListOpen(!listOpen)}
           >
-            <Image
-              width={24}
-              height={18}
-              style={{ width: 30, height: 25 }}
-              src={`/images/icons/main-expand-btn.svg`}
-              priority
-              alt=""
-              className=""
-            />
+            {(listOpen && (
+              <div className="pt-3">
+                <Image
+                  width={40}
+                  height={40}
+                  style={{
+                    width: 50,
+                    height: 40,
+                    color: "black",
+                    backgroundColor: "white",
+                  }}
+                  src={`/images/icons/list-close-btn.svg`}
+                  priority
+                  alt=""
+                  className=""
+                />
+              </div>
+            )) || (
+              <div className="pt-3 pr-3">
+                <Image
+                  width={24}
+                  height={18}
+                  style={{ width: 30, height: 25 }}
+                  src={`/images/icons/main-expand-btn.svg`}
+                  priority
+                  alt=""
+                  className=""
+                />
+              </div>
+            )}
           </div>
         </div>
 
