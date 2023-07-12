@@ -11,14 +11,14 @@ export default function TopDownDialog({
 }) {
   return (
     <div
-      className={`w-full h-screen fixed top-0 left-0 right-0 flex justify-center items-center bg-slate-900/20 cursor-pointer transition ease-in-out delay-150 origin-top ${open? 'scale-y-100' : 'scale-y-0'}`}
+      className={`w-full h-screen fixed overflow-y-scroll top-0 left-0 right-0 flex justify-center items-center bg-slate-900/20 cursor-pointer transition ease-in-out delay-150 origin-top ${open? 'scale-y-100' : 'scale-y-0'}`}
       onClick={() => setOpen(!open)}
     >
       <div
         onClick={(e) => {
           e.stopPropagation();
         }}
-        // className="opacity-100"
+        className="absolute top-10 pb-20"
       >
         {children}
       </div>
