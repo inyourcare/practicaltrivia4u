@@ -2,6 +2,7 @@
 
 import emailjs from "@emailjs/browser";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import {
   FormEvent,
   useRef,
@@ -23,6 +24,62 @@ export default function Form({
   const [privateInfoAgree, setPrivateInfoAgree] = useState(false);
 
   const form = useRef<HTMLFormElement>(null);
+  const pathname = usePathname();
+  const kindSelectId = "kind-select";
+
+  const kinds = {
+    edu4u: "edu4u",
+    sangsang: "sangsang",
+    howcoding: "howcoding",
+    goodo: "goodo",
+    wawa: "wawa",
+    mindfulness: "mindfulness",
+    ipsi: "ipsi",
+    power_english: "power_english",
+    power_japan: "power_japan",
+    power_china: "power_china",
+    solute: "solute",
+  };
+  useEffect(() => {
+    // const selectElem = document.getElementById(kindSelectId) as HTMLSelectElement
+    const kindKey = pathname.split('/').pop()?.trim();
+    console.info("select kind from pathname , ", kindKey);
+    switch (kindKey) {
+      case kinds.edu4u:
+        setSelectedKind(kinds.edu4u);
+        break;
+      case kinds.sangsang:
+        setSelectedKind(kinds.sangsang);
+        break;
+      case kinds.howcoding:
+        setSelectedKind(kinds.howcoding);
+        break;
+      case kinds.goodo:
+        setSelectedKind(kinds.goodo);
+        break;
+      case kinds.wawa:
+        setSelectedKind(kinds.wawa);
+        break;
+      case kinds.mindfulness:
+        setSelectedKind(kinds.mindfulness);
+        break;
+      case "power":
+        setSelectedKind(kinds.power_english);
+        break;
+
+      default:
+        break;
+    }
+  }, [
+    kinds.edu4u,
+    kinds.goodo,
+    kinds.howcoding,
+    kinds.mindfulness,
+    kinds.power_english,
+    kinds.sangsang,
+    kinds.wawa,
+    pathname,
+  ]);
 
   const handleComplete = (data: any) => {
     let fullAddress = data.address;
@@ -165,6 +222,7 @@ export default function Form({
               문의하실 분야
             </label>
             <select
+              id={kindSelectId}
               className="shadow appearance-none border rounded w-11/12 py-2 px-1 text-black"
               value={selectedKind}
               onChange={(e) => setSelectedKind(e.target.value)}
@@ -174,19 +232,19 @@ export default function Form({
               <option value={""}>선택없음</option>
 
               <optgroup label="4U">
-                <option value={"4u"}>{`과외4U`}</option>
+                <option value={kinds.edu4u}>{`과외4U`}</option>
               </optgroup>
               <optgroup label="파트너스">
-                <option value={"sangsang"}>{`상상코칭`}</option>
-                <option value={"howcoding"}>{`하우코딩`}</option>
-                <option value={"goodo"}>{`공부구도`}</option>
-                <option value={"wawa"}>{`와와`}</option>
-                <option value={"mindfulness"}>{`마음키움`}</option>
-                <option value={"ipsi"}>{`입시`}</option>
-                <option value={"power_english"}>{`파워잉글리쉬`}</option>
-                <option value={"power_japan"}>{`파워재팬`}</option>
-                <option value={"power_china"}>{`파워차이나`}</option>
-                <option value={"solute"}>{`솔루트유학`}</option>
+                <option value={kinds.sangsang}>{`상상코칭`}</option>
+                <option value={kinds.howcoding}>{`하우코딩`}</option>
+                <option value={kinds.goodo}>{`공부구도`}</option>
+                <option value={kinds.wawa}>{`와와`}</option>
+                <option value={kinds.mindfulness}>{`마음키움`}</option>
+                <option value={kinds.ipsi}>{`입시`}</option>
+                <option value={kinds.power_english}>{`파워잉글리쉬`}</option>
+                <option value={kinds.power_japan}>{`파워재팬`}</option>
+                <option value={kinds.power_china}>{`파워차이나`}</option>
+                <option value={kinds.solute}>{`솔루트유학`}</option>
               </optgroup>
             </select>
           </span>
@@ -277,7 +335,9 @@ export default function Form({
               "max-h-[80px] h-10 flex justify-center items-center"
               // (isProcessing ? "disabled" : "")
             }
-            onClick={() => setIsOpen && isProcessing === false && setIsOpen(false)}
+            onClick={() =>
+              setIsOpen && isProcessing === false && setIsOpen(false)
+            }
           >
             취소
           </div>
