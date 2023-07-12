@@ -58,40 +58,46 @@ export default function Home() {
         </div>
         <div className="flex flex-wrap md:flex-nowrap">
           <Image
-            width={450 / 2}
-            height={521 / 2}
+            width={450}
+            height={521}
+            style={{ width: 225, height: 260 }}
             src={`/images/partners/howcoding/review01.png`}
             alt=""
           />
           <Image
-            width={450 / 2}
-            height={521 / 2}
+            width={450}
+            height={521}
+            style={{ width: 225, height: 260 }}
             src={`/images/partners/howcoding/review02.png`}
             alt=""
           />
           <Image
-            width={450 / 2}
-            height={521 / 2}
+            width={450}
+            height={521}
+            style={{ width: 225, height: 260 }}
             src={`/images/partners/howcoding/review03.png`}
             alt=""
           />
         </div>
         <div className="hidden md:block md:flex md:flex-nowrap">
           <Image
-            width={450 / 2}
-            height={521 / 2}
+            width={450}
+            height={521}
+            style={{ width: 225, height: 260 }}
             src={`/images/partners/howcoding/review04.png`}
             alt=""
           />
           <Image
-            width={450 / 2}
-            height={521 / 2}
+            width={450}
+            height={521}
+            style={{ width: 225, height: 260 }}
             src={`/images/partners/howcoding/review05.png`}
             alt=""
           />
           <Image
-            width={450 / 2}
-            height={521 / 2}
+            width={450}
+            height={521}
+            style={{ width: 225, height: 260 }}
             src={`/images/partners/howcoding/review06.png`}
             alt=""
           />
@@ -106,7 +112,6 @@ export default function Home() {
           alt=""
         />
       </div>
-
 
       <div className="flex justify-center flex-col items-center p-20 pb-40">
         <div className="h-[400px] flex justify-center items-center">
