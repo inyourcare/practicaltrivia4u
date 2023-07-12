@@ -30,6 +30,7 @@ subMap.set(rootLinks.partners, [
   { href: "/partners/goodo", tagName: "공부구도" },
   { href: "/partners/wawa", tagName: "와와" },
   { href: "/partners/mindfulness", tagName: "마음키움" },
+  { href: "/partners/power", tagName: "파워잉글리쉬" },
 ]);
 subMap.set(rootLinks.post, [{ href: "/post", tagName: "POST" }]);
 subMap.set(rootLinks.fun, [
