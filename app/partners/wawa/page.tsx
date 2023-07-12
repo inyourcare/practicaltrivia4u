@@ -175,7 +175,7 @@ export default function Home() {
       <div className="flex justify-center items-center">
         <Image
           width={1080}
-          height={2777}
+          height={2677}
           src={`/images/partners/wawa/code/9.png`}
           alt=""
         />
