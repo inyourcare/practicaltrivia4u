@@ -42,7 +42,8 @@ export default function Home() {
 
   return (
     <main>
-      <div className="flex justify-center items-center">
+      <div className="flex justify-center items-center flex-col p-0 md:p-20">
+        ※현재 위치로부터 가까운 와와학습코칭센터입니다.(보이지 않을 경우 지도를 확대 해 보세요)
         <WawasInKakaomap lat={state.lat} lon={state.lng} title={"현재위치"} />
       </div>
       <div className="flex justify-center items-center">

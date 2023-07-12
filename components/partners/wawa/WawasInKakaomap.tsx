@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 function WawasInKakaomap({
   lat,
@@ -11,6 +11,7 @@ function WawasInKakaomap({
   lon: number;
   title: string;
 }) {
+  const [wawaBranches, setWawaBranches] = useState(new Array());
   const getWawaBranchesList = async () =>
     await fetch(`/api/wawaBranches/list`, {
       method: "POST",
@@ -35,7 +36,24 @@ function WawasInKakaomap({
     });
 
   useEffect(() => {
-    if (window.kakao && window.kakao.maps && window.kakao.maps.load) {
+    getWawaBranchesList().then((data) => {
+      const [wawaBranches, pages] = data;
+      console.log("kakaomap branch loaded::", wawaBranches.length);
+      const arr = wawaBranches as Array<any>;
+      if (arr && arr.length > 0) {
+        console.log("start generating markers::", arr.length);
+        setWawaBranches(arr);
+      }
+    });
+  }, []);
+  useEffect(() => {
+    if (
+      window.kakao &&
+      window.kakao.maps &&
+      window.kakao.maps.load &&
+      wawaBranches &&
+      wawaBranches.length > 0
+    ) {
       window.kakao.maps.load(() => {
         // v3가 모두 로드된 후, 이 콜백 함수가 실행됩니다.
         // console.log(window.kakao.maps, window.kakao.maps.LatLng);
@@ -71,88 +89,55 @@ function WawasInKakaomap({
           title: title,
         });
 
-        getWawaBranchesList().then((data) => {
-          const [wawaBranches, pages] = data;
-          console.log("kakaomap getContactInfoList ->", wawaBranches, pages);
-          const arr = wawaBranches as Array<any>;
-          if (arr && arr.length > 0) {
-            var positions = arr.map((b) => {
-              return {
-                title: `와와학습코칭센터 ${b.name}점`,
-                latlng: new window.kakao.maps.LatLng(b.lat, b.lng),
-              };
-            });
-            var imageSrc =
-              // "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
-              "/images/icons/kakao/map/marker/markerStar.png";
-            for (var i = 0; i < positions.length; i++) {
-              // 마커 이미지의 이미지 크기 입니다
-              var imageSize = new window.kakao.maps.Size(24, 35);
+        console.log("kakaomap generated");
 
-              // 마커 이미지를 생성합니다
-              var markerImage = new window.kakao.maps.MarkerImage(
-                imageSrc,
-                imageSize
-              );
-
-              // 마커를 생성합니다
-              var marker = new window.kakao.maps.Marker({
-                map: map, // 마커를 표시할 지도
-                position: positions[i].latlng, // 마커를 표시할 위치
-                title: positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
-                image: markerImage, // 마커 이미지
-              });
-            }
-          }
+        var positions = wawaBranches.map((b) => {
+          return {
+            title: `와와학습코칭센터 ${b.name}점`,
+            latlng: new window.kakao.maps.LatLng(b.lat, b.lng),
+          };
         });
-        // 마커를 표시할 위치와 title 객체 배열입니다
-        // var positions = [
-        //   {
-        //     title: "카카오",
-        //     latlng: new window.kakao.maps.LatLng(lat + 0.001, lon),
-        //   },
-        //   {
-        //     title: "생태연못",
-        //     latlng: new window.kakao.maps.LatLng(lat, lon+0.001),
-        //   },
-        //   {
-        //     title: "텃밭",
-        //     latlng: new window.kakao.maps.LatLng(lat-0.001, lon),
-        //   },
-        //   {
-        //     title: "근린공원",
-        //     latlng: new window.kakao.maps.LatLng(lat, lon-0.001),
-        //   },
-        // ];
+        var imageSrc =
+          // "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
+          "/images/icons/kakao/map/marker/markerStar.png";
+        for (var i = 0; i < positions.length; i++) {
+          // 마커 이미지의 이미지 크기 입니다
+          var imageSize = new window.kakao.maps.Size(24, 35);
 
-        // 마커 이미지의 이미지 주소입니다
-        // var imageSrc =
-        //   // "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
-        //   "/images/icons/kakao/map/marker/markerStar.png";
+          // 마커 이미지를 생성합니다
+          var markerImage = new window.kakao.maps.MarkerImage(
+            imageSrc,
+            imageSize
+          );
 
-        // for (var i = 0; i < positions.length; i++) {
-        //   // 마커 이미지의 이미지 크기 입니다
-        //   var imageSize = new window.kakao.maps.Size(24, 35);
-
-        //   // 마커 이미지를 생성합니다
-        //   var markerImage = new window.kakao.maps.MarkerImage(imageSrc, imageSize);
-
-        //   // 마커를 생성합니다
-        //   var marker = new window.kakao.maps.Marker({
-        //     map: map, // 마커를 표시할 지도
-        //     position: positions[i].latlng, // 마커를 표시할 위치
-        //     title: positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
-        //     image: markerImage, // 마커 이미지
-        //   });
-        // }
+          // 마커를 생성합니다
+          var marker = new window.kakao.maps.Marker({
+            map: map, // 마커를 표시할 지도
+            position: positions[i].latlng, // 마커를 표시할 위치
+            title: positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+            image: markerImage, // 마커 이미지
+          });
+        }
       });
     }
-  }, [lat, lon, title]);
+  }, [lat, lon, title, wawaBranches]);
   return (
     <>
-      <div id="map" style={{ width: "80%", height: 500 }}>
-        kakao map not loaded, click the background and close this dialog :D
+      <div id="map" style={{ width: "100%", height: 500 }}>
+        Sorry, kakao map not loaded, try refresh after some minutes :D
       </div>
+      {wawaBranches && wawaBranches.length > 0 && (
+        <div className="w-full my-5">
+          <strong className="">등록된 와와학습코칭센터 목록</strong>
+          <div className="h-[200px] overflow-y-scroll my-5 border-2 border-gray-200">
+            <div className="grid grid-cols-4 md:grid-cols-8 gap-4">
+              {wawaBranches.map((b) => (
+                <div key={b.id}>{`${b.name}점`}</div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 }
