@@ -99,10 +99,10 @@ function WawasInKakaomap({
         });
         var imageSrc =
           // "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
-          "/images/icons/kakao/map/marker/wawaMarker.png";
+          "/images/icons/kakao/map/marker/wawaMarkerPurple.png";
         for (var i = 0; i < positions.length; i++) {
           // 마커 이미지의 이미지 크기 입니다
-          var imageSize = new window.kakao.maps.Size(80, 60);
+          var imageSize = new window.kakao.maps.Size(40, 50);
 
           // 마커 이미지를 생성합니다
           var markerImage = new window.kakao.maps.MarkerImage(
