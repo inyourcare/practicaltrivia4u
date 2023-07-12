@@ -12,7 +12,7 @@ export function getFiles(type: GetFilesFileType) {
       const posts = fs.readdirSync(folder);
       return posts
     case GetFilesFileType.wawa:
-      const wawafolder = "app/intro/wawa";
+      const wawafolder = "app/partners/wawa";
       const wawas = fs.readdirSync(wawafolder);
       return wawas;
     default:

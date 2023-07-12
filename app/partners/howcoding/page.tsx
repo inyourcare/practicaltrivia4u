@@ -6,7 +6,7 @@ export default function Home() {
         <div
           className="w-full flex justify-center items-center w-full bg-gray-300"
           style={{
-            backgroundImage: `url('/images/intro/howcoding/1-back.png')`,
+            backgroundImage: `url('/images/partners/howcoding/1-back.png')`,
             backgroundRepeat: `no-repeat`,
             backgroundPosition: `center`,
             backgroundSize: "100% 100%",
@@ -15,7 +15,7 @@ export default function Home() {
           <Image
             width={1200}
             height={1515}
-            src={`/images/intro/howcoding/1.png`}
+            src={`/images/partners/howcoding/1.png`}
             alt=""
           />
         </div>
@@ -25,7 +25,7 @@ export default function Home() {
         <Image
           width={1040}
           height={161}
-          src={`/images/intro/howcoding/2.png`}
+          src={`/images/partners/howcoding/2.png`}
           alt=""
         />
       </div>
@@ -34,7 +34,7 @@ export default function Home() {
         <Image
           width={1200}
           height={2006}
-          src={`/images/intro/howcoding/3.png`}
+          src={`/images/partners/howcoding/3.png`}
           alt=""
         />
       </div>
@@ -42,7 +42,7 @@ export default function Home() {
       <div
         className="flex justify-center flex-col items-center bg-gray-300 p-20 pb-40"
         style={{
-          backgroundImage: `url('/images/intro/howcoding/4-back.png')`,
+          backgroundImage: `url('/images/partners/howcoding/4-back.png')`,
           backgroundRepeat: `no-repeat`,
           backgroundPosition: `center`,
           backgroundSize: "100% 100%",
@@ -52,7 +52,7 @@ export default function Home() {
           <Image
             width={850}
             height={143}
-            src={`/images/intro/howcoding/4.png`}
+            src={`/images/partners/howcoding/4.png`}
             alt=""
           />
         </div>
@@ -60,19 +60,19 @@ export default function Home() {
           <Image
             width={450 / 2}
             height={521 / 2}
-            src={`/images/intro/howcoding/review01.png`}
+            src={`/images/partners/howcoding/review01.png`}
             alt=""
           />
           <Image
             width={450 / 2}
             height={521 / 2}
-            src={`/images/intro/howcoding/review02.png`}
+            src={`/images/partners/howcoding/review02.png`}
             alt=""
           />
           <Image
             width={450 / 2}
             height={521 / 2}
-            src={`/images/intro/howcoding/review03.png`}
+            src={`/images/partners/howcoding/review03.png`}
             alt=""
           />
         </div>
@@ -80,19 +80,19 @@ export default function Home() {
           <Image
             width={450 / 2}
             height={521 / 2}
-            src={`/images/intro/howcoding/review04.png`}
+            src={`/images/partners/howcoding/review04.png`}
             alt=""
           />
           <Image
             width={450 / 2}
             height={521 / 2}
-            src={`/images/intro/howcoding/review05.png`}
+            src={`/images/partners/howcoding/review05.png`}
             alt=""
           />
           <Image
             width={450 / 2}
             height={521 / 2}
-            src={`/images/intro/howcoding/review06.png`}
+            src={`/images/partners/howcoding/review06.png`}
             alt=""
           />
         </div>
@@ -102,7 +102,7 @@ export default function Home() {
         <Image
           width={1200}
           height={1320}
-          src={`/images/intro/howcoding/5.png`}
+          src={`/images/partners/howcoding/5.png`}
           alt=""
         />
       </div>
@@ -113,7 +113,7 @@ export default function Home() {
           <Image
             width={743}
             height={129}
-            src={`/images/intro/howcoding/6.png`}
+            src={`/images/partners/howcoding/6.png`}
             alt=""
           />
         </div>
@@ -121,7 +121,7 @@ export default function Home() {
           <Image
             width={1200}
             height={1078}
-            src={`/images/intro/howcoding/6-1.png`}
+            src={`/images/partners/howcoding/6-1.png`}
             alt=""
           />
         </div>
@@ -129,7 +129,7 @@ export default function Home() {
           <Image
             width={1200}
             height={666}
-            src={`/images/intro/howcoding/6-2.png`}
+            src={`/images/partners/howcoding/6-2.png`}
             alt=""
           />
         </div>
@@ -139,7 +139,7 @@ export default function Home() {
         <Image
           width={1200}
           height={4730}
-          src={`/images/intro/howcoding/7.png`}
+          src={`/images/partners/howcoding/7.png`}
           alt=""
         />
       </div>
@@ -149,7 +149,7 @@ export default function Home() {
           <Image
             width={640}
             height={208}
-            src={`/images/intro/howcoding/8.png`}
+            src={`/images/partners/howcoding/8.png`}
             alt=""
           />
         </div>
@@ -160,7 +160,7 @@ export default function Home() {
           <Image
             width={1066}
             height={398}
-            src={`/images/intro/howcoding/9.png`}
+            src={`/images/partners/howcoding/9.png`}
             alt=""
           />
         </div>
@@ -171,7 +171,7 @@ export default function Home() {
           <Image
             width={1200}
             height={588}
-            src={`/images/intro/howcoding/10.png`}
+            src={`/images/partners/howcoding/10.png`}
             alt=""
           />
         </div>
@@ -179,7 +179,7 @@ export default function Home() {
           <Image
             width={1200}
             height={3150}
-            src={`/images/intro/howcoding/10-1.png`}
+            src={`/images/partners/howcoding/10-1.png`}
             alt=""
           />
         </div>
@@ -189,7 +189,7 @@ export default function Home() {
         <div
           className="w-full flex justify-center items-center w-full h-[480px] bg-gray-300"
           style={{
-            backgroundImage: `url('/images/intro/howcoding/11-back.png')`,
+            backgroundImage: `url('/images/partners/howcoding/11-back.png')`,
             backgroundRepeat: `no-repeat`,
             backgroundPosition: `center`,
             backgroundSize: "100% 100%",
@@ -198,7 +198,7 @@ export default function Home() {
           <Image
             width={821}
             height={101}
-            src={`/images/intro/howcoding/11.png`}
+            src={`/images/partners/howcoding/11.png`}
             alt=""
           />
         </div>

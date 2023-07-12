@@ -8,7 +8,7 @@ export default function Home() {
           <Image
             width={1100}
             height={720}
-            src={`/images/intro/goodo/1.png`}
+            src={`/images/partners/goodo/1.png`}
             alt=""
           />
         </div>
@@ -18,7 +18,7 @@ export default function Home() {
         <Image
           width={1040}
           height={161}
-          src={`/images/intro/goodo/2.png`}
+          src={`/images/partners/goodo/2.png`}
           alt=""
         />
       </div>
@@ -27,7 +27,7 @@ export default function Home() {
         <Image
           width={1100}
           height={1427}
-          src={`/images/intro/goodo/3.png`}
+          src={`/images/partners/goodo/3.png`}
           alt=""
         />
       </div>
@@ -37,7 +37,7 @@ export default function Home() {
           <Image
             width={1100}
             height={619}
-            src={`/images/intro/goodo/4.png`}
+            src={`/images/partners/goodo/4.png`}
             alt=""
           />
         </YoutubePopup>
@@ -47,7 +47,7 @@ export default function Home() {
         <Image
           width={1100}
           height={529}
-          src={`/images/intro/goodo/5.png`}
+          src={`/images/partners/goodo/5.png`}
           alt=""
         />
       </div>
@@ -56,7 +56,7 @@ export default function Home() {
         <Image
           width={1079}
           height={712}
-          src={`/images/intro/goodo/6.png`}
+          src={`/images/partners/goodo/6.png`}
           alt=""
         />
       </div>
@@ -64,7 +64,7 @@ export default function Home() {
         <Image
           width={585}
           height={361}
-          src={`/images/intro/goodo/7.png`}
+          src={`/images/partners/goodo/7.png`}
           alt=""
         />
       </div>
@@ -73,7 +73,7 @@ export default function Home() {
         <Image
           width={1100}
           height={1622}
-          src={`/images/intro/goodo/8.png`}
+          src={`/images/partners/goodo/8.png`}
           alt=""
         />
       </div>
@@ -82,7 +82,7 @@ export default function Home() {
         <Image
           width={1096}
           height={1099}
-          src={`/images/intro/goodo/9.png`}
+          src={`/images/partners/goodo/9.png`}
           alt=""
         />
       </div>
@@ -91,7 +91,7 @@ export default function Home() {
         <Image
           width={1098}
           height={817}
-          src={`/images/intro/goodo/10.png`}
+          src={`/images/partners/goodo/10.png`}
           alt=""
         />
       </div>
@@ -100,7 +100,7 @@ export default function Home() {
         <Image
           width={1012}
           height={529}
-          src={`/images/intro/goodo/11.png`}
+          src={`/images/partners/goodo/11.png`}
           alt=""
         />
       </div>
@@ -109,7 +109,7 @@ export default function Home() {
         <Image
           width={1098}
           height={575}
-          src={`/images/intro/goodo/12.png`}
+          src={`/images/partners/goodo/12.png`}
           alt=""
         />
       </div>
@@ -118,7 +118,7 @@ export default function Home() {
         <div
           className="w-full flex justify-center items-center w-full bg-gray-300 p-20"
           style={{
-            backgroundImage: `url('/images/intro/goodo/13-back.png')`,
+            backgroundImage: `url('/images/partners/goodo/13-back.png')`,
             backgroundRepeat: `no-repeat`,
             backgroundPosition: `center`,
             backgroundSize: "100% 100%",
@@ -127,7 +127,7 @@ export default function Home() {
           <Image
             width={1100}
             height={800}
-            src={`/images/intro/goodo/13.png`}
+            src={`/images/partners/goodo/13.png`}
             alt=""
           />
         </div>
@@ -137,7 +137,7 @@ export default function Home() {
         <Image
           width={1100}
           height={716}
-          src={`/images/intro/goodo/14.png`}
+          src={`/images/partners/goodo/14.png`}
           alt=""
         />
       </div>
