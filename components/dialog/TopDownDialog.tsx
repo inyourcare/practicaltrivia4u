@@ -11,7 +11,7 @@ export default function TopDownDialog({
 }) {
   return (
     <div
-      className={`w-full h-screen fixed overflow-y-scroll hidescroll top-0 left-0 right-0 flex justify-center items-center bg-slate-900/20 cursor-pointer transition ease-in-out delay-150 origin-top ${open? 'scale-y-100' : 'scale-y-0'}`}
+      className={`z-50 w-full h-screen fixed overflow-y-scroll hidescroll top-0 left-0 right-0 flex justify-center items-center bg-slate-900/20 cursor-pointer transition ease-in-out delay-150 origin-top ${open? 'scale-y-100' : 'scale-y-0'}`}
       onClick={() => setOpen(!open)}
     >
       <div
