@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import PostPreview from "../preview/PostPreview";
+import Pagination from "./Pagination";
 
 export default function PostList() {
   const [posts, setPosts] = useState(new Array());
@@ -25,7 +26,7 @@ export default function PostList() {
       headers: { "Content-Type": "application/json" },
     }).then(async (result) => {
       const { posts, pages } = await result.json();
-      // console.log(wawaBranches, pages);
+      // console.log(posts, pages);
       return [posts, pages];
     });
 
@@ -56,6 +57,9 @@ export default function PostList() {
           author={post.author}
         />
       ))}
+      <Pagination
+        pages={pages as { curPage: number; limit: number; total: number }}
+      />
     </>
   );
 }

@@ -7,7 +7,12 @@ export async function POST(request: Request) {
   const body = await request.json();
   console.log("contactinfo list api - request body::", body);
   const { page, limit, lastId, conditions } = body;
-  console.log("contactinfo list api - page,limit,conditions", page, limit, conditions);
+  console.log(
+    "contactinfo list api - page,limit,conditions",
+    page,
+    limit,
+    conditions
+  );
 
   const whereConditions = {
     // deleted: false,
@@ -71,8 +76,14 @@ export async function POST(request: Request) {
     //     }
     // }
   });
-  const pages =
-    total === 0 ? 1 : Math.floor(total / limit) + (total % limit === 0 ? 0 : 1);
+  const pages = {
+    curPage:
+      total === 0
+        ? 1
+        : Math.floor(total / limit) + (total % limit === 0 ? 0 : 1),
+    total: total,
+    limit: limit,
+  };
   // res.status(200).json({ contactinfos, pages });
 
   // console.log(contactinfo);

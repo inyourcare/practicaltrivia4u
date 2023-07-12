@@ -67,8 +67,14 @@ export async function POST(request: Request) {
     //     }
     // }
   });
-  const pages =
-    total === 0 ? 1 : Math.floor(total / limit) + (total % limit === 0 ? 0 : 1);
+  const pages = {
+    curPage:
+      total === 0
+        ? 1
+        : Math.floor(total / limit) + (total % limit === 0 ? 0 : 1),
+    total: total,
+    limit: limit,
+  };
   // res.status(200).json({ contactinfos, pages });
 
   // console.log(contactinfo);
