@@ -12,7 +12,7 @@ function SubLinks({
     <>
       {subMap.get(subMapKey) && (
         <nav
-          className={`absolute -left-3 flex flex-wrap bg-gray-100 transition ease-in-out delay-150 origin-top min-w-[120px] ${
+          className={`absolute -left-3 flex flex-wrap bg-gray-100 transition ease-in-out delay-150 origin-top min-w-[120px] z-50 ${
             isOpen ? "scale-y-100" : "scale-y-0"
           }`}
         >
