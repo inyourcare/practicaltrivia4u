@@ -11,6 +11,29 @@ function WawasInKakaomap({
   lon: number;
   title: string;
 }) {
+  const getWawaBranchesList = async () =>
+    await fetch(`/api/wawaBranches/list`, {
+      method: "POST",
+      body: JSON.stringify({
+        page: 0,
+        limit: 1000,
+        // conditions: {
+        // creator: {
+        // email: 'admin@sotong.co.kr'
+        // email
+        //     ...(email && { email: email })
+        // }
+        // }
+        // conditions
+        conditions: {},
+      }),
+      headers: { "Content-Type": "application/json" },
+    }).then(async (result) => {
+      const { wawaBranches, pages } = await result.json();
+      // console.log(wawaBranches, pages);
+      return [wawaBranches, pages];
+    });
+
   useEffect(() => {
     if (window.kakao && window.kakao.maps && window.kakao.maps.load) {
       window.kakao.maps.load(() => {
@@ -21,7 +44,7 @@ function WawasInKakaomap({
         var options = {
           // center: new window.kakao.maps.LatLng(33.450701, 126.570667), //지도의 중심좌표.
           center: new window.kakao.maps.LatLng(lat, lon), //지도의 중심좌표.
-          level: 3, //지도의 레벨(확대, 축소 정도)
+          level: 7, //지도의 레벨(확대, 축소 정도)
         };
         var map = new window.kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
         if (map) {
@@ -48,46 +71,80 @@ function WawasInKakaomap({
           title: title,
         });
 
+        getWawaBranchesList().then((data) => {
+          const [wawaBranches, pages] = data;
+          console.log("kakaomap getContactInfoList ->", wawaBranches, pages);
+          const arr = wawaBranches as Array<any>;
+          if (arr && arr.length > 0) {
+            var positions = arr.map((b) => {
+              return {
+                title: `와와학습코칭센터 ${b.name}점`,
+                latlng: new window.kakao.maps.LatLng(b.lat, b.lng),
+              };
+            });
+            var imageSrc =
+              // "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
+              "/images/icons/kakao/map/marker/markerStar.png";
+            for (var i = 0; i < positions.length; i++) {
+              // 마커 이미지의 이미지 크기 입니다
+              var imageSize = new window.kakao.maps.Size(24, 35);
+
+              // 마커 이미지를 생성합니다
+              var markerImage = new window.kakao.maps.MarkerImage(
+                imageSrc,
+                imageSize
+              );
+
+              // 마커를 생성합니다
+              var marker = new window.kakao.maps.Marker({
+                map: map, // 마커를 표시할 지도
+                position: positions[i].latlng, // 마커를 표시할 위치
+                title: positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+                image: markerImage, // 마커 이미지
+              });
+            }
+          }
+        });
         // 마커를 표시할 위치와 title 객체 배열입니다
-        var positions = [
-          {
-            title: "카카오",
-            latlng: new window.kakao.maps.LatLng(lat + 0.001, lon),
-          },
-          {
-            title: "생태연못",
-            latlng: new window.kakao.maps.LatLng(lat, lon+0.001),
-          },
-          {
-            title: "텃밭",
-            latlng: new window.kakao.maps.LatLng(lat-0.001, lon),
-          },
-          {
-            title: "근린공원",
-            latlng: new window.kakao.maps.LatLng(lat, lon-0.001),
-          },
-        ];
+        // var positions = [
+        //   {
+        //     title: "카카오",
+        //     latlng: new window.kakao.maps.LatLng(lat + 0.001, lon),
+        //   },
+        //   {
+        //     title: "생태연못",
+        //     latlng: new window.kakao.maps.LatLng(lat, lon+0.001),
+        //   },
+        //   {
+        //     title: "텃밭",
+        //     latlng: new window.kakao.maps.LatLng(lat-0.001, lon),
+        //   },
+        //   {
+        //     title: "근린공원",
+        //     latlng: new window.kakao.maps.LatLng(lat, lon-0.001),
+        //   },
+        // ];
 
         // 마커 이미지의 이미지 주소입니다
-        var imageSrc =
-          // "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
-          "/images/icons/kakao/map/marker/markerStar.png";
+        // var imageSrc =
+        //   // "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
+        //   "/images/icons/kakao/map/marker/markerStar.png";
 
-        for (var i = 0; i < positions.length; i++) {
-          // 마커 이미지의 이미지 크기 입니다
-          var imageSize = new window.kakao.maps.Size(24, 35);
+        // for (var i = 0; i < positions.length; i++) {
+        //   // 마커 이미지의 이미지 크기 입니다
+        //   var imageSize = new window.kakao.maps.Size(24, 35);
 
-          // 마커 이미지를 생성합니다
-          var markerImage = new window.kakao.maps.MarkerImage(imageSrc, imageSize);
+        //   // 마커 이미지를 생성합니다
+        //   var markerImage = new window.kakao.maps.MarkerImage(imageSrc, imageSize);
 
-          // 마커를 생성합니다
-          var marker = new window.kakao.maps.Marker({
-            map: map, // 마커를 표시할 지도
-            position: positions[i].latlng, // 마커를 표시할 위치
-            title: positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
-            image: markerImage, // 마커 이미지
-          });
-        }
+        //   // 마커를 생성합니다
+        //   var marker = new window.kakao.maps.Marker({
+        //     map: map, // 마커를 표시할 지도
+        //     position: positions[i].latlng, // 마커를 표시할 위치
+        //     title: positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+        //     image: markerImage, // 마커 이미지
+        //   });
+        // }
       });
     }
   }, [lat, lon, title]);
