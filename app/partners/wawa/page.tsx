@@ -109,22 +109,85 @@ export default function Home() {
         />
       </div>
 
-      <div className="flex justify-center items-center">
+      {/* <div className="flex justify-center items-center">
         <Image
           width={1079}
           height={572}
           src={`/images/partners/wawa/6.png`}
           alt=""
         />
-      </div>
-      <br />
-      <br />
-      <br />
-      {/* <div className="flex justify-center items-center">
-        <p className="prose font-light text-gray-500 dark:text-gray-400">
-          합리적인 가격. 철저한 관리. 지금 문의 주세요.
-        </p>
       </div> */}
+
+      <div className="flex justify-center items-center mt-10">
+        <Image
+          width={1080}
+          height={1393}
+          src={`/images/partners/wawa/code/2-reform2.png`}
+          alt=""
+        />
+      </div>
+
+      <div className="flex justify-center items-center">
+        <Image
+          width={1080}
+          height={1684}
+          src={`/images/partners/wawa/code/3.png`}
+          alt=""
+        />
+      </div>
+
+      <div className="flex justify-center items-center">
+        <Image
+          width={1080}
+          height={791}
+          src={`/images/partners/wawa/code/4.png`}
+          alt=""
+        />
+      </div>
+
+      <div className="flex justify-center items-center">
+        <Image
+          width={1080}
+          height={163}
+          src={`/images/partners/wawa/code/6.png`}
+          alt=""
+        />
+      </div>
+
+      <div className="flex justify-center items-center">
+        <Image
+          width={1080}
+          height={1273}
+          src={`/images/partners/wawa/code/7.png`}
+          alt=""
+        />
+      </div>
+
+      <div className="flex justify-center items-center">
+        <Image
+          width={1080}
+          height={2792}
+          src={`/images/partners/wawa/code/8.png`}
+          alt=""
+        />
+      </div>
+
+      <div className="flex justify-center items-center">
+        <Image
+          width={1080}
+          height={2777}
+          src={`/images/partners/wawa/code/9.png`}
+          alt=""
+        />
+      </div>
+      <div className="flex justify-center items-center">
+        <Image
+          width={1080}
+          height={1820}
+          src={`/images/partners/wawa/code/10.png`}
+          alt=""
+        />
+      </div>
     </main>
   );
 }
