@@ -126,6 +126,37 @@ export default function Home() {
       <div className="flex justify-center items-center">
         <div className="flex justify-center items-center w-full py-10">
           <Image
+            width={1740}
+            height={705}
+            src={`/images/partners/power/japan/1.png`}
+            alt=""
+          />
+        </div>
+      </div>
+      <div className="flex justify-center items-center">
+        <div className="flex justify-center items-center w-full bg-gray-300 py-10">
+          <Image
+            width={1600}
+            height={705}
+            src={`/images/partners/power/japan/2.png`}
+            alt=""
+          />
+        </div>
+      </div>
+      <div className="flex justify-center items-center">
+        <div className="flex justify-center items-center w-full py-10">
+          <Image
+            width={1600}
+            height={1330}
+            src={`/images/partners/power/japan/3.png`}
+            alt=""
+          />
+        </div>
+      </div>
+
+      <div className="flex justify-center items-center">
+        <div className="flex justify-center items-center w-full py-10">
+          <Image
             width={1600}
             height={2100}
             src={`/images/partners/power/7.png`}
