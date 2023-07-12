@@ -101,7 +101,7 @@ export default function Home() {
         <div className="flex justify-center items-center w-full bg-gray-300 py-10">
           <Image
             width={1200}
-            height={1487}
+            height={1911}
             src={`/images/partners/mindfulness/8.png`}
             alt=""
           />
