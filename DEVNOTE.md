@@ -8,3 +8,11 @@ npx prisma migrate dev --name init
 npx prisma migrate dev --name create_table
 npx prisma generate
 npx prisma studio
+
+2023-07-12
+### seeding 
+[seeding](https://www.prisma.io/docs/guides/database/seed-database)
+```
+yarn add -D typescript ts-node @types/node
+npx prisma db seed
+```
