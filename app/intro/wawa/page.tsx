@@ -1,8 +1,50 @@
+"use client";
+import WawasInKakaomap from "@/components/partners/wawa/WawasInKakaomap";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 export default function Home() {
+  const initialState = {
+    lat: 0.0,
+    lng: 0.0,
+    radius: 100,
+    lsLoading: false,
+  };
+  const [state, setState] = useState(initialState);
+  // get geo info
+  useEffect(() => {
+    const { geolocation } = navigator;
+
+    geolocation.getCurrentPosition(
+      (position) => {
+        setState({
+          ...state,
+          lat: position.coords.latitude,
+          lng: position.coords.longitude,
+          lsLoading: false,
+        });
+      },
+      (error) => {
+        console.warn("Fail to fetch current location", error);
+        setState({ ...state, lat: 37, lng: 127, lsLoading: false });
+      },
+      {
+        // enableHighAccuracy: false,
+        enableHighAccuracy: true,
+        // maximumAge: 0,
+        maximumAge: 10000,
+        // timeout: Infinity,
+        timeout: 5000,
+      }
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <main>
+      <div className="flex justify-center items-center">
+        <WawasInKakaomap lat={state.lat} lon={state.lng} title={"현재위치"} />
+      </div>
       <div className="flex justify-center items-center">
         <Image
           width={1920}
