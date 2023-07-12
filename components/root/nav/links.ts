@@ -29,6 +29,7 @@ subMap.set(rootLinks.partners, [
   { href: "/partners/howcoding", tagName: "하우코딩" },
   { href: "/partners/goodo", tagName: "공부구도" },
   { href: "/partners/wawa", tagName: "와와" },
+  { href: "/partners/mindfulness", tagName: "마음키움" },
 ]);
 subMap.set(rootLinks.post, [{ href: "/post", tagName: "POST" }]);
 subMap.set(rootLinks.fun, [
