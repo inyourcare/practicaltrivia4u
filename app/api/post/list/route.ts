@@ -39,9 +39,9 @@ export async function POST(request: Request) {
       {
         createdAt: "desc",
       },
-      // {
-      //   name: "asc",
-      // },
+      {
+        id: "desc",
+      },
     ],
     // include: {
     //     creator: {

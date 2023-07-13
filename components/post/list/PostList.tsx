@@ -4,7 +4,7 @@
 import PostPreview from "../preview/PostPreview";
 import Pagination from "./Pagination";
 
-export const getPostList = async (page:number = 0,limit:number = 15) => {
+export const getPostList = async (page:number = 0,limit:number = 10) => {
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_API_HOST}/api/post/list`,
     {

@@ -21,7 +21,7 @@ function encode(data: Uint8Array) {
 export async function GET(request: Request) {
   // return NextResponse.json({ test:'test' });
   const key = request.url.split("?")[1]?.split("key=")[1];
-  console.log("key ::", key);
+  console.log("aws s3 get api key ::", key);
   const input = {
     // GetObjectRequest
     Bucket: process.env.NEXT_PUBLIC_S3_BUCKET_NAME as string, // required
