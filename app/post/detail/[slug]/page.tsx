@@ -1,18 +1,35 @@
-// "use client";
+"use client";
 import Image from "next/image";
 import { Metadata } from "next";
-import Markdown from "markdown-to-jsx";
-import matter from "gray-matter";
+// import Markdown from "markdown-to-jsx";
+// import matter from "gray-matter";
 // import { useEffect, useState } from "react";
-import parse from 'html-react-parser';
+import parse from "html-react-parser";
+import { useEffect, useState } from "react";
 
-export const getData = async (id: string) => {
+export interface PostMetadata {
+  id: string;
+  tags: Array<string>;
+  category: Array<string>;
+  date: string;
+  title: string;
+  description: string;
+  image: string;
+  imageAlt: string;
+  author: string;
+  contents: string;
+}
+
+const getData = async (id: string) => {
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_HOST}/api/post/${id}`,
+    // `${process.env.NEXT_PUBLIC_API_HOST}/api/post/${id}`,
+    `/api/post/${id}`,
     {
       method: "GET",
       headers: { "Content-Type": "application/json" },
-      cache: process.env.NODE_ENV !== "development" && "default" || "no-cache"
+      // cache: process.env.NODE_ENV !== "development" && "default" || "no-cache"
+      // cache: "no-cache",
+      next: { revalidate: 10 }
     }
   );
   // console.log(await res.json());
@@ -32,10 +49,20 @@ export const generateMetadata = async ({
   };
 };
 
-export default async function PostHome({ params }: { params: { slug: string } }) {
+export default function PostHome({ params }: { params: { slug: string } }) {
   const slug = params.slug;
-  const { post } = await getData(slug);
-  const matterResult = matter(post.contents);
+  // const { post } = await getData(slug);
+  // const matterResult = matter(post.contents);
+  const [post, setPost] = useState(null as unknown as PostMetadata);
+  useEffect(() => {
+    getData(slug).then((data) => {
+      console.log(data);
+      // const [posts, pages] = data;
+      if (data.post) {
+        setPost(data.post);
+      }
+    });
+  }, [slug]);
   return (
     <>
       {/* <PostHeader
@@ -46,23 +73,27 @@ export default async function PostHome({ params }: { params: { slug: string } })
         description={post.data.description}
       /> */}
 
-      <div className="my-10 mx-auto">
-        <Image
-          width="500"
-          height="250"
-          // src={content.image}
-          src={post.image}
-          // alt={content.imageAlt}
-          alt={post.imageAlt}
-          className="mx-auto w-full max-h-[500px] px-20"
-        />
-      </div>
+      {post && (
+        <>
+          <div className="my-10 mx-auto">
+            <Image
+              width="500"
+              height="250"
+              // src={content.image}
+              src={post.image}
+              // alt={content.imageAlt}
+              alt={post.imageAlt}
+              className="mx-auto w-full max-h-[500px] px-20"
+            />
+          </div>
 
-      <div className="my-12 prose prose-stone lg:prose-lg mx-auto">
-        {/* {matterResult.content} */}
-        {/* <Markdown>{matterResult.content}</Markdown> */}
-        {parse(post.contents)}
-      </div>
+          <div className="my-12 prose prose-stone lg:prose-lg mx-auto">
+            {/* {matterResult.content} */}
+            {/* <Markdown>{matterResult.content}</Markdown> */}
+            {parse(post.contents)}
+          </div>
+        </>
+      )}
     </>
   );
 }
