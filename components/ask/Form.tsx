@@ -44,7 +44,7 @@ export default function Form({
 
   useEffect(() => {
     // const selectElem = document.getElementById(kindSelectId) as HTMLSelectElement
-    const kindKey = pathname.split('/').pop()?.trim();
+    const kindKey = pathname.split("/").pop()?.trim();
     console.info("select kind from pathname , ", kindKey);
     switch (kindKey) {
       case kinds.edu4u:
@@ -78,8 +78,11 @@ export default function Form({
     if (!val) {
       console.log("not opened");
       sessionStorage.setItem(key, "opened");
-      if (setIsOpen)
-        setIsOpen(true);
+      if (setIsOpen) {
+        setTimeout(() => {
+          setIsOpen(true);
+        }, 1000);
+      }
     } else {
       console.log("opened");
     }
