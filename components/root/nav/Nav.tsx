@@ -7,7 +7,7 @@ import { linkMap, rootLinks } from "./links";
 function Nav() {
   const [isMouseOver, setIsMouseOver] = useState(false);
   const [subMapKey, setSubMapKey] = useState("");
-  const navLinkClassName = `m-0 text-xs whitespace-nowrap sm:text-lg md:text-lg lg:text-lg xl:text-lg 2xl:text-lg`;
+  const navLinkClassName = `m-0 text-xs whitespace-nowrap sm:text-lg md:text-lg lg:text-lg xl:text-lg 2xl:text-lg cursor-pointer`;
   return (
     <div
       className="relative"
