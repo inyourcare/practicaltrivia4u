@@ -2,6 +2,9 @@
 import Image from "next/image";
 import { Metadata } from "next";
 import Markdown from "markdown-to-jsx";
+import matter from "gray-matter";
+// import { useEffect, useState } from "react";
+import parse from 'html-react-parser';
 
 export const getData = async (id: string) => {
   const res = await fetch(
@@ -28,13 +31,10 @@ export const generateMetadata = async ({
   };
 };
 
-export default async function PostHome({
-  params,
-}: {
-  params: { slug: string };
-}) {
+export default async function PostHome({ params }: { params: { slug: string } }) {
   const slug = params.slug;
   const { post } = await getData(slug);
+  const matterResult = matter(post.contents);
   return (
     <>
       {/* <PostHeader
@@ -49,16 +49,18 @@ export default async function PostHome({
         <Image
           height="250"
           width="500"
+          // src={content.image}
           src={post.image}
+          // alt={content.imageAlt}
           alt={post.imageAlt}
           className="mx-auto h-[72%] w-[1424px]"
         />
       </div>
 
       <div className="my-12 prose prose-stone lg:prose-lg mx-auto">
-        {post.contents}
-        <br />
-        <Markdown>{post.contents}</Markdown>
+        {/* {matterResult.content} */}
+        {/* <Markdown>{matterResult.content}</Markdown> */}
+        {parse(post.contents)}
       </div>
     </>
   );
