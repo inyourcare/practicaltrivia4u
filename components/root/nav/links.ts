@@ -17,7 +17,7 @@ linkMap.set(rootLinks.partners, {
   href: "/partners/sangsang",
   tagName: "파트너스",
 });
-linkMap.set(rootLinks.post, { href: "/post", tagName: "POST" });
+linkMap.set(rootLinks.post, { href: "/post/list/0", tagName: "POST" });
 linkMap.set(rootLinks.fun, {
   href: "/fun/food_roulette",
   tagName: "점심추천",
@@ -32,7 +32,7 @@ subMap.set(rootLinks.partners, [
   { href: "/partners/mindfulness", tagName: "마음키움" },
   { href: "/partners/power", tagName: "파워잉글리쉬" },
 ]);
-subMap.set(rootLinks.post, [{ href: "/post", tagName: "POST" }]);
+subMap.set(rootLinks.post, [{ href: "/post/list/0", tagName: "POST" }]);
 subMap.set(rootLinks.fun, [
   { href: "/fun/food_roulette", tagName: "점심추천" },
 ]);

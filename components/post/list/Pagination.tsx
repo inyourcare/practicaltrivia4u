@@ -1,20 +1,29 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 
 function Pagination({
   pages,
 }: {
-  pages: { curPage: number; limit: number; total: number };
+  pages: { page:number,totalPageCount: number; limit: number; total: number };
 }) {
+  const pageIdx = pages.page;
   const initialState = {
     splitCnt: pages.limit,
-    idx: pages.curPage,
+    idx: pageIdx * pages.limit,
   };
   const [state, setState] = useState(initialState);
+  useEffect(() => {
+    const nextPageIdx = state.idx / pages.limit;
+    if (pageIdx !== nextPageIdx) {
+      redirect(`/post/list/${nextPageIdx}`);
+    }
+  }, [pageIdx, pages.limit, state.idx]);
 
   return (
     <>
+      {/* {`page:${pages.page},limit:${pages.limit},total:${pages.total},pageIdx:${pageIdx},stateSplit:${state.splitCnt},stateIdx:${state.idx}`} */}
       {/* {postPreviews.slice(state.idx, state.idx + state.splitCnt)} */}
       {pages.total > 0 && (
         <div className="flex flex-col sm:flex-col md:flex-col lg:flex-row xl:flex-row 2xl:flex-row items-center w-5/6 sm:w-5/6 md:w-4/6 lg:w-4/6 xl:w-4/6 2xl:w-3/6 justify-evenly mx-auto">
@@ -42,7 +51,7 @@ function Pagination({
               onClick={() =>
                 setState({ ...state, idx: state.idx - state.splitCnt })
               }
-              disabled={state.idx <= 0}
+              disabled={state.idx - state.splitCnt < 0}
             >
               Prev
             </button>

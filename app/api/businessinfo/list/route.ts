@@ -71,7 +71,8 @@ export async function POST(request: Request) {
     // }
   });
   const pages = {
-    curPage:
+    page: page,
+    totalPageCount:
       total === 0
         ? 1
         : Math.floor(total / limit) + (total % limit === 0 ? 0 : 1),

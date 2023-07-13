@@ -4,7 +4,7 @@
 import PostPreview from "../preview/PostPreview";
 import Pagination from "./Pagination";
 
-export const getPostList = async (page:number = 0,limit:number = 10) => {
+export const getPostList = async (page:number = 0,limit:number = 15) => {
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_API_HOST}/api/post/list`,
     {
@@ -23,13 +23,14 @@ export const getPostList = async (page:number = 0,limit:number = 10) => {
         conditions: {},
       }),
       headers: { "Content-Type": "application/json" },
+      cache: "reload"
     }
   );
   // console.log(await res.json());
   return res.json();
 };
-export default async function PostList() {
-  const { posts, pages } = await getPostList();
+export default async function PostList({pageIndex}:{pageIndex:string}) {
+  const { posts, pages } = await getPostList(Number(pageIndex));
   return (
     <>
       {(posts as Array<any>).map((post) => (
@@ -47,7 +48,7 @@ export default async function PostList() {
         />
       ))}
       <Pagination
-        pages={pages as { curPage: number; limit: number; total: number }}
+        pages={pages as { page:number ,totalPageCount: number; limit: number; total: number }}
       />
     </>
   );
