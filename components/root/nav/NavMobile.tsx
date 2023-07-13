@@ -98,6 +98,27 @@ export default function NavMobile({ listOpen }: { listOpen: boolean }) {
           isOpen={subOpenSet.has(rootLinks.fun)}
           liClassName={liClassName}
         />
+
+        <li className={parentLiHeight + '' + liClassName}>
+          <div
+            // href={linkMap.get(rootLinks.edu4u)?.href as string}
+            className="cursor-pointer"
+            onClick={() => {
+              (subOpenSet.has(rootLinks.ask) &&
+                subOpenSet.delete(rootLinks.ask)) ||
+                subOpenSet.add(rootLinks.ask);
+              setSubOpenSet(new Set(subOpenSet));
+            }}
+          >
+            {linkMap.get(rootLinks.ask)?.tagName as string}
+          </div>
+        </li>
+
+        <SubLinksMobile
+          subMapKey={rootLinks.ask}
+          isOpen={subOpenSet.has(rootLinks.ask)}
+          liClassName={liClassName}
+        />
       </ul>
     </div>
   );

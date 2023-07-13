@@ -5,6 +5,7 @@ export const rootLinks = {
   partners: "partners",
   fun: "fun",
   post: "post",
+  ask: "ask",
 };
 
 type LinkProps = {
@@ -22,6 +23,10 @@ linkMap.set(rootLinks.fun, {
   href: "/fun/food_roulette",
   tagName: "점심추천",
 });
+linkMap.set(rootLinks.ask, {
+  href: "/ask",
+  tagName: "문의하기",
+});
 export const subMap = new Map<string, Array<LinkProps>>();
 subMap.set(rootLinks.edu4u, [{ href: "/edu4u", tagName: "과외4U" }]);
 subMap.set(rootLinks.partners, [
@@ -35,4 +40,7 @@ subMap.set(rootLinks.partners, [
 subMap.set(rootLinks.post, [{ href: "/post/list/0", tagName: "POST" }]);
 subMap.set(rootLinks.fun, [
   { href: "/fun/food_roulette", tagName: "점심추천" },
+]);
+subMap.set(rootLinks.ask, [
+  { href: "/ask", tagName: "문의하기" },
 ]);

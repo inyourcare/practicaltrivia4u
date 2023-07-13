@@ -83,6 +83,23 @@ function Nav() {
             isOpen={isMouseOver && subMapKey === rootLinks.fun}
           />
         </div>
+        <div className="relative">
+          <div
+            onMouseOver={() => setSubMapKey(rootLinks.ask)}
+            className="min-h-[40px]"
+          >
+            <Link
+              href={linkMap.get(rootLinks.ask)?.href as string}
+              className={navLinkClassName}
+            >
+              {linkMap.get(rootLinks.ask)?.tagName as string}
+            </Link>
+          </div>
+          <SubLinks
+            subMapKey={rootLinks.ask}
+            isOpen={isMouseOver && subMapKey === rootLinks.ask}
+          />
+        </div>
       </nav>
     </div>
   );
