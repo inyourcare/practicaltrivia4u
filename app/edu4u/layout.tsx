@@ -1,5 +1,4 @@
 import Edu4UFooter from "@/components/edu4u/Footer";
-import Footer from "@/components/root/Footer";
 import Header from "@/components/root/Header";
 import type { Metadata } from "next";
 
@@ -22,7 +21,6 @@ export default function Edu4ULayout({
       {children}
 
       <Edu4UFooter />
-      <Footer />
     </section>
   );
 }

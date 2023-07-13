@@ -1,3 +1,4 @@
+import Footer from "@/components/root/Footer";
 import "./globals.css";
 import type { Metadata } from "next";
 import { Nanum_Gothic } from "next/font/google";
@@ -98,6 +99,7 @@ export default function RootLayout({
       </head>
       <body className={nanumGothic.className}>
         {children}
+        <Footer />
       </body>
     </html>
   );

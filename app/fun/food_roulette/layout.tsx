@@ -1,5 +1,3 @@
-import Footer from "@/components/root/Footer";
-
 export const metadata = {
   title: "점심 너로 정했다. 저메추, 점메추 찾으시면 들어오세요!",
   description:
@@ -16,7 +14,6 @@ export default function FoodRouletteLayout({
   return (
     <section>
       {children}
-      <Footer />
     </section>
   );
 }

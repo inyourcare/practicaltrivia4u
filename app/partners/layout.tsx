@@ -1,5 +1,4 @@
 import PartnersFooter from "@/components/partners/Footer";
-import Footer from "@/components/root/Footer";
 import Header from "@/components/root/Header";
 import type { Metadata } from "next";
 
@@ -23,7 +22,6 @@ export default function PartnersLayout({
         <div className="w-[80vw]">{children}</div>
       </div>
       <PartnersFooter />
-      <Footer />
     </section>
   );
 }
