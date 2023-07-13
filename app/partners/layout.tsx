@@ -18,7 +18,9 @@ export default function PartnersLayout({
       <header className="w-full flex flex-col py-5 bg-[rgba(35,46,82,0)]">
         <Header />
       </header>
-      {children}
+      <div className="w-full flex justify-center items-center">
+        <div className="w-[80vw]">{children}</div>
+      </div>
       <PartnersFooter />
     </section>
   );
