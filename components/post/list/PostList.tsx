@@ -1,18 +1,17 @@
-"use client";
+// "use client";
 
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import PostPreview from "../preview/PostPreview";
 import Pagination from "./Pagination";
 
-export default function PostList() {
-  const [posts, setPosts] = useState(new Array());
-  const [pages, setPages] = useState({});
-  const getPostList = async () =>
-    await fetch(`/api/post/list`, {
+export const getPostList = async (page:number = 0,limit:number = 10) => {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_API_HOST}/api/post/list`,
+    {
       method: "POST",
       body: JSON.stringify({
-        page: 0,
-        limit: 10,
+        page: page,
+        limit: limit,
         // conditions: {
         // creator: {
         // email: 'admin@sotong.co.kr'
@@ -24,26 +23,16 @@ export default function PostList() {
         conditions: {},
       }),
       headers: { "Content-Type": "application/json" },
-    }).then(async (result) => {
-      const { posts, pages } = await result.json();
-      // console.log(posts, pages);
-      return [posts, pages];
-    });
-
-  useEffect(() => {
-    getPostList().then((data) => {
-      const [posts, pages] = data;
-      console.log("posts loaded::", posts.length);
-      const arr = posts as Array<any>;
-      if (arr && arr.length > 0) {
-        setPosts(arr);
-        setPages(pages);
-      }
-    });
-  }, []);
+    }
+  );
+  // console.log(await res.json());
+  return res.json();
+};
+export default async function PostList() {
+  const { posts, pages } = await getPostList();
   return (
     <>
-      {posts.map((post) => (
+      {(posts as Array<any>).map((post) => (
         <PostPreview
           key={post.id}
           id={post.id}
