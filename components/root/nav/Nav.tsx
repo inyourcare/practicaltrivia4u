@@ -20,12 +20,12 @@ function Nav() {
             onMouseOver={() => setSubMapKey(rootLinks.edu4u)}
             className="min-h-[40px]"
           >
-            <Link
-              href={linkMap.get(rootLinks.edu4u)?.href as string}
+            <div
+              // href={linkMap.get(rootLinks.edu4u)?.href as string}
               className={navLinkClassName}
             >
               {linkMap.get(rootLinks.edu4u)?.tagName as string}
-            </Link>
+            </div>
           </div>
           <SubLinks
             subMapKey={rootLinks.edu4u}
@@ -37,12 +37,12 @@ function Nav() {
             onMouseOver={() => setSubMapKey(rootLinks.partners)}
             className="min-h-[40px]"
           >
-            <Link
-              href={linkMap.get(rootLinks.partners)?.href as string}
+            <div
+              // href={linkMap.get(rootLinks.partners)?.href as string}
               className={navLinkClassName}
             >
               {linkMap.get(rootLinks.partners)?.tagName as string}
-            </Link>
+            </div>
           </div>
           <SubLinks
             subMapKey={rootLinks.partners}
@@ -54,12 +54,12 @@ function Nav() {
             onMouseOver={() => setSubMapKey(rootLinks.post)}
             className="min-h-[40px]"
           >
-            <Link
-              href={linkMap.get(rootLinks.post)?.href as string}
+            <div
+              // href={linkMap.get(rootLinks.post)?.href as string}
               className={navLinkClassName}
             >
               {linkMap.get(rootLinks.post)?.tagName as string}
-            </Link>
+            </div>
           </div>
           <SubLinks
             subMapKey={rootLinks.post}
@@ -71,12 +71,12 @@ function Nav() {
             onMouseOver={() => setSubMapKey(rootLinks.fun)}
             className="min-h-[40px]"
           >
-            <Link
-              href={linkMap.get(rootLinks.fun)?.href as string}
+            <div
+              // href={linkMap.get(rootLinks.fun)?.href as string}
               className={navLinkClassName}
             >
               {linkMap.get(rootLinks.fun)?.tagName as string}
-            </Link>
+            </div>
           </div>
           <SubLinks
             subMapKey={rootLinks.fun}
@@ -88,12 +88,12 @@ function Nav() {
             onMouseOver={() => setSubMapKey(rootLinks.ask)}
             className="min-h-[40px]"
           >
-            <Link
-              href={linkMap.get(rootLinks.ask)?.href as string}
+            <div
+              // href={linkMap.get(rootLinks.ask)?.href as string}
               className={navLinkClassName}
             >
               {linkMap.get(rootLinks.ask)?.tagName as string}
-            </Link>
+            </div>
           </div>
           <SubLinks
             subMapKey={rootLinks.ask}
