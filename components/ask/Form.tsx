@@ -41,6 +41,7 @@ export default function Form({
     solute: "solute",
     etc: "etc",
   };
+
   useEffect(() => {
     // const selectElem = document.getElementById(kindSelectId) as HTMLSelectElement
     const kindKey = pathname.split('/').pop()?.trim();
@@ -71,6 +72,17 @@ export default function Form({
       default:
         break;
     }
+
+    const key = "askDialogOpen";
+    const val = sessionStorage.getItem(key);
+    if (!val) {
+      console.log("not opened");
+      sessionStorage.setItem(key, "opened");
+      if (setIsOpen)
+        setIsOpen(true);
+    } else {
+      console.log("opened");
+    }
   }, [
     kinds.edu4u,
     kinds.goodo,
@@ -80,6 +92,7 @@ export default function Form({
     kinds.sangsang,
     kinds.wawa,
     pathname,
+    setIsOpen,
   ]);
 
   const handleComplete = (data: any) => {

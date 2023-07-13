@@ -1,24 +1,24 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import TopDownDialog from "../dialog/TopDownDialog";
 import AskForm from "@/components/ask/Form";
 
 export default function Edu4UFooter() {
   const [askDialogOpen, setAskDialogOpen] = useState(false);
-  useEffect(() => {
-    // const date = new Date()
-    // console.log(date.getFullYear(),date.getMonth(),date.getDate())
-    // const key = `${date.getFullYear()}_${date.getMonth()}_${date.getDate()}_askDialogOpen`
-    const key = "askDialogOpen";
-    const val = sessionStorage.getItem(key);
-    if (!val) {
-      console.log("not opened");
-      sessionStorage.setItem(key, "opened");
-      setAskDialogOpen(true);
-    } else {
-      console.log("opened");
-    }
-  }, []);
+  // useEffect(() => {
+  //   // const date = new Date()
+  //   // console.log(date.getFullYear(),date.getMonth(),date.getDate())
+  //   // const key = `${date.getFullYear()}_${date.getMonth()}_${date.getDate()}_askDialogOpen`
+  //   const key = "askDialogOpen";
+  //   const val = sessionStorage.getItem(key);
+  //   if (!val) {
+  //     console.log("not opened");
+  //     sessionStorage.setItem(key, "opened");
+  //     setAskDialogOpen(true);
+  //   } else {
+  //     console.log("opened");
+  //   }
+  // }, []);
   return (
     <>
       <TopDownDialog open={askDialogOpen} setOpen={setAskDialogOpen}>
