@@ -6,7 +6,11 @@ export default function Home({ params }: { params: { slug: string } }) {
   const slug = params.slug;
   return (
     <main>
-      <PostList pageIndex={slug}/>
+      <div className="flex justify-center itmes-center">
+        <div className="w-[80vw]">
+          <PostList pageIndex={slug} />
+        </div>
+      </div>
     </main>
   );
 }
