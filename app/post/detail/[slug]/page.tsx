@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { Metadata } from "next";
+// import { Metadata } from "next";
 // import Markdown from "markdown-to-jsx";
 // import matter from "gray-matter";
 // import { useEffect, useState } from "react";
@@ -37,18 +37,18 @@ const getData = async (id: string) => {
   return res.json();
 };
 
-export const generateMetadata = async ({
-  params,
-}: {
-  params: { slug: string };
-}): Promise<Metadata> => {
-  const slug = params.slug;
-  const { post } = await getData(slug);
-  return {
-    title: post.title,
-    description: post.description,
-  };
-};
+// export const generateMetadata = async ({
+//   params,
+// }: {
+//   params: { slug: string };
+// }): Promise<Metadata> => {
+//   const slug = params.slug;
+//   const { post } = await getData(slug);
+//   return {
+//     title: post.title,
+//     description: post.description,
+//   };
+// };
 
 export default function PostHome({ params }: { params: { slug: string } }) {
   const slug = params.slug;
