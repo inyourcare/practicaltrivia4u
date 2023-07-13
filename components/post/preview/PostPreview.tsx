@@ -32,7 +32,7 @@ const PostPreview = (props: PostMetadata) => {
 
           <Link
             className="text-current hover:no-underline"
-            href={`/post/${props.id}`}
+            href={`/post/detail/${props.id}`}
           >
             <p className="font-bold text-left m-0 text-[28px] leading-[1.3]">
               {props.title}
