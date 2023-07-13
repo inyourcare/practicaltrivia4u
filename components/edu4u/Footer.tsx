@@ -13,7 +13,7 @@ export default function Edu4UFooter() {
     const val = sessionStorage.getItem(key);
     if (!val) {
       console.log("not opened");
-      sessionStorage.setItem(key, "opend");
+      sessionStorage.setItem(key, "opened");
       setAskDialogOpen(true);
     } else {
       console.log(" opened");
