@@ -6,7 +6,7 @@ export const postData = [
     title: "상상코칭으로 자기 주도 학습 훈련하자",
     description:
       "맞춤커리큘럼으로 공부습관을 기르는 코칭으로 아이가 점차 발전 할 수 있습니다.",
-    image: "",
+    image: "/api/aws/s3/get?key=post/1/8-2.png",
     imageAlt: "",
     author: "4U",
     contents: `<p className="mb-3 font-light text-gray-500 dark:text-gray-400 first-line:uppercase first-line:tracking-widest first-letter:text-7xl first-letter:font-bold first-letter:text-gray-900 dark:first-letter:text-gray-100 first-letter:mr-3 first-letter:float-left">
@@ -28,7 +28,7 @@ export const postData = [
             className="cover "
             style="margin:1px"
             alt="Alt for images"
-            src="/images/business/sangsang/review01.png"
+            src="/api/aws/s3/get?key=post/1/review01.png"
         />
         <img
             height="300px"
@@ -36,7 +36,7 @@ export const postData = [
             className="cover  "
             style="margin:1px"
             alt="Alt for images"
-            src="/images/business/sangsang/review02.png"
+            src="/api/aws/s3/get?key=post/1/review02.png"
         />
         <img
             height="300px"
@@ -44,7 +44,7 @@ export const postData = [
             className="cover  "
             style="margin:1px"
             alt="Alt for images"
-            src="/images/business/sangsang/review03.png"
+            src="/api/aws/s3/get?key=post/1/review03.png"
         />
         <img
             height="300px"
@@ -52,7 +52,7 @@ export const postData = [
             className="cover  "
             style="margin:1px"
             alt="Alt for images"
-            src="/images/business/sangsang/review04.png"
+            src="/api/aws/s3/get?key=post/1/review04.png"
         />
         <img
             height="300px"
@@ -60,7 +60,7 @@ export const postData = [
             className="cover  "
             style="margin:1px"
             alt="Alt for images"
-            src="/images/business/sangsang/review05.png"
+            src="/api/aws/s3/get?key=post/1/review05.png"
         />
         <img
             height="300px"
@@ -68,7 +68,7 @@ export const postData = [
             className="cover  "
             style="margin:1px"
             alt="Alt for images"
-            src="/images/business/sangsang/review06.png"
+            src="/api/aws/s3/get?key=post/1/review06.png"
         />
       </div>
     </div>
@@ -90,7 +90,7 @@ export const postData = [
     title: "와와학습코칭센터를 소개합니다.",
     description:
       "참여형 학습을 통한 차별화된 학습 플랜, 와와학습코칭센터입니다!",
-    image: "",
+    image: "/api/aws/s3/get?key=post/2/2.png",
     imageAlt: "",
     author: "4U",
     contents: `<p className="mb-3 font-light text-gray-500 dark:text-gray-400 first-line:uppercase first-line:tracking-widest first-letter:text-7xl first-letter:font-bold first-letter:text-gray-900 dark:first-letter:text-gray-100 first-letter:mr-3 first-letter:float-left">
@@ -106,7 +106,7 @@ export const postData = [
             className="cover "
             style="margin:1px"
             alt="Alt for images"
-            src="/images/business/wawa/2.png"
+            src="/api/aws/s3/get?key=post/2/2.png"
         />
       </div>
     </div>
@@ -123,7 +123,7 @@ export const postData = [
             className="cover "
             style="margin:1px"
             alt="Alt for images"
-            src="/images/business/wawa/3.png"
+            src="/api/aws/s3/get?key=post/2/3.png"
         />
       </div>
     </div>
@@ -149,7 +149,7 @@ export const postData = [
             className="cover "
             style="margin:1px"
             alt="Alt for images"
-            src="/images/business/wawa/5.png"
+            src="/api/aws/s3/get?key=post/2/5.png"
         />
       </div>
     </div>
@@ -179,6 +179,58 @@ export const postData = [
     <p className="font-light text-gray-500 dark:text-gray-400">
     특히 와와학습코칭센터 선생님들은 코치라 불리는 코칭 전문가들로 구성되어 있습니다. 코치는 아이의 강점에 집중하고 잠재력을 찾아내서 아이 스스로가 에너지를 공부에 쓸 수 있도록 도와줍니다. 아이들의 학습 속도와 이해력은 모두 다르기 때문에 일대일로 맞춰진 교육 시스템은 아이의 자신감을 상승시켜 줍니다.
     </p>
+    `,
+  },
+
+  {
+    id: 3,
+    tags: "회화,과외",
+    category: "conversation",
+    title:
+      "원어민과 회화 수업 찾고계신가요? 전화,화상 영어 파워 잉글리쉬입니다.",
+    description:
+      "해외기업 면접, 외국어 교육과정, 취업영어, 자격증회화시험 준비 함께해요",
+    image: "/api/aws/s3/get?key=post/3/1.jpg",
+    imageAlt: "",
+    author: "4U",
+    contents: `<p className="mb-3 font-light text-gray-500 dark:text-gray-400 first-line:uppercase first-line:tracking-widest first-letter:text-7xl first-letter:font-bold first-letter:text-gray-900 dark:first-letter:text-gray-100 first-letter:mr-3 first-letter:float-left">
+    파워잉글리쉬는 언어 학습을 위한 전화 및 화상 회화 서비스를 제공하는 기업입니다. 이 서비스는 비대면 시대에 효과적인 언어 학습을 지원하기 위해 설계되었습니다. 파워잉글리쉬는 다양한 언어에 대한 수업을 제공하며, 초급부터 심화까지 다양한 수준의 학습이 가능합니다.
+</p>
+<div className="font-light text-gray-500 dark:text-gray-400">
+    파워잉글리쉬의 주요 장점 중 하나는 학습자들을 지속적으로 관리하고 목표에 맞게 학습할 수 있도록 지원한다는 점입니다. 정해진 수업과 피드백, 수업 녹화, 다시 듣기, 회차 관리, 홀딩 관리 등의 기능을 통해 학습자들은 흥미를 유지하면서 목표에 도달할 수 있습니다.
+
+    또한, 파워잉글리쉬는 초등학생부터 성인까지 다양한 연령대와 수준의 학습자를 위한 맞춤형 커리큘럼을 제공합니다. 강사는 다양한 배경을 가진 국내 강사와 미국 현지 강사로 구성되어 있으며, 학습자의 목표와 레벨에 맞춰서 수업을 진행합니다.
+
+    파워잉글리쉬는 많은 학습 성과를 거두고 있습니다. 예를 들어, 꾸준한 회화 수업을 통해 승무원이 꿈인 학생은 원어민 수준의 발음과 표현력을 갖게 되었으며, 외국계 기업 면접 준비와 실무 영어 대비로 목표를 달성한 회원들도 있습니다. 또한, 유학 준비를 위해 사전에 기초 대학 과정 영어를 공부하는 경우나 외국어 고등학교, 국제 고등학교 교육 과정 대비를 위해 실력을 키우는 경우도 많습니다.
+
+    파워잉글리쉬는 다양한 커리큘럼을 제공하며, 주요한 과목으로는 정규 회화, 토론, 영자 신문, 고등 수능 대비, 서술형 대비, 인증 시험, 여행 영어, 비즈니스, 인터뷰, 미국 교과서 과정 등이 있습니다.
+</div>
+<div className="relative">
+  <!-- <div className="flex" style="transform:translateX(-600px)"> -->
+  <div className="flex flex-wrap justify-center not-prose">
+    <img
+        height="500px"
+        width="700px"
+        className="cover "
+        style="margin:1px"
+        alt="Alt for images"
+        src="/api/aws/s3/get?key=post/3/2.png"
+    />
+    <br/>
+    <img
+        height="500px"
+        width="700px"
+        className="cover "
+        style="margin:1px"
+        alt="Alt for images"
+        src="/api/aws/s3/get?key=post/3/3.png"
+    />
+  </div>
+</div>
+<br/>
+<div className="font-light text-gray-500 dark:text-gray-400">
+    무료 레벨 테스트를 통해 자신의 실력을 찾고 나에게 딱 맞는 커리큘럼을 통해 영어 회화 시작 해 봐요!
+</div>
     `,
   },
 ];

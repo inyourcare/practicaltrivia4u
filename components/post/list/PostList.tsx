@@ -23,7 +23,7 @@ export const getPostList = async (page:number = 0,limit:number = 15) => {
         conditions: {},
       }),
       headers: { "Content-Type": "application/json" },
-      cache: "reload"
+      cache: process.env.NODE_ENV !== "development" && "default" || "no-cache"
     }
   );
   // console.log(await res.json());

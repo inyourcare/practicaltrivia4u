@@ -12,6 +12,7 @@ export const getData = async (id: string) => {
     {
       method: "GET",
       headers: { "Content-Type": "application/json" },
+      cache: process.env.NODE_ENV !== "development" && "default" || "no-cache"
     }
   );
   // console.log(await res.json());
@@ -47,13 +48,13 @@ export default async function PostHome({ params }: { params: { slug: string } })
 
       <div className="my-10 mx-auto">
         <Image
-          height="250"
           width="500"
+          height="250"
           // src={content.image}
           src={post.image}
           // alt={content.imageAlt}
           alt={post.imageAlt}
-          className="mx-auto h-[72%] w-[1424px]"
+          className="mx-auto w-full max-h-[500px] px-20"
         />
       </div>
 
