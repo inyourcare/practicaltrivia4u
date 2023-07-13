@@ -1,3 +1,5 @@
+import Footer from "@/components/root/Footer";
+
 export const metadata = {
   title: "점심 너로 정했다. 저메추, 점메추 찾으시면 들어오세요!",
   description:
@@ -6,11 +8,15 @@ export const metadata = {
     "점심 너로 정했다. 점심, 점심 메뉴, 점심 룰렛, 점심 추천, 점심 추천 룰렛",
 };
 
-
 export default function FoodRouletteLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  return <section>{children}</section>;
+  return (
+    <section>
+      {children}
+      <Footer />
+    </section>
+  );
 }

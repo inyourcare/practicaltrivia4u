@@ -1,11 +1,11 @@
 import Edu4UFooter from "@/components/edu4u/Footer";
+import Footer from "@/components/root/Footer";
 import Header from "@/components/root/Header";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "4U(사소하지만 유용한) Posting 입니다.",
-  description:
-    "각종 유용한 정보를 다룹니다.",
+  description: "각종 유용한 정보를 다룹니다.",
 };
 
 export default function Edu4ULayout({
@@ -19,6 +19,8 @@ export default function Edu4ULayout({
         <Header />
       </header>
       {children}
+
+      <Footer />
     </section>
   );
 }
