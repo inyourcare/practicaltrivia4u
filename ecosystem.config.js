@@ -1,7 +1,7 @@
 module.exports = {
   apps: [
     {
-      name: 'next',
+      name: 'next2',
       exec_mode: 'cluster',
       // instances: 'max', // Or a number of instances
       instances: '2', // Or a number of instances
