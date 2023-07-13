@@ -39,6 +39,7 @@ export default function Form({
     power_japan: "power_japan",
     power_china: "power_china",
     solute: "solute",
+    etc: "etc",
   };
   useEffect(() => {
     // const selectElem = document.getElementById(kindSelectId) as HTMLSelectElement
@@ -245,6 +246,9 @@ export default function Form({
                 <option value={kinds.power_japan}>{`파워재팬`}</option>
                 <option value={kinds.power_china}>{`파워차이나`}</option>
                 <option value={kinds.solute}>{`솔루트유학`}</option>
+              </optgroup>
+              <optgroup label="기타문의">
+                <option value={kinds.etc}>{`기타문의`}</option>
               </optgroup>
             </select>
           </span>
