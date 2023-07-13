@@ -17,7 +17,7 @@ export const postData = [
       <iframe width="560" height="315" src="https://www.youtube.com/embed/HTI7UanlnYk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     </div>
     <p className="font-light text-gray-500 dark:text-gray-400">
-    상상코칭은 1:1 화상과외 프로그램으로, 학생과 전문 선생님이 실시간으로 컴퓨터나 노트북을 통해 연결되어 과외 수업을 진행합니다. 저희 상상코칭은 경력이 풍부한 과목 전문 선생님들이 학생 맞춤형 커리큘럼을 제공하며 학교 내신 관리 시스템을 운영합니다.
+    상상코칭은 1:1 화상과외 프로그램으로, 학생과 전문 선생님이 실시간으로 컴퓨터나 노트북을 통해 연결되어 과외 수업을 진행합니다. 경력이 풍부한 과목 전문 선생님들이 준비중입니다. 학생 맞춤형 커리큘럼으로 학교 내신 든든하게!
     </p>
     <div className="relative">
       <!-- <div className="flex" style="transform:translateX(-600px)"> -->
@@ -79,8 +79,7 @@ export const postData = [
     상상코칭의 장점 중 하나는 과목 전문 선생님과 함께 공부할 수 있다는 것입니다. 화상 수업을 통해 화면에 같이 책을 띄우고 공부할 수 있어 이해도를 높일 수 있습니다. 또한, 수업한 내용을 녹화하여 나중에 효과적인 복습에 활용할 수 있습니다.
     </p>
     <p className="font-light text-gray-500 dark:text-gray-400">
-    상상코칭은 무료로 테스트 수업을 제공하고 있습니다. 테스트 수업을 받아보고 선생님과 함께 상담을 진행해보는 것을 추천드립니다. 테스트 문의는 언제든 환영입니다.
-    감사합니다.
+    무료로 테스트 수업을 제공하고 있습니다. 테스트 수업을 받아보고 선생님과 함께 상담을 진행해보는 것을 추천드립니다! 감사합니다.
     </p>`,
   },
   {
@@ -94,8 +93,8 @@ export const postData = [
     imageAlt: "",
     author: "4U",
     contents: `<p className="mb-3 font-light text-gray-500 dark:text-gray-400 first-line:uppercase first-line:tracking-widest first-letter:text-7xl first-letter:font-bold first-letter:text-gray-900 dark:first-letter:text-gray-100 first-letter:mr-3 first-letter:float-left">
-    부모가 되면 아이들을 잘 키우고 싶습니다. 그래서 남들이 하는 많은 교육을 그냥 따라합니다. 아이는 꿈도 목표도 없이 그저 시키는 대로만 하면서 공부에 흥미를 느끼지 못합니다.
-    그런 아이들에게 가장 필요한 건 학습의 즐거움을 경험해 보는 것입니다. 이를 통해 공부하는 진짜 이유를 발견하게 되는데요, 와와학습코칭센터는 둥지 시스템이라는 독특한 환경을 통해 스스로 공부할 수 있는 힘을 키워줍니다.
+    부모가 되면 아이들을 잘 키우고 싶습니다. 잘하고 싶은 의욕은 있지만 자꾸 남들이 하는것을 따라하는건 아닌가 생각이 듭니다. 아이의 꿈과 목표와는 상관 없이 계획을 세우고 몰아세웠던 것은 아닐까?
+    아이들에게 가장 필요한 건 학습의 즐거움을 경험해 보는 것입니다. 이를 통해 공부하는 진짜 이유를 발견하게 되는데요, 와와학습코칭센터는 둥지 시스템이라는 독특한 환경을 통해 스스로 공부할 수 있는 힘을 키워줍니다.
     </p>
     <div className="relative">
       <!-- <div className="flex" style="transform:translateX(-600px)"> -->
@@ -111,7 +110,7 @@ export const postData = [
       </div>
     </div>
     <p className="font-light text-gray-500 dark:text-gray-400">
-    와와학습코칭센터에 관련해 이야기하고 있는 이주원 테스트온 교육연구소 소장 이주원 소장(테스트온 교육 연구소)은 다음과 같이 말합니다: 
+    이주원 테스트온 교육연구소 소장은 다음과 같이 말합니다.
     </p>
     
     <div className="relative">
@@ -178,8 +177,7 @@ export const postData = [
     
     <p className="font-light text-gray-500 dark:text-gray-400">
     특히 와와학습코칭센터 선생님들은 코치라 불리는 코칭 전문가들로 구성되어 있습니다. 코치는 아이의 강점에 집중하고 잠재력을 찾아내서 아이 스스로가 에너지를 공부에 쓸 수 있도록 도와줍니다. 아이들의 학습 속도와 이해력은 모두 다르기 때문에 일대일로 맞춰진 교육 시스템은 아이의 자신감을 상승시켜 줍니다.
-    </p>
-    `,
+    </p>`,
   },
 
   {
@@ -194,7 +192,7 @@ export const postData = [
     imageAlt: "",
     author: "4U",
     contents: `<p className="mb-3 font-light text-gray-500 dark:text-gray-400 first-line:uppercase first-line:tracking-widest first-letter:text-7xl first-letter:font-bold first-letter:text-gray-900 dark:first-letter:text-gray-100 first-letter:mr-3 first-letter:float-left">
-    파워잉글리쉬는 언어 학습을 위한 전화 및 화상 회화 서비스를 제공하는 기업입니다. 이 서비스는 비대면 시대에 효과적인 언어 학습을 지원하기 위해 설계되었습니다. 파워잉글리쉬는 다양한 언어에 대한 수업을 제공하며, 초급부터 심화까지 다양한 수준의 학습이 가능합니다.
+    파워잉글리쉬는 언어 학습을 위한 전화 및 화상 회화 서비스를 제공합니다. 이제는 비대면으로 공부하는것이 익숙하시죠? 코로나 이전부터 쌓아온 비대면 교육의 노하우로 여러분들의 언어 성장을 책임지겠습니다! 파워잉글리쉬는 영어,일본어,중국어 클래스를 운영합니다. 초급부터 심화까지 다양한 수준별 학습이 가능합니다.
 </p>
 <div className="font-light text-gray-500 dark:text-gray-400">
     파워잉글리쉬의 주요 장점 중 하나는 학습자들을 지속적으로 관리하고 목표에 맞게 학습할 수 있도록 지원한다는 점입니다. 정해진 수업과 피드백, 수업 녹화, 다시 듣기, 회차 관리, 홀딩 관리 등의 기능을 통해 학습자들은 흥미를 유지하면서 목표에 도달할 수 있습니다.
@@ -230,7 +228,6 @@ export const postData = [
 <br/>
 <div className="font-light text-gray-500 dark:text-gray-400">
     무료 레벨 테스트를 통해 자신의 실력을 찾고 나에게 딱 맞는 커리큘럼을 통해 영어 회화 시작 해 봐요!
-</div>
-    `,
+</div>`,
   },
 ];
