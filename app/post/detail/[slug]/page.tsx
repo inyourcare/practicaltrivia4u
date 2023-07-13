@@ -6,6 +6,7 @@ import { Metadata } from "next";
 // import { useEffect, useState } from "react";
 import parse from "html-react-parser";
 import { useEffect, useState } from "react";
+import Spinner from "@/components/spinner/Spinner";
 
 export interface PostMetadata {
   id: string;
@@ -29,7 +30,7 @@ const getData = async (id: string) => {
       headers: { "Content-Type": "application/json" },
       // cache: process.env.NODE_ENV !== "development" && "default" || "no-cache"
       // cache: "no-cache",
-      next: { revalidate: 10 }
+      next: { revalidate: 10 },
     }
   );
   // console.log(await res.json());
@@ -54,14 +55,20 @@ export default function PostHome({ params }: { params: { slug: string } }) {
   // const { post } = await getData(slug);
   // const matterResult = matter(post.contents);
   const [post, setPost] = useState(null as unknown as PostMetadata);
+  const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
-    getData(slug).then((data) => {
-      console.log(data);
-      // const [posts, pages] = data;
-      if (data.post) {
-        setPost(data.post);
-      }
-    });
+    setIsLoading(true);
+    getData(slug)
+      .then((data) => {
+        console.log(data);
+        // const [posts, pages] = data;
+        if (data.post) {
+          setPost(data.post);
+        }
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   }, [slug]);
   return (
     <>
@@ -73,7 +80,8 @@ export default function PostHome({ params }: { params: { slug: string } }) {
         description={post.data.description}
       /> */}
 
-      {post && (
+      {isLoading && <Spinner />}
+      {(post && (
         <>
           <div className="my-10 mx-auto">
             <Image
@@ -93,7 +101,7 @@ export default function PostHome({ params }: { params: { slug: string } }) {
             {parse(post.contents)}
           </div>
         </>
-      )}
+      ))}
     </>
   );
 }
