@@ -74,17 +74,18 @@ export default function Form({
     }
 
     const key = "askDialogOpen";
+    const value = "opened";
     const val = sessionStorage.getItem(key);
-    if (!val) {
+    if (val && val === value) {
+      console.log("opened");
+    } else {
       console.log("not opened");
-      sessionStorage.setItem(key, "opened");
+      sessionStorage.setItem(key, value);
       if (setIsOpen) {
         setTimeout(() => {
           setIsOpen(true);
         }, 1000);
       }
-    } else {
-      console.log("opened");
     }
   }, [
     kinds.edu4u,
@@ -348,19 +349,21 @@ export default function Form({
           >
             문의하기
           </button>
-          {setIsOpen && <div
-            className={
-              // "absolute bottom-2 right-10 rounded-xl bg-gray-300 p-2 min-w-[90px] justify-center items-center border text-xs font-bold " +
-              " rounded-xl bg-rose-500 p-2 min-w-[90px] justify-center items-center border text-xs font-bold " +
-              "max-h-[80px] h-10 flex justify-center items-center"
-              // (isProcessing ? "disabled" : "")
-            }
-            onClick={() =>
-              setIsOpen && isProcessing === false && setIsOpen(false)
-            }
-          >
-            취소
-          </div>}
+          {setIsOpen && (
+            <div
+              className={
+                // "absolute bottom-2 right-10 rounded-xl bg-gray-300 p-2 min-w-[90px] justify-center items-center border text-xs font-bold " +
+                " rounded-xl bg-rose-500 p-2 min-w-[90px] justify-center items-center border text-xs font-bold " +
+                "max-h-[80px] h-10 flex justify-center items-center"
+                // (isProcessing ? "disabled" : "")
+              }
+              onClick={() =>
+                setIsOpen && isProcessing === false && setIsOpen(false)
+              }
+            >
+              취소
+            </div>
+          )}
         </div>
       </form>
     </div>
