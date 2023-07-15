@@ -83,7 +83,7 @@ export default function PostHome({ params }: { params: { slug: string } }) {
       {isLoading && <Spinner />}
       {(post && (
         <>
-          <div className="my-10 mx-auto">
+          <div className="my-10 mx-auto w-full max-h-[500px] px-20 flex justify-center items-center">
             <Image
               width="500"
               height="250"
@@ -91,7 +91,7 @@ export default function PostHome({ params }: { params: { slug: string } }) {
               src={post.image}
               // alt={content.imageAlt}
               alt={post.imageAlt}
-              className="mx-auto w-full max-h-[500px] px-20"
+              className=""
             />
           </div>
           <div className="w-full flex justify-center items-center">
