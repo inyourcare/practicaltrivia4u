@@ -94,8 +94,11 @@ export default function PostHome({ params }: { params: { slug: string } }) {
               className="mx-auto w-full max-h-[500px] px-20"
             />
           </div>
-
+          <div className="w-full flex justify-center items-center">
+            <h1 className="font-black text-2xl">{post.title}</h1>
+          </div>
           <div className="my-12 prose prose-stone lg:prose-lg mx-auto">
+          {/* <h1>{post.title}</h1> */}
             {/* {matterResult.content} */}
             {/* <Markdown>{matterResult.content}</Markdown> */}
             {parse(post.contents)}

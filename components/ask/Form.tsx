@@ -82,9 +82,10 @@ export default function Form({
       console.log("not opened");
       sessionStorage.setItem(key, value);
       if (setIsOpen) {
-        setTimeout(() => {
-          setIsOpen(true);
-        }, 1000);
+        setIsOpen(true);
+        // setTimeout(() => {
+        //   setIsOpen(true);
+        // }, 1000);
       }
     }
   }, [
