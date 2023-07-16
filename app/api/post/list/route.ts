@@ -11,6 +11,7 @@ export async function POST(request: Request) {
 
   const whereConditions = {
     ...conditions,
+    enable: true,
   };
   const posts = await prisma.post.findMany({
     ...(page && limit && { skip: page * limit }),
