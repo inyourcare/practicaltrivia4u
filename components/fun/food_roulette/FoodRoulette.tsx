@@ -36,7 +36,7 @@ export default function FoodRoulette() {
   );
   const notFilteredClassString = "not-filtered";
   const filteredClassString = "filtered";
-  const [filteredKinds] = useState(new Set<string>());
+  const [filteredKinds,setFilteredKinds] = useState(new Set<string>());
   const listItmeContainerId = "list_item";
   const filterBtnsContainerId = "filter-btns-container";
   const filterBtnElems = useRef<HTMLButtonElement[]>([]);
@@ -354,10 +354,13 @@ export default function FoodRoulette() {
                     // e.currentTarget.classList.remove("bg-blue-200");
                     filteredKinds.add(k);
                   }
+                  
+                  // e.currentTarget.
+                  setFilteredKinds(new Set(filteredKinds))
                   setFilteredRestaurantCntTrigger(!filteredRestaurantCntTrigger)
                 }}
                 disabled={restaurantsLoading || state.lsLoading}
-                className={`border ml-1 ${filteredKinds.has(k)? 'bg-blue-500':'bg-blue-200'} hover:bg-blue-500 text-white font-bold px-4 rounded disabled:cursor-not-allowed`}
+                className={`border ml-1 ${filteredKinds.has(k)? 'bg-blue-500':'bg-blue-200'} hover:border hover:border-blue-500 text-white font-bold px-4 rounded disabled:cursor-not-allowed`}
                 ref={(elem) => {
                   filterBtnElems.current[i] = elem as HTMLButtonElement;
                 }}
