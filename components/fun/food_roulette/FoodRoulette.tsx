@@ -336,8 +336,8 @@ export default function FoodRoulette() {
                         card && card.classList.add(notFilteredClassString);
                       });
                     }
-                    e.currentTarget.classList.add("bg-blue-200");
-                    e.currentTarget.classList.remove("bg-blue-500");
+                    // e.currentTarget.classList.add("bg-blue-200");
+                    // e.currentTarget.classList.remove("bg-blue-500");
                     filteredKinds.delete(k);
                   } else {
                     // console.log("adding kind");
@@ -350,14 +350,14 @@ export default function FoodRoulette() {
                         card && card.classList.add(filteredClassString);
                       });
                     }
-                    e.currentTarget.classList.add("bg-blue-500");
-                    e.currentTarget.classList.remove("bg-blue-200");
+                    // e.currentTarget.classList.add("bg-blue-500");
+                    // e.currentTarget.classList.remove("bg-blue-200");
                     filteredKinds.add(k);
                   }
                   setFilteredRestaurantCntTrigger(!filteredRestaurantCntTrigger)
                 }}
                 disabled={restaurantsLoading || state.lsLoading}
-                className="border ml-1 bg-blue-200 hover:bg-blue-500 text-white font-bold px-4 rounded disabled:cursor-not-allowed"
+                className={`border ml-1 ${filteredKinds.has(k)? 'bg-blue-500':'bg-blue-200'} hover:bg-blue-500 text-white font-bold px-4 rounded disabled:cursor-not-allowed`}
                 ref={(elem) => {
                   filterBtnElems.current[i] = elem as HTMLButtonElement;
                 }}
