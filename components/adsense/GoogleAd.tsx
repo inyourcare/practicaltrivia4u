@@ -14,7 +14,7 @@ const GoogleAd = ({ type }: { type: string }) => {
   }, []);
 
   return (
-    <div className={`googleAd-container w-full ${type === GoogldAdType.Display && 'mt-5 lg:mt-10 p-5'}`}>
+    <div className={`googleAd-container w-full overflow-hidden ${type === GoogldAdType.Display && 'mt-5 lg:mt-10 p-5'}`}>
       {/* 반응형 디스플레이 */}
       {(type === GoogldAdType.Display && (
         <ins
@@ -29,7 +29,7 @@ const GoogleAd = ({ type }: { type: string }) => {
         (type === GoogldAdType.InFeed && (
           <div>
             {/* <div className="hidden lg:block "> */}
-            <div className="h-[0px] lg:h-auto ">
+            <div className="h-[0px] lg:h-auto overflow-hidden">
               <div className="border boder-gray-100 p-5">
                 <ins
                   className="adsbygoogle flex justify-center items-center"
