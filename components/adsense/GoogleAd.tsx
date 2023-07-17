@@ -30,7 +30,7 @@ const GoogleAd = ({ type }: { type: string }) => {
           <div>
             {/* <div className="hidden lg:block "> */}
             <div className="h-[0px] lg:h-auto overflow-hidden">
-              <div className="border boder-gray-100 p-5">
+              <div className="border boder-gray-100 p-5 bg-gray-100">
                 <ins
                   className="adsbygoogle flex justify-center items-center"
                   // style={{ display: "block" }}
@@ -44,7 +44,7 @@ const GoogleAd = ({ type }: { type: string }) => {
             
             {/* <div className="block lg:hidden"> */}
             <div className="h-auto lg:h-[0px] overflow-hidden">
-              <div className="border boder-gray-100 p-5">
+              <div className="border boder-gray-100 p-5 bg-gray-100">
                 <ins
                   className="adsbygoogle flex justify-center items-center"
                   // style={{ display: "block" }}
