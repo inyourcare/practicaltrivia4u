@@ -1,36 +1,39 @@
-const getPostList = async (page: number = 0, limit: number = 100000) => {
-  const res = await fetch(
-    // `/api/post/list`,
-    `${process.env.NEXT_PUBLIC_API_HOST}/api/post/list`,
-    {
-      method: "POST",
-      body: JSON.stringify({
-        page: page,
-        limit: limit,
-        // conditions: {
-        // creator: {
-        // email: 'admin@sotong.co.kr'
-        // email
-        //     ...(email && { email: email })
-        // }
-        // }
-        // conditions
-        conditions: {},
-      }),
-      headers: { "Content-Type": "application/json" },
-      // cache: process.env.NODE_ENV !== "development" && "default" || "no-cache",
-      // cache: "no-cache",
-      next: { revalidate: 60 },
-    }
-  );
-  // console.log(await res.json());
-  return res.json();
-};
+import { PrismaClient } from "@prisma/client";
+const prisma = new PrismaClient();
+// const getPostList = async (page: number = 0, limit: number = 100000) => {
+//   const res = await fetch(
+//     // `/api/post/list`,
+//     `${process.env.NEXT_PUBLIC_API_HOST}/api/post/list`,
+//     {
+//       method: "POST",
+//       body: JSON.stringify({
+//         page: page,
+//         limit: limit,
+//         // conditions: {
+//         // creator: {
+//         // email: 'admin@sotong.co.kr'
+//         // email
+//         //     ...(email && { email: email })
+//         // }
+//         // }
+//         // conditions
+//         conditions: {},
+//       }),
+//       headers: { "Content-Type": "application/json" },
+//       // cache: process.env.NODE_ENV !== "development" && "default" || "no-cache",
+//       cache: "no-cache",
+//       // next: { revalidate: 60 },
+//     }
+//   );
+//   // console.log(await res.json());
+//   return res.json();
+// };
 
 // const URL = "https://claritydev.net";
 
 async function generateSiteMap() {
-  const { posts, pages } = await getPostList();
+  // const { posts, pages } = await getPostList();
+  const posts = await prisma.post.findMany({ where: { enable: true } });
   return `<?xml version="1.0" encoding="UTF-8"?>
    <urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
      <!--We manually set the two URLs we know already-->
@@ -78,7 +81,7 @@ async function generateSiteMap() {
      </url>
      ${
        posts &&
-       (posts as Array<any>)
+       (posts)
          .map((post) => {
            return `
            <url>
