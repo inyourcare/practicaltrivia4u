@@ -23,7 +23,7 @@ async function Footer() {
   return (
     <footer>
       {/* {businessInfo?.bossName} */}
-      <div className="w-full flex justify-center items-center bg-gray-100 h-[50px] border-y-2 border-gray-200 text-sm mt-[100px]">
+      <div className="w-full flex justify-center items-center bg-gray-100 h-[50px] border-y-2 border-gray-200 text-xs md:text-sm mt-[100px]">
         <p>{`COPYRIGHT (C) ${businessInfo?.name}. ALL RIGHTS RESERVED.`}</p>
       </div>
       <div className="w-full flex flex-col pt-[20px] pb-[70px] prose mx-auto text-xs justify-center items-center md:justify-start md:items-start md:text-sm">
