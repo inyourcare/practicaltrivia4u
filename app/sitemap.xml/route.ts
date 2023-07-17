@@ -38,7 +38,7 @@ async function generateSiteMap() {
    <urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
      <!--We manually set the two URLs we know already-->
      <url>
-       <loc>${process.env.NEXT_PUBLIC_HOST_BASE_URLL}</loc>
+       <loc>${process.env.NEXT_PUBLIC_HOST_BASE_URL}</loc>
      </url>
      <url>
        <loc>${process.env.NEXT_PUBLIC_HOST_BASE_URL}/ask</loc>
