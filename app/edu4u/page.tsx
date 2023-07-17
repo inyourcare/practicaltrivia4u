@@ -150,8 +150,9 @@ export default function Home() {
             </p>
           </div>
         </div>
-
-        <GoogleAd type={`${GoogldAdType.Display}`}/>
+        <div className="w-[80vw]">
+          <GoogleAd type={`${GoogldAdType.Display}`} />
+        </div>
       </div>
     </main>
   );

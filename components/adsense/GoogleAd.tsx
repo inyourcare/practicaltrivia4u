@@ -14,7 +14,7 @@ const GoogleAd = ({ type }: { type: string }) => {
   }, []);
 
   return (
-    <div className="googleAd-container">
+    <div className="googleAd-container w-full">
       {/* 반응형 디스플레이 */}
       {(type === GoogldAdType.Display && (
         <ins
@@ -28,19 +28,8 @@ const GoogleAd = ({ type }: { type: string }) => {
       )) ||
         (type === GoogldAdType.InFeed && (
           <div>
-            <div className="hidden lg:block ">
-              <div className="border boder-gray-100 p-5">
-                <ins
-                  className="adsbygoogle"
-                  style={{ display: "block" }}
-                  data-ad-format="fluid"
-                  data-ad-layout-key="-6t+ed+2i-1n-4w"
-                  data-ad-client="ca-pub-8425397323378076"
-                  data-ad-slot="7932494865"
-                ></ins>
-              </div>
-            </div>
-            <div className="block lg:hidden">
+            {/* <div className="hidden lg:block "> */}
+            <div className="h-[0px] lg:h-auto ">
               <div className="border boder-gray-100 p-5">
                 <ins
                   className="adsbygoogle"
@@ -49,6 +38,20 @@ const GoogleAd = ({ type }: { type: string }) => {
                   data-ad-layout-key="-fb+5w+4e-db+86"
                   data-ad-client="ca-pub-8425397323378076"
                   data-ad-slot="5476941666"
+                ></ins>
+              </div>
+            </div>
+            
+            {/* <div className="block lg:hidden"> */}
+            <div className="h-auto lg:h-[0px]">
+              <div className="border boder-gray-100 p-5">
+                <ins
+                  className="adsbygoogle"
+                  style={{ display: "block" }}
+                  data-ad-format="fluid"
+                  data-ad-layout-key="-6t+ed+2i-1n-4w"
+                  data-ad-client="ca-pub-8425397323378076"
+                  data-ad-slot="7932494865"
                 ></ins>
               </div>
             </div>
