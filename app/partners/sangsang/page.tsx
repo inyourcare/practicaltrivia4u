@@ -1,3 +1,5 @@
+import GoogleAd from "@/components/adsense/GoogleAd";
+import { GoogldAdType } from "@/components/adsense/type";
 import YoutubePopup from "@/components/util/youtube/popup/YoutubePopup";
 import Image from "next/image";
 
@@ -352,6 +354,7 @@ export default function Home() {
           />
         </div>
       </div>
+      <GoogleAd type={`${GoogldAdType.Display}`}/>
     </main>
   );
 }

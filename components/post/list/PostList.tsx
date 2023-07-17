@@ -4,7 +4,8 @@ import { useEffect, useState } from "react";
 import PostPreview from "../preview/PostPreview";
 import Pagination from "./Pagination";
 import Spinner from "@/components/spinner/Spinner";
-
+import GoogleAd from "@/components/adsense/GoogleAd";
+import { GoogldAdType } from "@/components/adsense/type";
 
 const getData = async (id: string) => {
   const res = await fetch(
@@ -23,28 +24,29 @@ const getData = async (id: string) => {
 };
 const getPostList = async (page: number = 0, limit: number = 10) => {
   const res = await fetch(
-  // `/api/post/list`, 
-  `${process.env.NEXT_PUBLIC_API_HOST}/api/post/list`,
-  {
-    method: "POST",
-    body: JSON.stringify({
-      page: page,
-      limit: limit,
-      // conditions: {
-      // creator: {
-      // email: 'admin@sotong.co.kr'
-      // email
-      //     ...(email && { email: email })
-      // }
-      // }
-      // conditions
-      conditions: {},
-    }),
-    headers: { "Content-Type": "application/json" },
-    // cache: process.env.NODE_ENV !== "development" && "default" || "no-cache",
-    cache: 'no-cache',
-    next: { revalidate: 60 },
-  });
+    // `/api/post/list`,
+    `${process.env.NEXT_PUBLIC_API_HOST}/api/post/list`,
+    {
+      method: "POST",
+      body: JSON.stringify({
+        page: page,
+        limit: limit,
+        // conditions: {
+        // creator: {
+        // email: 'admin@sotong.co.kr'
+        // email
+        //     ...(email && { email: email })
+        // }
+        // }
+        // conditions
+        conditions: {},
+      }),
+      headers: { "Content-Type": "application/json" },
+      // cache: process.env.NODE_ENV !== "development" && "default" || "no-cache",
+      cache: "no-cache",
+      next: { revalidate: 60 },
+    }
+  );
   // console.log(await res.json());
   return res.json();
 };
@@ -72,19 +74,22 @@ export default async function PostList({ pageIndex }: { pageIndex: string }) {
     <>
       {/* {isLoading && <Spinner />} */}
       {posts &&
-        (posts as Array<any>).map((post) => (
-          <PostPreview
-            key={post.id}
-            id={post.id}
-            tags={post.tags}
-            category={post.category}
-            description={post.description}
-            date={post.createdAt}
-            title={post.title}
-            image={post.image}
-            imageAlt={post.imageAlt}
-            author={post.author}
-          />
+        (posts as Array<any>).map((post,i) => (
+          <>
+            <PostPreview
+              key={post.id}
+              id={post.id}
+              tags={post.tags}
+              category={post.category}
+              description={post.description}
+              date={post.createdAt}
+              title={post.title}
+              image={post.image}
+              imageAlt={post.imageAlt}
+              author={post.author}
+            />
+            {i%3===0 && <GoogleAd type={`${GoogldAdType.InFeed}`}/>}
+          </>
         ))}
       {pages && (
         <Pagination

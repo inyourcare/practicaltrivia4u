@@ -1,4 +1,6 @@
 "use client";
+import GoogleAd from "@/components/adsense/GoogleAd";
+import { GoogldAdType } from "@/components/adsense/type";
 import WawasInKakaomap from "@/components/partners/wawa/WawasInKakaomap";
 import Image from "next/image";
 import { useEffect, useState } from "react";
@@ -188,6 +190,7 @@ export default function Home() {
           alt=""
         />
       </div>
+      <GoogleAd type={`${GoogldAdType.Display}`}/>
     </main>
   );
 }

@@ -1,3 +1,5 @@
+import GoogleAd from "@/components/adsense/GoogleAd";
+import { GoogldAdType } from "@/components/adsense/type";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -5,7 +7,6 @@ export default function Home() {
   return (
     <main>
       <div className="w-full flex flex-col justify-center items-center ">
-        
         <div className="w-[80vw] h-[300px] bg-[url('/images/edu4u/main.png')] bg-no-repeat bg-center bg-cover"></div>
         <div className="w-[80vw]">
           <div className="grid grid-cols-2 lg:grid-cols-4">
@@ -149,6 +150,8 @@ export default function Home() {
             </p>
           </div>
         </div>
+
+        <GoogleAd type={`${GoogldAdType.Display}`}/>
       </div>
     </main>
   );

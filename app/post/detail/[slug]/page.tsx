@@ -9,6 +9,8 @@ import { useEffect, useState } from "react";
 import Spinner from "@/components/spinner/Spinner";
 import Head from "next/head";
 import { Metadata } from "next";
+import GoogleAd from "@/components/adsense/GoogleAd";
+import { GoogldAdType } from "@/components/adsense/type";
 
 export interface PostMetadata {
   id: string;
@@ -52,7 +54,11 @@ export const generateMetadata = async ({
   };
 };
 
-export default async function PostHome({ params }: { params: { slug: string } }) {
+export default async function PostHome({
+  params,
+}: {
+  params: { slug: string };
+}) {
   const slug = params.slug;
   const { post } = await getData(slug);
   // const matterResult = matter(post.contents);
@@ -108,6 +114,8 @@ export default async function PostHome({ params }: { params: { slug: string } })
             {/* {matterResult.content} */}
             {/* <Markdown>{matterResult.content}</Markdown> */}
             {parse(post.contents)}
+
+            <GoogleAd type={`${GoogldAdType.Display}`} />
           </div>
         </>
       )}
