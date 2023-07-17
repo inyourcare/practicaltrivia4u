@@ -35,7 +35,7 @@ async function generateSiteMap() {
   // const { posts, pages } = await getPostList();
   const posts = await prisma.post.findMany({ where: { enable: true } });
   return `<?xml version="1.0" encoding="UTF-8"?>
-   <urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
+   <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
      <!--We manually set the two URLs we know already-->
      <url>
        <loc>${process.env.NEXT_PUBLIC_HOST_BASE_URL}</loc>
