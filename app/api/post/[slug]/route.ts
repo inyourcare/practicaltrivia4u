@@ -16,7 +16,7 @@ export async function GET(
   });
 
   await prisma.$disconnect();
-  if (post) {
+  if (post && post.enable) {
     console.log("findPost,", post.id);
     return NextResponse.json({ post });
   }
