@@ -14,12 +14,12 @@ const GoogleAd = ({ type }: { type: string }) => {
   }, []);
 
   return (
-    <div className="googleAd-container w-full">
+    <div className={`googleAd-container w-full ${type === GoogldAdType.Display && 'mt-5 lg:mt-10 p-5'}`}>
       {/* 반응형 디스플레이 */}
       {(type === GoogldAdType.Display && (
         <ins
-          className="adsbygoogle"
-          style={{ display: "block" }}
+          className="adsbygoogle flex justify-center items-center"
+          // style={{ display: "block" }}
           data-ad-client="ca-pub-8425397323378076"
           data-ad-slot="8957801928"
           data-ad-format="auto"
@@ -32,8 +32,8 @@ const GoogleAd = ({ type }: { type: string }) => {
             <div className="h-[0px] lg:h-auto ">
               <div className="border boder-gray-100 p-5">
                 <ins
-                  className="adsbygoogle"
-                  style={{ display: "block" }}
+                  className="adsbygoogle flex justify-center items-center"
+                  // style={{ display: "block" }}
                   data-ad-format="fluid"
                   data-ad-layout-key="-fb+5w+4e-db+86"
                   data-ad-client="ca-pub-8425397323378076"
@@ -43,11 +43,11 @@ const GoogleAd = ({ type }: { type: string }) => {
             </div>
             
             {/* <div className="block lg:hidden"> */}
-            <div className="h-auto lg:h-[0px]">
+            <div className="h-auto lg:h-[0px] overflow-hidden">
               <div className="border boder-gray-100 p-5">
                 <ins
-                  className="adsbygoogle"
-                  style={{ display: "block" }}
+                  className="adsbygoogle flex justify-center items-center"
+                  // style={{ display: "block" }}
                   data-ad-format="fluid"
                   data-ad-layout-key="-6t+ed+2i-1n-4w"
                   data-ad-client="ca-pub-8425397323378076"
