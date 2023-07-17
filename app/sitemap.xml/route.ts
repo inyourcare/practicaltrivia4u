@@ -19,7 +19,7 @@ const getPostList = async (page: number = 0, limit: number = 100000) => {
       }),
       headers: { "Content-Type": "application/json" },
       // cache: process.env.NODE_ENV !== "development" && "default" || "no-cache",
-      cache: "no-cache",
+      // cache: "no-cache",
       next: { revalidate: 60 },
     }
   );

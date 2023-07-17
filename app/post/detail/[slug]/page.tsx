@@ -33,7 +33,7 @@ const getData = async (id: string) => {
       method: "GET",
       headers: { "Content-Type": "application/json" },
       // cache: process.env.NODE_ENV !== "development" && "default" || "no-cache"
-      cache: "no-cache",
+      // cache: "no-cache",
       next: { revalidate: 10 },
     }
   );
