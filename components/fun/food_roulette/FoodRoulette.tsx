@@ -11,6 +11,7 @@ import KakaoRestaurant from "./KakaoRestaurant";
 import KakaoShare from "@/components/kakao/KakaoShare";
 const nanumGothic = Nanum_Gothic({ weight: "400", subsets: ["latin"] });
 import "./foodroulette.css";
+import { HookGetCurrentPosition } from "@/components/hooks/HookGetCurrentPosition";
 
 // class MyDraggable extends Draggable {
 //   onDragEnter:DraggableEventHandler
@@ -18,8 +19,8 @@ import "./foodroulette.css";
 export default function FoodRoulette() {
   const query = "음식점";
   const initialState = {
-    lat: 0.0,
-    lng: 0.0,
+    // lat: 0.0,
+    // lng: 0.0,
     radius: 100,
     lsLoading: false,
   };
@@ -45,33 +46,34 @@ export default function FoodRoulette() {
   const [filteredRestaurantCnt, setFilteredRestaurantCnt] = useState(0)
 
   // get geo info
-  useEffect(() => {
-    const { geolocation } = navigator;
+  // useEffect(() => {
+  //   const { geolocation } = navigator;
 
-    geolocation.getCurrentPosition(
-      (position) => {
-        setState({
-          ...state,
-          lat: position.coords.latitude,
-          lng: position.coords.longitude,
-          lsLoading: false,
-        });
-      },
-      (error) => {
-        console.warn("Fail to fetch current location", error);
-        setState({ ...state, lat: 37, lng: 127, lsLoading: false });
-      },
-      {
-        // enableHighAccuracy: false,
-        enableHighAccuracy: true,
-        // maximumAge: 0,
-        maximumAge: 10000,
-        // timeout: Infinity,
-        timeout: 5000,
-      }
-    );
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  //   geolocation.getCurrentPosition(
+  //     (position) => {
+  //       setState({
+  //         ...state,
+  //         lat: position.coords.latitude,
+  //         lng: position.coords.longitude,
+  //         lsLoading: false,
+  //       });
+  //     },
+  //     (error) => {
+  //       console.warn("Fail to fetch current location", error);
+  //       setState({ ...state, lat: 37, lng: 127, lsLoading: false });
+  //     },
+  //     {
+  //       // enableHighAccuracy: false,
+  //       enableHighAccuracy: true,
+  //       // maximumAge: 0,
+  //       maximumAge: 10000,
+  //       // timeout: Infinity,
+  //       timeout: 5000,
+  //     }
+  //   );
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
+  const position = HookGetCurrentPosition();
 
   // sortable
   useEffect(() => {
@@ -107,8 +109,8 @@ export default function FoodRoulette() {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        lat: state.lat,
-        lng: state.lng,
+        lat: position.lat,
+        lng: position.lng,
         radius: state.radius,
         query: query,
       }),
@@ -143,7 +145,7 @@ export default function FoodRoulette() {
         setRestaurantsLoading(false);
         filteredKinds.clear();
       });
-  }, [state.lat, state.lng, state.radius, kinds, kindMap, filteredKinds]);
+  }, [position.lat, position.lng, state.radius, kinds, kindMap, filteredKinds]);
 
   function mingle() {
     const listItem = document.getElementById(listItmeContainerId);

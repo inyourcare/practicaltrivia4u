@@ -1,52 +1,54 @@
 "use client";
 import GoogleAd from "@/components/adsense/GoogleAd";
 import { GoogldAdType } from "@/components/adsense/type";
+import { HookGetCurrentPosition } from "@/components/hooks/HookGetCurrentPosition";
 import WawasInKakaomap from "@/components/partners/wawa/WawasInKakaomap";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
 export default function Home() {
   const initialState = {
-    lat: 0.0,
-    lng: 0.0,
-    radius: 100,
-    lsLoading: false,
+    // lat: 0.0,
+    // lng: 0.0,
+    // radius: 100,
+    // lsLoading: false,
   };
   const [state, setState] = useState(initialState);
+  const position = HookGetCurrentPosition();
   // get geo info
-  useEffect(() => {
-    const { geolocation } = navigator;
+  // useEffect(() => {
+  //   const { geolocation } = navigator;
 
-    geolocation.getCurrentPosition(
-      (position) => {
-        setState({
-          ...state,
-          lat: position.coords.latitude,
-          lng: position.coords.longitude,
-          lsLoading: false,
-        });
-      },
-      (error) => {
-        console.warn("Fail to fetch current location", error);
-        setState({ ...state, lat: 37, lng: 127, lsLoading: false });
-      },
-      {
-        // enableHighAccuracy: false,
-        enableHighAccuracy: true,
-        // maximumAge: 0,
-        maximumAge: 10000,
-        // timeout: Infinity,
-        timeout: 5000,
-      }
-    );
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  //   geolocation.getCurrentPosition(
+  //     (position) => {
+  //       setState({
+  //         ...state,
+  //         lat: position.coords.latitude,
+  //         lng: position.coords.longitude,
+  //         lsLoading: false,
+  //       });
+  //     },
+  //     (error) => {
+  //       console.warn("Fail to fetch current location", error);
+  //       setState({ ...state, lat: 37, lng: 127, lsLoading: false });
+  //     },
+  //     {
+  //       // enableHighAccuracy: false,
+  //       enableHighAccuracy: true,
+  //       // maximumAge: 0,
+  //       maximumAge: 10000,
+  //       // timeout: Infinity,
+  //       timeout: 5000,
+  //     }
+  //   );
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
 
   return (
     <main>
       <div className="flex justify-center items-center flex-col p-0 md:p-20">
         ※현재 위치로부터 가까운 와와학습코칭센터입니다.(보이지 않을 경우 지도를 확대 해 보세요)
-        <WawasInKakaomap lat={state.lat} lon={state.lng} title={"현재위치"} />
+        <WawasInKakaomap lat={position.lat} lon={position.lng} title={"현재위치"} />
       </div>
       <div className="flex justify-center items-center">
         <Image
