@@ -26,6 +26,12 @@ export default function Form({
   const form = useRef<HTMLFormElement>(null);
   const pathname = usePathname();
   const kindSelectId = "kind-select";
+  // const whiteTheme = setIsOpen && false || true
+  const [whiteTheme, setWhiteThem] = useState(setIsOpen ? false : true);
+
+  // useEffect(() => {
+  //   setWhiteThem((setIsOpen && false) || true);
+  // }, [setIsOpen, setWhiteThem]);
 
   const kinds = {
     edu4u: "edu4u",
@@ -183,12 +189,12 @@ export default function Form({
             );
         })
         .then(() => {
-          alert("정상적으로 문의되었습니다. 연락을 기다려 주세요! :D");
+          alert("정상적으로 신청되었습니다. 연락을 기다려 주세요! :D");
           if (setIsOpen) setIsOpen(false);
         })
         .catch(() => {
           alert(
-            "문의하기 프로세스 중 문제가 발생했습니다. 잠시 후 다시 시도 해 주세요 :("
+            "상담신청 프로세스 중 문제가 발생했습니다. 잠시 후 다시 시도 해 주세요 :("
           );
           if (setIsOpen) setIsOpen(false);
         })
@@ -202,11 +208,23 @@ export default function Form({
     "//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"
   );
   return (
-    <div className="w-[80vw] bg-gray-100 pb-10 pt-3 px-5 max-w-[650px] rounded-lg shadow-lg">
-      <header className="w-full h-20 bg-gray-200 border-b-2 border-gray-300 flex justify-center items-center text-2xl text-slate-600">
+    <div
+      className={`w-[80vw] ${
+        whiteTheme === true ? "" : "bg-gray-100 rounded-lg shadow-lg"
+      } pb-10 pt-3 px-5 max-w-[650px] `}
+    >
+      <header
+        className={`w-full h-20 ${
+          whiteTheme === true ? "" : "bg-gray-200 border-b-2 border-gray-300"
+        }  flex justify-center items-center text-2xl text-slate-600`}
+      >
         상담신청
       </header>
-      <div className="p-1 bg-gray-200 border-b-2 border-gray-300">
+      <div
+        className={`p-1 ${
+          whiteTheme === true ? "" : "bg-gray-200 border-b-2 border-gray-300"
+        } `}
+      >
         <Image
           width={1080}
           height={1080}
@@ -217,7 +235,9 @@ export default function Form({
         />
       </div>
       <form
-        className="bg-gray-200 rounded-md shadow-md px-3 pt-3 pb-8 w-full text-xs"
+        className={`${
+          whiteTheme === true ? "" : "bg-gray-200 rounded-md shadow-md"
+        }  px-3 pt-3 pb-8 w-full text-xs`}
         ref={form}
         onSubmit={(e) => onSubmitForm(e)}
       >
@@ -238,7 +258,7 @@ export default function Form({
           </span>
           <span className="w-1/2">
             <label className="block text-black text-xs font-bold my-1 truncate">
-              문의하실 분야
+              상담신청 분야
             </label>
             <select
               id={kindSelectId}
@@ -265,8 +285,8 @@ export default function Form({
                 <option value={kinds.power_china}>{`파워차이나`}</option>
                 <option value={kinds.solute}>{`솔루트유학`}</option>
               </optgroup>
-              <optgroup label="기타문의">
-                <option value={kinds.etc}>{`기타문의`}</option>
+              <optgroup label="기타상담">
+                <option value={kinds.etc}>{`기타상담`}</option>
               </optgroup>
             </select>
           </span>
@@ -348,7 +368,7 @@ export default function Form({
             value="submit"
             disabled={isProcessing}
           >
-            문의하기
+            신청하기
           </button>
           {setIsOpen && (
             <div

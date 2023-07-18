@@ -42,6 +42,6 @@ subMap.set(rootLinks.fun, [
   { href: "/fun/food_roulette", tagName: "점심추천" },
 ]);
 subMap.set(rootLinks.ask, [
-  { href: "/ask", tagName: "문의하기" },
-  { href: "/ask/booking", tagName: "상담예약" },
+  { href: "/ask", tagName: "상담신청(과외)" },
+  { href: "/ask/booking", tagName: "상담예약(학원)" },
 ]);
