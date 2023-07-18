@@ -20,6 +20,11 @@ export const metadata: Metadata = {
   description: "교육 서비스 및 사소하지만 유용한 것들을 다룹니다.",
 };
 
+function kakaoInit() { // 페이지가 로드되면 실행
+  window.Kakao.init(process.env.NEXT_PUBLIC_KAKAO_JAVASCRIPT_KEY);
+  console.log(window.Kakao.isInitialized());
+}
+
 export default function RootLayout({
   children,
 }: {
@@ -52,12 +57,16 @@ export default function RootLayout({
           defer
           src="https://developers.kakao.com/sdk/js/kakao.min.js"
         ></script>
-        <Script
+        <script
+          defer
+          src={`//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAO_JAVASCRIPT_KEY}&libraries=services,clusterer&autoload=false`}
+        ></script>
+        {/* <Script
           src={`//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAO_JAVASCRIPT_KEY}&libraries=services,clusterer&autoload=false`}
           // src={`//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.KAKAO_JAVASCRIPT_KEY}`}
           // strategy="beforeInteractive"
           strategy="lazyOnload"
-        />
+        /> */}
         {/* 네이버 */}
         <script
           defer
