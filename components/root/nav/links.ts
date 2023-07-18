@@ -43,4 +43,5 @@ subMap.set(rootLinks.fun, [
 ]);
 subMap.set(rootLinks.ask, [
   { href: "/ask", tagName: "문의하기" },
+  { href: "/ask/booking", tagName: "상담예약" },
 ]);
