@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 function BokingMain({ wawaBranches }: { wawaBranches: Array<any> }) {
   const title = "현재위치";
   const searchParams = useSearchParams();
-  const [branch,setBranch] = useState(searchParams.get("branch"))
+  const [branch, setBranch] = useState(searchParams.get("branch"));
   const position = HookGetCurrentPosition();
   const [address, setAddress] = useState("");
   const [map, setMap] = useState(undefined as unknown as any);
@@ -138,16 +138,57 @@ function BokingMain({ wawaBranches }: { wawaBranches: Array<any> }) {
             position: positions[i].latlng, // 마커를 표시할 위치
             title: positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
             image: markerImage, // 마커 이미지
+            clickable: true, // 마커를 클릭했을 때 지도의 클릭 이벤트가 발생하지 않도록 설정합니다
           });
+
+          // 인포윈도우를 생성합니다
+          // var infowindow = new window.kakao.maps.InfoWindow({
+          //   // content : '<div style="padding:5px;">Hello World!</div>',
+          //   // removable : true
+          //   content: positions[i].title
+          // });
+          // 아래 코드는 위의 마커를 생성하는 코드에서 clickable: true 와 같이
+          // 마커를 클릭했을 때 지도의 클릭 이벤트가 발생하지 않도록 설정합니다
+          // marker.setClickable(true);
+          // window.kakao.maps.event.addListener(marker, "click", function () {
+            // 마커 위에 인포윈도우를 표시합니다
+            // infowindow.open(map, marker);
+            // console.log(positions[i].title)
+            // setBranch(marker.getTitle());
+          //   infowindow.open(map, marker);  
+          // });
+          // window.kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
+          // window.kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
+          window.kakao.maps.event.addListener(marker, "click", makeClickListener(marker))
         }
       });
+    }
+    // // 인포윈도우를 표시하는 클로저를 만드는 함수입니다 
+    // function makeOverListener(map:any, marker:any, infowindow:any) {
+    //   return function() {
+    //       infowindow.open(map, marker);
+    //   };
+    // }
+    // // 인포윈도우를 닫는 클로저를 만드는 함수입니다 
+    // function makeOutListener(infowindow:any) {
+    //   return function() {
+    //       infowindow.close();
+    //   };
+    // }
+    function makeClickListener(marker:any) {
+      return function() {
+          // infowindow.close();
+          setBranch(marker.getTitle())
+      };
     }
   }, [position.lat, position.lng, title, wawaBranches]);
   return (
     <>
       <div>Branch: {branch}</div>
       <div className="flex flex-wrap justify-between w-full">
-        <span className="w-2/12 min-w-[90px] flex justify-center items-center">장소검색:</span>
+        <span className="w-2/12 min-w-[90px] flex justify-center items-center">
+          장소검색:
+        </span>
         <input
           className="w-10/12 shadow appearance-none border rounded py-2 px-1 text-black"
           value={address}
@@ -165,8 +206,8 @@ function BokingMain({ wawaBranches }: { wawaBranches: Array<any> }) {
                   <DaumPostPopupOpenBtn setAddress={setAddress} />
                 </span> */}
       </div>
-      ※ 위치로부터 가까운 와와학습코칭센터입니다.(보이지 않을 경우 지도를
-      확대 해 보세요)
+      ※ 위치로부터 가까운 와와학습코칭센터입니다.(보이지 않을 경우 지도를 확대
+      해 보세요)
       <div id="map" style={{ width: "100%", height: 500 }}>
         Sorry, kakao map not loaded, try refresh after some minutes :D
       </div>
