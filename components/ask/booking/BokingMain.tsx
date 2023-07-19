@@ -4,12 +4,13 @@ import { useSearchParams } from "next/navigation";
 import { useDaumPostcodePopup } from "react-daum-postcode";
 import { useEffect, useState } from "react";
 
-function BokingMain({wawaBranches}: {wawaBranches:Array<any>}) {
+function BokingMain({ wawaBranches }: { wawaBranches: Array<any> }) {
   const title = "현재위치";
   const searchParams = useSearchParams();
-  const branch = searchParams.get("branch");
+  const [branch,setBranch] = useState(searchParams.get("branch"))
   const position = HookGetCurrentPosition();
   const [address, setAddress] = useState("");
+  const [map, setMap] = useState(undefined as unknown as any);
   const daumPostOpen = useDaumPostcodePopup(
     "//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"
   );
@@ -31,72 +32,40 @@ function BokingMain({wawaBranches}: {wawaBranches:Array<any>}) {
     // console.log(fullAddress); // e.g. '서울 성동구 왕십리로2길 20 (성수동1가)'
     if (fullAddress) setAddress(fullAddress);
   };
-  // useEffect(() => {
-  //   // 주소-좌표 변환 객체를 생성합니다
-  //   var geocoder = new window.kakao.maps.services.Geocoder();
+  useEffect(() => {
+    if (map && address) {
+      // 주소-좌표 변환 객체를 생성합니다
+      var geocoder = new window.kakao.maps.services.Geocoder();
 
-  //   // 주소로 좌표를 검색합니다
-  //   geocoder.addressSearch(
-  //     "제주특별자치도 제주시 첨단로 242",
-  //     function (result:any, status:any) {
-  //       // 정상적으로 검색이 완료됐으면
-  //       if (status === window.kakao.maps.services.Status.OK) {
-  //         var coords = new window.kakao.maps.LatLng(result[0].y, result[0].x);
+      // 주소로 좌표를 검색합니다
+      geocoder.addressSearch(
+        // "제주특별자치도 제주시 첨단로 242",
+        address,
+        function (result: any, status: any) {
+          // 정상적으로 검색이 완료됐으면
+          if (status === window.kakao.maps.services.Status.OK) {
+            var coords = new window.kakao.maps.LatLng(result[0].y, result[0].x);
 
-  //         // 결과값으로 받은 위치를 마커로 표시합니다
-  //         var marker = new window.kakao.maps.Marker({
-  //           map: map,
-  //           position: coords,
-  //         });
+            // 결과값으로 받은 위치를 마커로 표시합니다
+            var marker = new window.kakao.maps.Marker({
+              map: map,
+              position: coords,
+            });
 
-  //         // 인포윈도우로 장소에 대한 설명을 표시합니다
-  //         var infowindow = new kakao.maps.InfoWindow({
-  //           content:
-  //             '<div style="width:150px;text-align:center;padding:6px 0;">우리회사</div>',
-  //         });
-  //         infowindow.open(map, marker);
+            // 인포윈도우로 장소에 대한 설명을 표시합니다
+            var infowindow = new window.kakao.maps.InfoWindow({
+              content:
+                '<div style="width:150px;text-align:center;padding:6px 0;">우리집</div>',
+            });
+            infowindow.open(map, marker);
 
-  //         // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-  //         map.setCenter(coords);
-  //       }
-  //     }
-  //   );
-  // }, []);
-  // const [wawaBranches, setWawaBranches] = useState(new Array());
-  // const getWawaBranchesList = async () =>
-  //   await fetch(`/api/wawaBranches/list`, {
-  //     method: "POST",
-  //     body: JSON.stringify({
-  //       page: 0,
-  //       limit: 1000,
-  //       // conditions: {
-  //       // creator: {
-  //       // email: 'admin@sotong.co.kr'
-  //       // email
-  //       //     ...(email && { email: email })
-  //       // }
-  //       // }
-  //       // conditions
-  //       conditions: {},
-  //     }),
-  //     headers: { "Content-Type": "application/json" },
-  //   }).then(async (result) => {
-  //     const { wawaBranches, pages } = await result.json();
-  //     // console.log(wawaBranches, pages);
-  //     return [wawaBranches, pages];
-  //   });
-
-  // useEffect(() => {
-  //   getWawaBranchesList().then((data) => {
-  //     const [wawaBranches, pages] = data;
-  //     console.log("kakaomap branch loaded::", wawaBranches.length);
-  //     const arr = wawaBranches as Array<any>;
-  //     if (arr && arr.length > 0) {
-  //       console.log("start generating markers::", arr.length);
-  //       setWawaBranches(arr);
-  //     }
-  //   });
-  // }, []);
+            // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+            map.setCenter(coords);
+          }
+        }
+      );
+    }
+  }, [address]);
   useEffect(() => {
     // console.log('useeffect' , window, window.kakao, window.Kakao, wawaBranches)
     if (
@@ -117,6 +86,7 @@ function BokingMain({wawaBranches}: {wawaBranches:Array<any>}) {
           level: 7, //지도의 레벨(확대, 축소 정도)
         };
         var map = new window.kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
+        setMap(map);
         if (map) {
           map.setDraggable(false);
           map.setZoomable(false);
@@ -176,9 +146,10 @@ function BokingMain({wawaBranches}: {wawaBranches:Array<any>}) {
   return (
     <>
       <div>Branch: {branch}</div>
-      <div className="flex flex-wrap justify-between">
+      <div className="flex flex-wrap justify-between w-full">
+        <span className="w-2/12 min-w-[90px] flex justify-center items-center">장소검색:</span>
         <input
-          className="shadow appearance-none border rounded w-8/12 py-2 px-1 text-black"
+          className="w-10/12 shadow appearance-none border rounded py-2 px-1 text-black"
           value={address}
           readOnly
           onClick={() => daumPostOpen({ onComplete: daumPosthandleComplete })}
@@ -194,7 +165,7 @@ function BokingMain({wawaBranches}: {wawaBranches:Array<any>}) {
                   <DaumPostPopupOpenBtn setAddress={setAddress} />
                 </span> */}
       </div>
-      ※현재 위치로부터 가까운 와와학습코칭센터입니다.(보이지 않을 경우 지도를
+      ※ 위치로부터 가까운 와와학습코칭센터입니다.(보이지 않을 경우 지도를
       확대 해 보세요)
       <div id="map" style={{ width: "100%", height: 500 }}>
         Sorry, kakao map not loaded, try refresh after some minutes :D
