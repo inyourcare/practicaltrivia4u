@@ -209,8 +209,23 @@ function BokingMain({ wawaBranches }: { wawaBranches: Array<any> }) {
   }, [position.lat, position.lng, wawaBranches]);
   return (
     <>
-      <div className={`${(branch && "flex") || "hidden"}`}>hidden</div>
-      <div>Branch: {branch}</div>
+      <div
+        className={`${
+          (branch && "scale-y-100") || "scale-y-0"
+        } transition ease-in-out delay-150`}
+      >
+        <div>
+          {/* 예약신청폼 */}
+          <div>선택지점: {branch}</div>
+        </div>
+      </div>
+      <div
+        className={`${
+          (branch && "scale-y-0") || "scale-y-100"
+        } transition ease-in-out delay-150`}
+      >
+        <div>지점을 선택하시면 예약신청폼이 열립니다.</div>
+      </div>
       <div className="flex flex-wrap justify-between w-full">
         <span className="w-2/12 min-w-[90px] flex justify-center items-center">
           장소검색:
