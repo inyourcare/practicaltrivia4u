@@ -33,6 +33,18 @@ function BokingMain({ wawaBranches }: { wawaBranches: Array<any> }) {
     if (fullAddress) setAddress(fullAddress);
   };
   useEffect(() => {
+    if (map && branch) {
+      const name = branch.slice(0,branch.length-1)
+      // console.log()
+      const filtered = wawaBranches.filter(b=>b.name===name)
+      if (filtered.length>0){
+        const b = filtered[0]
+        var coords = new window.kakao.maps.LatLng(b.lat, b.lng);
+        map.setCenter(coords);
+      }
+    }
+  }, [branch]);
+  useEffect(() => {
     if (map && address) {
       // 주소-좌표 변환 객체를 생성합니다
       var geocoder = new window.kakao.maps.services.Geocoder();
@@ -115,7 +127,7 @@ function BokingMain({ wawaBranches }: { wawaBranches: Array<any> }) {
 
         var positions = wawaBranches.map((b) => {
           return {
-            title: `와와학습코칭센터 ${b.name}점`,
+            title: `${b.name}점`,
             latlng: new window.kakao.maps.LatLng(b.lat, b.lng),
           };
         });
@@ -217,7 +229,7 @@ function BokingMain({ wawaBranches }: { wawaBranches: Array<any> }) {
           <div className="h-[200px] overflow-y-scroll my-5 border-2 border-gray-200">
             <div className="grid grid-cols-4 md:grid-cols-8 gap-4">
               {wawaBranches.map((b) => (
-                <div key={b.id}>{`${b.name}점`}</div>
+                <div key={b.id} className="cursor-pointer" onClick={()=>setBranch(`${b.name}점`)}>{`${b.name}점`}</div>
               ))}
             </div>
           </div>
