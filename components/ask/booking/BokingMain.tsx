@@ -5,8 +5,9 @@ import { useDaumPostcodePopup } from "react-daum-postcode";
 import { useEffect, useState } from "react";
 
 function BokingMain({ wawaBranches }: { wawaBranches: Array<any> }) {
-  const title = "현재위치";
+  // const title = "현재위치";
   const searchParams = useSearchParams();
+  // const searchBranch = searchParams.get("branch")
   const [branch, setBranch] = useState(searchParams.get("branch"));
   const position = HookGetCurrentPosition();
   const [address, setAddress] = useState("");
@@ -32,18 +33,24 @@ function BokingMain({ wawaBranches }: { wawaBranches: Array<any> }) {
     // console.log(fullAddress); // e.g. '서울 성동구 왕십리로2길 20 (성수동1가)'
     if (fullAddress) setAddress(fullAddress);
   };
+
+  // useEffect(()=>{
+  //   if (searchBranch){
+  //     setBranch(searchBranch)
+  //   }
+  // },[searchBranch])
   useEffect(() => {
     if (map && branch) {
-      const name = branch.slice(0,branch.length-1)
-      // console.log()
-      const filtered = wawaBranches.filter(b=>b.name===name)
-      if (filtered.length>0){
-        const b = filtered[0]
+      const name = branch.slice(0, branch.length - 1);
+      console.log("map branch effect", branch);
+      const filtered = wawaBranches.filter((b) => b.name === name);
+      if (filtered.length > 0) {
+        const b = filtered[0];
         var coords = new window.kakao.maps.LatLng(b.lat, b.lng);
         map.setCenter(coords);
       }
     }
-  }, [branch]);
+  }, [map, branch]);
   useEffect(() => {
     if (map && address) {
       // 주소-좌표 변환 객체를 생성합니다
@@ -62,14 +69,15 @@ function BokingMain({ wawaBranches }: { wawaBranches: Array<any> }) {
             var marker = new window.kakao.maps.Marker({
               map: map,
               position: coords,
+              title: "home",
             });
 
             // 인포윈도우로 장소에 대한 설명을 표시합니다
-            var infowindow = new window.kakao.maps.InfoWindow({
-              content:
-                '<div style="width:150px;text-align:center;padding:6px 0;">우리집</div>',
-            });
-            infowindow.open(map, marker);
+            // var infowindow = new window.kakao.maps.InfoWindow({
+            //   content:
+            //     '<div style="width:150px;text-align:center;padding:6px 0;">Home</div>',
+            // });
+            // infowindow.open(map, marker);
 
             // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
             map.setCenter(coords);
@@ -77,7 +85,7 @@ function BokingMain({ wawaBranches }: { wawaBranches: Array<any> }) {
         }
       );
     }
-  }, [address]);
+  }, [map, address]);
   useEffect(() => {
     // console.log('useeffect' , window, window.kakao, window.Kakao, wawaBranches)
     if (
@@ -92,9 +100,10 @@ function BokingMain({ wawaBranches }: { wawaBranches: Array<any> }) {
         // console.log(window.kakao.maps, window.kakao.maps.LatLng);
         // console.log(window.Kakao);
         var container = document.getElementById("map") as HTMLElement; //지도를 담을 영역의 DOM 레퍼런스
+        var center = new window.kakao.maps.LatLng(position.lat, position.lng);
         var options = {
           // center: new window.kakao.maps.LatLng(33.450701, 126.570667), //지도의 중심좌표.
-          center: new window.kakao.maps.LatLng(position.lat, position.lng), //지도의 중심좌표.
+          center: center, //지도의 중심좌표.
           level: 7, //지도의 레벨(확대, 축소 정도)
         };
         var map = new window.kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
@@ -120,7 +129,7 @@ function BokingMain({ wawaBranches }: { wawaBranches: Array<any> }) {
         var marker = new window.kakao.maps.Marker({
           map: map,
           position: new window.kakao.maps.LatLng(position.lat, position.lng),
-          title: title,
+          title: "현재위치",
         });
 
         console.log("kakaomap generated");
@@ -163,39 +172,44 @@ function BokingMain({ wawaBranches }: { wawaBranches: Array<any> }) {
           // 마커를 클릭했을 때 지도의 클릭 이벤트가 발생하지 않도록 설정합니다
           // marker.setClickable(true);
           // window.kakao.maps.event.addListener(marker, "click", function () {
-            // 마커 위에 인포윈도우를 표시합니다
-            // infowindow.open(map, marker);
-            // console.log(positions[i].title)
-            // setBranch(marker.getTitle());
-          //   infowindow.open(map, marker);  
+          // 마커 위에 인포윈도우를 표시합니다
+          // infowindow.open(map, marker);
+          // console.log(positions[i].title)
+          // setBranch(marker.getTitle());
+          //   infowindow.open(map, marker);
           // });
           // window.kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
           // window.kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
-          window.kakao.maps.event.addListener(marker, "click", makeClickListener(marker))
+          window.kakao.maps.event.addListener(
+            marker,
+            "click",
+            makeClickListener(marker)
+          );
         }
       });
     }
-    // // 인포윈도우를 표시하는 클로저를 만드는 함수입니다 
+    // // 인포윈도우를 표시하는 클로저를 만드는 함수입니다
     // function makeOverListener(map:any, marker:any, infowindow:any) {
     //   return function() {
     //       infowindow.open(map, marker);
     //   };
     // }
-    // // 인포윈도우를 닫는 클로저를 만드는 함수입니다 
+    // // 인포윈도우를 닫는 클로저를 만드는 함수입니다
     // function makeOutListener(infowindow:any) {
     //   return function() {
     //       infowindow.close();
     //   };
     // }
-    function makeClickListener(marker:any) {
-      return function() {
-          // infowindow.close();
-          setBranch(marker.getTitle())
+    function makeClickListener(marker: any) {
+      return function () {
+        // infowindow.close();
+        setBranch(marker.getTitle());
       };
     }
-  }, [position.lat, position.lng, title, wawaBranches]);
+  }, [position.lat, position.lng, wawaBranches]);
   return (
     <>
+      <div className={`${(branch && "flex") || "hidden"}`}>hidden</div>
       <div>Branch: {branch}</div>
       <div className="flex flex-wrap justify-between w-full">
         <span className="w-2/12 min-w-[90px] flex justify-center items-center">
@@ -229,7 +243,11 @@ function BokingMain({ wawaBranches }: { wawaBranches: Array<any> }) {
           <div className="h-[200px] overflow-y-scroll my-5 border-2 border-gray-200">
             <div className="grid grid-cols-4 md:grid-cols-8 gap-4">
               {wawaBranches.map((b) => (
-                <div key={b.id} className="cursor-pointer" onClick={()=>setBranch(`${b.name}점`)}>{`${b.name}점`}</div>
+                <div
+                  key={b.id}
+                  className="cursor-pointer"
+                  onClick={() => setBranch(`${b.name}점`)}
+                >{`${b.name}점`}</div>
               ))}
             </div>
           </div>
