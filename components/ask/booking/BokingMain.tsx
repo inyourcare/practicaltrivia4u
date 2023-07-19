@@ -1,17 +1,20 @@
 "use client";
 import { HookGetCurrentPosition } from "@/components/hooks/HookGetCurrentPosition";
-import { useSearchParams } from "next/navigation";
+// import { useSearchParams } from "next/navigation";
 import { useDaumPostcodePopup } from "react-daum-postcode";
 import { useEffect, useState } from "react";
+import { getWawaBranchesList } from "./BookingForm";
 
-function BokingMain({ wawaBranches }: { wawaBranches: Array<any> }) {
+function BokingMain({ wawaBranches,branchName }: { wawaBranches: Array<any>,branchName?:string }) {
+  const decodedBranchName = branchName && decodeURI(branchName)
   // const title = "현재위치";
-  const searchParams = useSearchParams();
-  // const searchBranch = searchParams.get("branch")
-  const [branch, setBranch] = useState(searchParams.get("branch"));
+  // const searchParams = useSearchParams();
+  // const searchBranch = searchParams.get("branch");
+  const [branch, setBranch] = useState(decodedBranchName);
   const position = HookGetCurrentPosition();
   const [address, setAddress] = useState("");
   const [map, setMap] = useState(undefined as unknown as any);
+  const [isLoading, setIsLoading] = useState(decodedBranchName ? true : false);
   const daumPostOpen = useDaumPostcodePopup(
     "//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"
   );
@@ -34,11 +37,31 @@ function BokingMain({ wawaBranches }: { wawaBranches: Array<any> }) {
     if (fullAddress) setAddress(fullAddress);
   };
 
-  // useEffect(()=>{
-  //   if (searchBranch){
-  //     setBranch(searchBranch)
-  //   }
-  // },[searchBranch])
+  useEffect(() => {
+    if (decodedBranchName && map) {
+      getWawaBranchesList({ name: decodedBranchName })
+        .then((data) => {
+          const [searched, pages] = data;
+          console.log(
+            "get branch with",
+            decodedBranchName,
+            // data,
+            // searched,
+            // pages
+          );
+          if (searched && searched.length > 0) {
+            var coords = new window.kakao.maps.LatLng(
+              searched[0].lat,
+              searched[0].lng
+            );
+            map.setCenter(coords);
+          }
+        })
+        .finally(() => {
+          setIsLoading(false);
+        });
+    }
+  }, [map, branchName, decodedBranchName]);
   useEffect(() => {
     if (map && branch) {
       const name = branch.slice(0, branch.length - 1);
@@ -50,7 +73,7 @@ function BokingMain({ wawaBranches }: { wawaBranches: Array<any> }) {
         map.setCenter(coords);
       }
     }
-  }, [map, branch]);
+  }, [map, branch, wawaBranches]);
   useEffect(() => {
     if (map && address) {
       // 주소-좌표 변환 객체를 생성합니다

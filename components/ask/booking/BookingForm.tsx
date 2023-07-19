@@ -1,7 +1,7 @@
 import { HookGetCurrentPosition } from "@/components/hooks/HookGetCurrentPosition";
 import BokingMain from "./BokingMain";
 
-const getWawaBranchesList = async () =>
+export const getWawaBranchesList = async (conditions?:any) =>
   await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/api/wawaBranches/list`, {
     method: "POST",
     body: JSON.stringify({
@@ -15,7 +15,7 @@ const getWawaBranchesList = async () =>
       // }
       // }
       // conditions
-      conditions: {},
+      conditions: conditions,
     }),
     headers: { "Content-Type": "application/json" },
   }).then(async (result) => {
@@ -23,14 +23,14 @@ const getWawaBranchesList = async () =>
     // console.log(wawaBranches, pages);
     return [wawaBranches, pages];
   });
-export default async function BookingForm() {
+export default async function BookingForm({branchName}:{branchName?:string}) {
   const [wawaBranches, pages] = await getWawaBranchesList();
   return (
     <>
       {/* <div>Branch: {branch}</div> */}
 
       <div className="flex justify-center items-center flex-col p-0 md:p-20">
-        <BokingMain wawaBranches={wawaBranches} />
+        <BokingMain wawaBranches={wawaBranches} branchName={branchName}/>
       </div>
     </>
   );
