@@ -360,7 +360,7 @@ export default function Form({
           <button
             className={
               // "absolute bottom-2 right-10 rounded-xl bg-gray-300 p-2 min-w-[90px] justify-center items-center border text-xs font-bold " +
-              " rounded-xl bg-emerald-100 border-emerald-400 p-2 min-w-[90px] justify-center items-center border text-xs font-bold " +
+              " rounded-xl bg-blue-200 border-blue-400 hover:bg-blue-400 p-2 min-w-[90px] justify-center items-center border text-xs font-bold " +
               "max-h-[80px] h-10"
               // (isProcessing ? "disabled" : "")
             }
@@ -374,8 +374,8 @@ export default function Form({
             <div
               className={
                 // "absolute bottom-2 right-10 rounded-xl bg-gray-300 p-2 min-w-[90px] justify-center items-center border text-xs font-bold " +
-                " rounded-xl bg-rose-500 border-rose-800 p-2 min-w-[90px] justify-center items-center border text-xs font-bold " +
-                "max-h-[80px] h-10 flex justify-center items-center"
+                " rounded-xl bg-rose-500 border-rose-800 hover:bg-rose-800 p-2 min-w-[90px] justify-center items-center border text-xs font-bold " +
+                "max-h-[80px] h-10 flex justify-center items-center mr-1"
                 // (isProcessing ? "disabled" : "")
               }
               onClick={() =>

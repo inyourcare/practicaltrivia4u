@@ -13,7 +13,8 @@ export default function Home() {
     //   linkId
     // ) as HTMLAnchorElement;
     // link.click();
-    router.push('/edu4u')
+    // router.push('/edu4u')
+    redirect('/edu4u')
   }, [router]);
   return (
     <main>
