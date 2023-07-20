@@ -119,7 +119,7 @@ export default function BookingMainForm({
           height={250}
           style={{ maxHeight: "250px" }}
           className="rounded-md"
-          src={`/images/ask/booking/banner.png`}
+          src={`/images/ask/booking/banner-yellow.png`}
           alt=""
         />
       </div>
@@ -262,7 +262,7 @@ export default function BookingMainForm({
             <button
               className={
                 // "absolute bottom-2 right-10 rounded-xl bg-gray-300 p-2 min-w-[90px] justify-center items-center border text-xs font-bold " +
-                " rounded-xl bg-gray-300 p-2 min-w-[90px] justify-center items-center border text-xs font-bold " +
+                " rounded-xl bg-yellow-200 p-2 min-w-[90px] justify-center items-center border text-xs font-bold " +
                 "max-h-[80px] h-10"
                 // (isProcessing ? "disabled" : "")
               }
