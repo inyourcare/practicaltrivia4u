@@ -4,9 +4,16 @@ import { HookGetCurrentPosition } from "@/components/hooks/HookGetCurrentPositio
 import { useDaumPostcodePopup } from "react-daum-postcode";
 import { useEffect, useState } from "react";
 import { getWawaBranchesList } from "./BookingForm";
+import BookingMainForm from "./form/BookingMainForm";
 
-function BokingMain({ wawaBranches,branchName }: { wawaBranches: Array<any>,branchName?:string }) {
-  const decodedBranchName = branchName && decodeURI(branchName)
+function BokingMain({
+  wawaBranches,
+  branchName,
+}: {
+  wawaBranches: Array<any>;
+  branchName?: string;
+}) {
+  const decodedBranchName = branchName && decodeURI(branchName);
   // const title = "현재위치";
   // const searchParams = useSearchParams();
   // const searchBranch = searchParams.get("branch");
@@ -44,7 +51,7 @@ function BokingMain({ wawaBranches,branchName }: { wawaBranches: Array<any>,bran
           const [searched, pages] = data;
           console.log(
             "get branch with",
-            decodedBranchName,
+            decodedBranchName
             // data,
             // searched,
             // pages
@@ -235,12 +242,9 @@ function BokingMain({ wawaBranches,branchName }: { wawaBranches: Array<any>,bran
       <div
         className={`${
           (branch && "scale-y-100") || "scale-y-0"
-        } transition ease-in-out delay-150`}
+        } transition ease-in-out delay-150 w-full`}
       >
-        <div>
-          {/* 예약신청폼 */}
-          <div>선택지점: {branch}</div>
-        </div>
+        <BookingMainForm address={address} branch={branch} />
       </div>
       <div
         className={`${
@@ -270,14 +274,14 @@ function BokingMain({ wawaBranches,branchName }: { wawaBranches: Array<any>,bran
                   <DaumPostPopupOpenBtn setAddress={setAddress} />
                 </span> */}
       </div>
-      ※ 위치로부터 가까운 와와학습코칭센터입니다.(보이지 않을 경우 지도를 확대
-      해 보세요)
+      ※ 위치로부터 가까운 학원목록입니다.(보이지 않을 경우 지도를 확대 해
+      보세요)
       <div id="map" style={{ width: "100%", height: 500 }}>
         Sorry, kakao map not loaded, try refresh after some minutes :D
       </div>
       {wawaBranches && wawaBranches.length > 0 && (
         <div className="w-full my-5">
-          <strong className="">등록된 와와학습코칭센터 목록</strong>
+          <strong className="">등록된 학원 목록</strong>
           <div className="h-[200px] overflow-y-scroll my-5 border-2 border-gray-200">
             <div className="grid grid-cols-4 md:grid-cols-8 gap-4">
               {wawaBranches.map((b) => (

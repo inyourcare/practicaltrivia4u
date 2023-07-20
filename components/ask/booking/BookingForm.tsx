@@ -29,7 +29,7 @@ export default async function BookingForm({branchName}:{branchName?:string}) {
     <>
       {/* <div>Branch: {branch}</div> */}
 
-      <div className="flex justify-center items-center flex-col p-0 md:p-20">
+      <div className="flex justify-center items-center flex-col p-0 md:px-20">
         <BokingMain wawaBranches={wawaBranches} branchName={branchName}/>
       </div>
     </>
