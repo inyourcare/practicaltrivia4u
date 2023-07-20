@@ -32,7 +32,7 @@ export default function BookingMainForm({
         name: (
           form.current?.querySelector("input[name='name']") as HTMLInputElement
         ).value,
-        kind: "wawa",
+        kind: 'wawa',
         address: (
           form.current?.querySelector(
             "input[name='address']"
@@ -173,7 +173,7 @@ export default function BookingMainForm({
                 className="shadow appearance-none border rounded w-11/12 py-2 px-1 text-black"
                 value={selectedGrade}
                 onChange={(e) => setSelectedGrade(e.target.value)}
-                name="kind"
+                name="grade"
                 required
               >
                 <optgroup label="초등">
@@ -200,6 +200,20 @@ export default function BookingMainForm({
               </select>
             </span>
           </div>
+          {/* for emailjs hidden input*/}
+          <input
+            className="hidden"
+            name="description"
+            value={`학생학년:${selectedGrade}`}
+            readOnly
+          />
+          <input
+            className="hidden"
+            name="kind"
+            value={`wawa`}
+            readOnly
+          />
+          {/* for emailjs hidden input*/}
           <label className="block text-black text-xs font-bold my-1">
             주소(※빠르고 정확한 상담을 위해 정확히 입력 부탁드려요.)
           </label>

@@ -241,8 +241,8 @@ function BokingMain({
     <>
       <div
         className={`${
-          (branch && "scale-y-100") || "scale-y-0"
-        } transition ease-in-out delay-150 w-full`}
+          (branch && "scale-y-100") || "scale-y-0 h-0"
+        } transition ease-in-out delay-150 w-full origin-top`}
       >
         <BookingMainForm address={address} branch={branch} />
       </div>
