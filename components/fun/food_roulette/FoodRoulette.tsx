@@ -12,6 +12,8 @@ import KakaoShare from "@/components/kakao/KakaoShare";
 const nanumGothic = Nanum_Gothic({ weight: "400", subsets: ["latin"] });
 import "./foodroulette.css";
 import { HookGetCurrentPosition } from "@/components/hooks/HookGetCurrentPosition";
+import GoogleAd from "@/components/adsense/GoogleAd";
+import { GoogldAdType } from "@/components/adsense/type";
 
 // class MyDraggable extends Draggable {
 //   onDragEnter:DraggableEventHandler
@@ -237,6 +239,7 @@ export default function FoodRoulette() {
         lat {state.lat} / lng {state.lng} / lsLoading {state.lsLoading}
       </div> */}
       {/* <div className="w-full flex justify-center items-center flex-col "> */}
+      
       <Carousel>
         <h1 className="text-5xl drop-shadow-2xl [text-shadow:_5px_5px_5px_rgb(0_0_0_/_100%)] text-white text-center font-black">
           오늘 뭐먹지?
@@ -245,6 +248,8 @@ export default function FoodRoulette() {
           고민하고 결정하기도 아까운 시간. 오늘 뭐먹을지 대신 선택 해 드립니다.
         </p>
       </Carousel>
+      
+      <GoogleAd type={`${GoogldAdType.Display}`} />
       {/* </div> */}
       {/* <div className="w-full h-[500px] bg-gray-300">
         <iframe
