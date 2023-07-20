@@ -251,7 +251,7 @@ function BokingMain({
           (branch && "scale-y-0") || "scale-y-100"
         } transition ease-in-out delay-150`}
       >
-        <div>지점을 선택하시면 예약신청폼이 열립니다.</div>
+        <div className="font-bold">지점을 선택하시면 예약신청폼이 열립니다. :D </div>
       </div>
       <div className="flex flex-wrap justify-between w-full">
         <span className="w-2/12 min-w-[90px] flex justify-center items-center">
