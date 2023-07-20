@@ -6,7 +6,7 @@ export default function MainReviews() {
   const mainReviewContainerId = "main-review-container";
   useEffect(() => {
     const container = document.getElementById(mainReviewContainerId) as HTMLDivElement
-    console.log(container.scrollWidth)
+    // console.log(container.scrollWidth)
     container.scroll({
       left: container.scrollWidth/2 - 270,
       behavior: "smooth",
