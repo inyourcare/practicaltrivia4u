@@ -12,6 +12,9 @@ declare global {
     YT: any;
     naver: any;
     dataLayer: any;
+    // speech recognition
+    SpeechRecognition:any;
+    webkitSpeechRecognition:any;
   }
 }
 
