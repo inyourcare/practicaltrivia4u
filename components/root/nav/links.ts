@@ -21,7 +21,7 @@ linkMap.set(rootLinks.partners, {
 linkMap.set(rootLinks.post, { href: "/post/list/0", tagName: "POST" });
 linkMap.set(rootLinks.fun, {
   href: "/fun/food_roulette",
-  tagName: "점심추천",
+  tagName: "사유공간",
 });
 linkMap.set(rootLinks.ask, {
   href: "/ask",
