@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from "react";
 
-export default function VoiceRecognition() {
+export default function VoiceRecognition({ words }: { words: any }) {
+  const [spoken, setSpoken] = useState("");
   function startAndRefreshSpeechRecognition() {
     const SpeechRecognition =
       window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -28,7 +29,8 @@ export default function VoiceRecognition() {
         let transcript = e.results[i][0].transcript;
         const isFinal = e.results[i].isFinal;
         if (e.results[i].isFinal) {
-          console.log(transcript);
+          // console.log(transcript);
+          setSpoken(transcript);
         }
       }
     });
@@ -40,11 +42,40 @@ export default function VoiceRecognition() {
     recognition.start();
     console.log("speech recognition starts");
   }
-  startAndRefreshSpeechRecognition()
+  startAndRefreshSpeechRecognition();
+  useEffect(() => {
+    // let dbWords = new Array<any>();
+    // (words as Array<any>).map((fileWord) => {
+    //   const fileName = fileWord[0] as string;
+    //   const content = (fileWord[1] as string)
+    //     .replace(/(?:\t)/g, " ")
+    //     .replace(/(?:\r\n|\r|\n)/g, "<br />")
+    //     .split("<br />")
+    //     .map((s) => {
+    //       const splits = s.trim().split(" ");
+    //       const korean = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
+    //       let i = 0;
+    //       for (; i < splits.length; i += 1)
+    //         if (korean.test(splits[i]) === true) break;
+    //       return {
+    //         spell: splits.slice(0, i).join(" "),
+    //         korean: splits.slice(i).join(" "),
+    //         level: fileName.split('.')[0]
+    //       };
+    //     });
+    //   console.log(fileName, content);
+    //   dbWords = dbWords.concat(content)
+    // });
+    // console.log('dbWords',dbWords)
+    console.log(words)
+  }, [words]);
   return (
-    <>
-      <button onClick={() => startAndRefreshSpeechRecognition()}>start</button>hello voice
-      recognition
-    </>
+    <div className="w-full flex justify-center items-center flex-col">
+      <button onClick={() => startAndRefreshSpeechRecognition()}>
+        refresh
+      </button>
+      <br />
+      {spoken}
+    </div>
   );
 }
