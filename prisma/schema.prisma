@@ -61,3 +61,14 @@ model Post {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
+
+model Word {
+  id        Int      @id @default(autoincrement())
+  spell     String
+  korean    String
+  level     String
+  enable    Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  @@unique([spell, level])
+}
