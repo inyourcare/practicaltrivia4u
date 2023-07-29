@@ -6,6 +6,8 @@ import { levels } from "./levels";
 import DeviceControl from "./DeviceControl";
 import { textToSpeech } from "./textToSpeech";
 import { configuration } from "./configuration";
+import { GiSpeaker } from "react-icons/gi";
+import RefreshMicrophoneIcon from "./RefreshMicrophoneIcon";
 
 export default function VoiceRecognition({ words }: { words: Word[] }) {
   const [spoken, setSpoken] = useState("");
@@ -64,7 +66,6 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
     );
   }, [filteredWords]);
 
-
   /////////////////////////////////////// use effect ////////////////////////////////////////////////////////////
   const initiateAudioInput = useEffect(() => {
     startAndRefreshSpeechRecognition();
@@ -85,7 +86,7 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
   }, [filteredWords, getRandomIndexOfFilteredWords]);
   const eventWhenSpokenAndScreenSame = useEffect(() => {
     const spokenStr = spoken.trim().toLowerCase();
-    const screenStr = screenExpression.replace('+',' ').trim().toLowerCase();
+    const screenStr = screenExpression.replace("+", " ").trim().toLowerCase();
     if (filteredWords && filteredWords.length > 0 && spokenStr === screenStr) {
       setScreenExpression(filteredWords[getRandomIndexOfFilteredWords()].spell);
     }
@@ -95,19 +96,39 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
       <div className="flex items-center justify-center flex-col">
         {/* <DeviceControl/> */}
         <p>※ 마이크 변경(크롬) chrome://settings/content/microphone</p>
-        <p>※ have to + root 와 같이 나오면 + 를 없다고 생각하고 발음 해 주세요</p>
-        <p>※ 단어 발음은 가능하면 dictionary 사이트를 사용하시는 걸 권장드려요</p>
+        <p>
+          ※ have to + root 와 같이 나오면 + 를 없다고 생각하고 발음 해 주세요
+        </p>
+        <p>
+          ※ 단어 발음은 가능하면 dictionary 사이트를 사용하시는 걸 권장드려요
+        </p>
+        <div className="flex flex-row">
+          <p>{`※ 마이크 새로고침 -> `}</p> <RefreshMicrophoneIcon />
+        </div>
         {/* <a href="https://www.freecodecamp.org/" target="_blank"></a> */}
-        <button onClick={() => startAndRefreshSpeechRecognition()}>
-          마이크 새로고침 (아이콘)
+        <button
+          className="border"
+          onClick={() => startAndRefreshSpeechRecognition()}
+        >
+          <RefreshMicrophoneIcon />
         </button>
       </div>
       <br />
-      {spoken}
+      {spoken.toLowerCase()}
       <br />
-      <div className="flex items-center justify-center">
-        <div className="w-full flex flex-row ">{screenExpression}<button className="border ml-3" onClick={()=>textToSpeech(screenExpression)}>speaker icon</button></div>
-      </div>
+      {screenExpression && (
+        <div className="flex items-center justify-center">
+          <div className="w-full flex flex-row ">
+            {screenExpression}
+            <button
+              className="border ml-3"
+              onClick={() => textToSpeech(screenExpression)}
+            >
+              <GiSpeaker />
+            </button>
+          </div>
+        </div>
+      )}
       <div className="flex items-center justify-center">
         <div className="w-full flex flex-raw ">
           {Object.keys(levels).map((key) => (
