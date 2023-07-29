@@ -4,6 +4,8 @@ import { useEffect, useState, useCallback } from "react";
 import { Word } from "@prisma/client";
 import { levels } from "./levels";
 import DeviceControl from "./DeviceControl";
+import { textToSpeech } from "./textToSpeech";
+import { configuration } from "./configuration";
 
 export default function VoiceRecognition({ words }: { words: Word[] }) {
   const [spoken, setSpoken] = useState("");
@@ -22,7 +24,7 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
       recognition.interimResults = true;
       // 값이 없으면 HTML의 <html lang="en">을 참고합니다. ko-KR, en-US
       // recognition.lang = "ko-KR";
-      recognition.lang = "en-US";
+      recognition.lang = configuration.lang;
       // true means continuous, and false means not continuous (single result each time.)
       // true면 음성 인식이 안 끝나고 계속 됩니다.
       recognition.continuous = true;
@@ -53,20 +55,6 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
       console.log("speech recognition starts");
     }
   }
-  async function getMedia(constraints: MediaStreamConstraints) {
-    let stream = null;
-
-    try {
-      stream = await navigator.mediaDevices.getUserMedia(constraints);
-      /* 스트림 사용 */
-    } catch (err) {
-      /* 오류 처리 */
-      console.error("error while getMedia", err);
-    }
-  }
-  // function getRandomIndexOfFilteredWords() {
-  //   return Math.floor(Math.random() * filteredWords.length);
-  // }
   const getRandomIndexOfFilteredWords = useCallback(() => {
     return (
       (filteredWords &&
@@ -76,6 +64,8 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
     );
   }, [filteredWords]);
 
+
+  /////////////////////////////////////// use effect ////////////////////////////////////////////////////////////
   const initiateAudioInput = useEffect(() => {
     startAndRefreshSpeechRecognition();
 
@@ -95,7 +85,7 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
   }, [filteredWords, getRandomIndexOfFilteredWords]);
   const eventWhenSpokenAndScreenSame = useEffect(() => {
     const spokenStr = spoken.trim().toLowerCase();
-    const screenStr = screenExpression.trim().toLowerCase();
+    const screenStr = screenExpression.replace('+',' ').trim().toLowerCase();
     if (filteredWords && filteredWords.length > 0 && spokenStr === screenStr) {
       setScreenExpression(filteredWords[getRandomIndexOfFilteredWords()].spell);
     }
@@ -104,7 +94,9 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
     <div className="w-full flex justify-center items-center flex-col">
       <div className="flex items-center justify-center flex-col">
         {/* <DeviceControl/> */}
-        ※마이크 변경(크롬) chrome://settings/content/microphone
+        <p>※ 마이크 변경(크롬) chrome://settings/content/microphone</p>
+        <p>※ have to + root 와 같이 나오면 + 를 없다고 생각하고 발음 해 주세요</p>
+        <p>※ 단어 발음은 가능하면 dictionary 사이트를 사용하시는 걸 권장드려요</p>
         {/* <a href="https://www.freecodecamp.org/" target="_blank"></a> */}
         <button onClick={() => startAndRefreshSpeechRecognition()}>
           마이크 새로고침 (아이콘)
@@ -114,7 +106,7 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
       {spoken}
       <br />
       <div className="flex items-center justify-center">
-        <div className="w-full flex flex-col ">{screenExpression}</div>
+        <div className="w-full flex flex-row ">{screenExpression}<button className="border ml-3" onClick={()=>textToSpeech(screenExpression)}>speaker icon</button></div>
       </div>
       <div className="flex items-center justify-center">
         <div className="w-full flex flex-raw ">

@@ -1,6 +1,6 @@
 export const levels = {
   elementary:'elementary',
-  high:'high',
   middle: 'middle',
+  high:'high',
   toeic: 'toeic'
 }
