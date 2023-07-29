@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { Word } from "@prisma/client";
 import { levels } from "./levels";
 import DeviceControl from "./DeviceControl";
@@ -9,6 +9,7 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
   const [spoken, setSpoken] = useState("");
   const [filteredLevels, setFilteredLevels] = useState(new Set<string>());
   const [filteredWords, setFilteredWords] = useState(null as unknown as Word[]);
+  const [screenExpression, setScreenExpression] = useState("");
   function startAndRefreshSpeechRecognition() {
     if (
       window &&
@@ -63,19 +64,42 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
       console.error("error while getMedia", err);
     }
   }
-  useEffect(() => {
+  // function getRandomIndexOfFilteredWords() {
+  //   return Math.floor(Math.random() * filteredWords.length);
+  // }
+  const getRandomIndexOfFilteredWords = useCallback(() => {
+    return (
+      (filteredWords &&
+        filteredWords.length > 0 &&
+        Math.floor(Math.random() * filteredWords.length)) ||
+      0
+    );
+  }, [filteredWords]);
+
+  const initiateAudioInput = useEffect(() => {
     startAndRefreshSpeechRecognition();
-    
+
     // console.log(words)
     console.log();
   }, [words]);
-  useEffect(() => {
+  const syncronizeFilteredWords = useEffect(() => {
     // console.log(
     //   "filtered words",
     //   words.filter((word) => filteredLevels.has(word.level))
     // );
     setFilteredWords(words.filter((word) => filteredLevels.has(word.level)));
   }, [filteredLevels, words]);
+  const initiateScreenExpression = useEffect(() => {
+    if (filteredWords && filteredWords.length > 0)
+      setScreenExpression(filteredWords[getRandomIndexOfFilteredWords()].spell);
+  }, [filteredWords, getRandomIndexOfFilteredWords]);
+  const eventWhenSpokenAndScreenSame = useEffect(() => {
+    const spokenStr = spoken.trim().toLowerCase();
+    const screenStr = screenExpression.trim().toLowerCase();
+    if (filteredWords && filteredWords.length > 0 && spokenStr === screenStr) {
+      setScreenExpression(filteredWords[getRandomIndexOfFilteredWords()].spell);
+    }
+  }, [spoken, screenExpression, filteredWords, getRandomIndexOfFilteredWords]);
   return (
     <div className="w-full flex justify-center items-center flex-col">
       <div className="flex items-center justify-center flex-col">
@@ -89,6 +113,9 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
       <br />
       {spoken}
       <br />
+      <div className="flex items-center justify-center">
+        <div className="w-full flex flex-col ">{screenExpression}</div>
+      </div>
       <div className="flex items-center justify-center">
         <div className="w-full flex flex-raw ">
           {Object.keys(levels).map((key) => (
