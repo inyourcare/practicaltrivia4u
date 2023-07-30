@@ -60,7 +60,7 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
       let speechToText = "";
       recognition.addEventListener("result", (e: any) => {
         let interimTranscript = "";
-        console.log("recognition result");
+        // console.log("recognition result");
         for (let i = e.resultIndex, len = e.results.length; i < len; i++) {
           let transcript = e.results[i][0].transcript;
           const isFinal = e.results[i].isFinal;
@@ -97,7 +97,7 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
     const resultWords = words.filter((w) => w.spell === screenExpression.spell);
     if (args?.skip && resultWords && resultWords.length > 0) {
       // result manage
-      console.log(resultWords);
+      // console.log(resultWords);
       setResult({
         tried: resultWords[0],
         spoken: spokenStr,
@@ -140,7 +140,7 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
     startAndRefreshSpeechRecognition();
 
     // console.log(words)
-    console.log();
+    // console.log();
   }, [words]);
   const syncronizeFilteredWords = useEffect(() => {
     // console.log(
@@ -165,7 +165,7 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
   }, [spoken]);
 
   const addResult = useEffect(() => {
-    console.log("result::", result);
+    // console.log("result::", result);
     if (result) todayResult.push(result);
     // setTodayResult(Array.from(todayResult))
   }, [result, todayResult]);

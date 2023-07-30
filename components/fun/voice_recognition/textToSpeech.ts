@@ -1,7 +1,7 @@
 import { configuration } from "./configuration";
 
 export function textToSpeech(word: string) {
-  console.log("textToSpeech", word);
+  // console.log("textToSpeech", word);
   // "speechSynthesis" in window
   //   ? console.log("Web Speech API supported!")
   //   : console.log("Web Speech API not supported :-(");
