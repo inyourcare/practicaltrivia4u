@@ -30,6 +30,7 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
   const [result, setResult] = useState(null as unknown as WordResult);
   const [guessingMeaning, setGuessingMeaning] = useState("");
   const [guessMode, setGuessMode] = useState(true);
+  const guessOffMsg = "guess off";
   function startAndRefreshSpeechRecognition() {
     if (
       window &&
@@ -81,63 +82,53 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
       0
     );
   }, [filteredWords]);
-  const setResultAndChangeExporession = useCallback(
-    (args?: { skip?: boolean; guess?: string }) => {
-      const spokenStr = spoken.trim().toLowerCase().replace(" ", "");
-      const screenStr = screenExpression.spell
-        .replace("+root", "")
-        .trim()
-        .toLowerCase()
-        .replace(" ", "");
-      if (args?.skip) {
-        setResult({
-          tried: words.filter((w) => w.spell === screenExpression.spell)[0],
-          spoken: spokenStr,
-          pass: false,
-          time: new Date(),
-          guessedMeaning: args.guess,
-        });
-        const idx = getRandomIndexOfFilteredWords();
-        setScreenExpression({
-          spell: filteredWords[idx].spell,
-          meaning: filteredWords[idx].korean,
-        });
+  function setResultAndChangeExporession(args?: { skip?: boolean }) {
+    const spokenStr = spoken.trim().toLowerCase().replace(" ", "");
+    const screenStr = screenExpression.spell
+      .replace("+root", "")
+      .trim()
+      .toLowerCase()
+      .replace(" ", "");
+    const resultWords = words.filter((w) => w.spell === screenExpression.spell);
+    if (args?.skip && resultWords && resultWords.length > 0) {
+      // result manage
+      console.log(resultWords);
+      setResult({
+        tried: resultWords[0],
+        spoken: spokenStr,
+        pass: false,
+        time: new Date(),
+        guessedMeaning: (guessMode && guessingMeaning) || guessOffMsg,
+      });
+      const idx = getRandomIndexOfFilteredWords();
+      setScreenExpression({
+        spell: filteredWords[idx].spell,
+        meaning: filteredWords[idx].korean,
+      });
 
-        setGuessingMeaning("");
-      } else {
-        if (
-          filteredWords &&
-          filteredWords.length > 0 &&
-          spokenStr &&
-          screenStr
-        ) {
-          if (spokenStr === screenStr) {
-            setResult({
-              tried: words.filter((w) => w.spell === screenExpression.spell)[0],
-              spoken: spokenStr,
-              pass: true,
-              time: new Date(),
-              guessedMeaning: args?.guess,
-            });
-            const idx = getRandomIndexOfFilteredWords();
-            setScreenExpression({
-              spell: filteredWords[idx].spell,
-              meaning: filteredWords[idx].korean,
-            });
+      setGuessingMeaning("");
+    } else {
+      if (filteredWords && filteredWords.length > 0 && spokenStr && screenStr) {
+        if (spokenStr === screenStr) {
+          // result manage
+          setResult({
+            tried: words.filter((w) => w.spell === screenExpression.spell)[0],
+            spoken: spokenStr,
+            pass: true,
+            time: new Date(),
+            guessedMeaning: (guessMode && guessingMeaning) || guessOffMsg,
+          });
+          const idx = getRandomIndexOfFilteredWords();
+          setScreenExpression({
+            spell: filteredWords[idx].spell,
+            meaning: filteredWords[idx].korean,
+          });
 
-            setGuessingMeaning("");
-          }
+          setGuessingMeaning("");
         }
       }
-    },
-    [
-      filteredWords,
-      getRandomIndexOfFilteredWords,
-      screenExpression,
-      spoken,
-      words,
-    ]
-  );
+    }
+  }
 
   /////////////////////////////////////// use effect ////////////////////////////////////////////////////////////
   const initiateAudioInput = useEffect(() => {
@@ -162,9 +153,12 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
       });
     }
   }, [filteredWords, getRandomIndexOfFilteredWords]);
+  //spoken 이 바뀔때만 호출 되도록
   const eventWhenSpokenAndScreenSame = useEffect(() => {
     setResultAndChangeExporession();
-  }, [setResultAndChangeExporession]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [spoken]);
+
   const addResult = useEffect(() => {
     console.log("result::", result);
     if (result) todayResult.push(result);
@@ -188,6 +182,9 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
             <RefreshMicrophoneIcon />
           </div>
         </div>
+        <a href="mailto: practicaltrivia@gmail.com">
+          ※ 문의메일(practicaltrivia@gmail.com)
+        </a>
         {/* <a href="https://www.freecodecamp.org/" target="_blank"></a> */}
       </div>
       <br />
@@ -227,30 +224,32 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
             >
               <GiSpeaker />
             </button>
-            {(guessingMeaning && screenExpression.meaning) || (
-              <div className="flex justify-center items-center flex-row">
-                <input
-                  id="guess-meaning-input"
-                  type="text"
-                  placeholder="의미를 추측 해 보세요"
-                  className="border border-slate-300 rounded-md p-1 text-xs"
-                />
-                <button
-                  className="bg-white hover:bg-gray-100 text-gray-800 font-semibold px-4 border border-gray-400 rounded shadow disabled:cursor-not-allowed"
-                  onClick={() =>
-                    setGuessingMeaning(
-                      (
-                        document.getElementById(
-                          "guess-meaning-input"
-                        ) as HTMLInputElement
-                      )?.value
-                    )
-                  }
-                >
-                  guess
-                </button>
-              </div>
-            )}
+            {(guessMode &&
+              ((guessingMeaning && screenExpression.meaning) || (
+                <div className="flex justify-center items-center flex-row">
+                  <input
+                    id="guess-meaning-input"
+                    type="text"
+                    placeholder="의미를 추측 해 보세요"
+                    className="border border-slate-300 rounded-md p-1 text-xs"
+                  />
+                  <button
+                    className="bg-white hover:bg-gray-100 text-gray-800 font-semibold px-4 border border-gray-400 rounded shadow disabled:cursor-not-allowed"
+                    onClick={() =>
+                      setGuessingMeaning(
+                        (
+                          document.getElementById(
+                            "guess-meaning-input"
+                          ) as HTMLInputElement
+                        )?.value
+                      )
+                    }
+                  >
+                    guess
+                  </button>
+                </div>
+              ))) ||
+              screenExpression.meaning}
           </div>
           {/* <div className="w-full flex flex-row ">
             
@@ -275,15 +274,15 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
           onClick={() => setGuessMode(!guessMode)}
           className={
             (guessMode &&
-              `bg-white hover:bg-gray-100 text-gray-800 font-semibold px-4 border border-gray-400 rounded shadow disabled:cursor-not-allowed`) ||
-            `bg-gray-400 hover:bg-white hover:text-gray-800 text-white font-semibold px-4 border border-gray-400 rounded shadow disabled:cursor-not-allowed`
+              `bg-white text-gray-800 font-semibold px-4 border border-gray-400 rounded shadow disabled:cursor-not-allowed`) ||
+            `bg-gray-400 text-white font-semibold px-4 border border-gray-400 rounded shadow disabled:cursor-not-allowed`
           }
         >
           guess 모드
         </button>
         <button
           onClick={() => setResultAndChangeExporession({ skip: true })}
-          className="bg-white hover:bg-gray-100 text-gray-800 font-semibold px-4 border border-gray-400 rounded shadow disabled:cursor-not-allowed"
+          className="ml-1 bg-white hover:bg-gray-100 text-gray-800 font-semibold px-4 border border-gray-400 rounded shadow disabled:cursor-not-allowed"
         >
           skip
         </button>
