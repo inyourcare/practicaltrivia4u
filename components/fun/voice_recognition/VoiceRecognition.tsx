@@ -14,6 +14,8 @@ type WordResult = {
   tried: Word;
   spoken?: string;
   pass: boolean;
+  time: Date;
+  guessedMeaning?: string;
 };
 
 export default function VoiceRecognition({ words }: { words: Word[] }) {
@@ -26,6 +28,7 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
   });
   const [todayResult, setTodayResult] = useState(new Array<WordResult>());
   const [result, setResult] = useState(null as unknown as WordResult);
+  const [guessingMeaning, setGuessingMeaning] = useState("");
   function startAndRefreshSpeechRecognition() {
     if (
       window &&
@@ -78,7 +81,7 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
     );
   }, [filteredWords]);
   const setResultAndChangeExporession = useCallback(
-    (args?: { skip?: boolean }) => {
+    (args?: { skip?: boolean, guess?: string }) => {
       const spokenStr = spoken.trim().toLowerCase().replace(" ", "");
       const screenStr = screenExpression.spell
         .replace("+root", "")
@@ -90,6 +93,8 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
           tried: words.filter((w) => w.spell === screenExpression.spell)[0],
           spoken: spokenStr,
           pass: false,
+          time: new Date(),
+          guessedMeaning: args.guess
         });
         const idx = getRandomIndexOfFilteredWords();
         setScreenExpression({
@@ -108,6 +113,8 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
               tried: words.filter((w) => w.spell === screenExpression.spell)[0],
               spoken: spokenStr,
               pass: true,
+              time: new Date(),
+              guessedMeaning: args?.guess
             });
             const idx = getRandomIndexOfFilteredWords();
             setScreenExpression({
@@ -117,6 +124,7 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
           }
         }
       }
+      setGuessingMeaning("");
     },
     [
       filteredWords,
@@ -168,10 +176,13 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
           주세요
         </p>
         <p>
-          ※ 단어 발음은 가능하면 dictionary 사이트를 사용하시는 걸 권장드려요
+          ※ 단어 발음은 가능하면 dictionary 사이트를 참조하시는 걸 권장드려요
         </p>
         <div className="flex flex-row">
-          <p>{`※ 마이크 새로고침 -> `}</p> <RefreshMicrophoneIcon />
+          <p>{`※ 마이크 새로고침 -> `}</p>{" "}
+          <div className="ml-2 flex justtify-center items-center">
+            <RefreshMicrophoneIcon />
+          </div>
         </div>
         {/* <a href="https://www.freecodecamp.org/" target="_blank"></a> */}
       </div>
@@ -200,17 +211,42 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
       </div>
       <br />
 
-      {screenExpression && (
+      {screenExpression && screenExpression.spell && (
         <div className="flex items-center justify-center flex-col">
           <div className="w-full flex flex-row ">
-            {screenExpression.spell}
+            <div className="flex justify-center items-center flex-row">
+              {screenExpression.spell}
+            </div>
             <button
               className="border ml-2 mr-5"
               onClick={() => textToSpeech(screenExpression.spell)}
             >
               <GiSpeaker />
             </button>
-            {screenExpression.meaning}
+            {(guessingMeaning && screenExpression.meaning) || (
+              <div className="flex justify-center items-center flex-row">
+                <input
+                  id="guess-meaning-input"
+                  type="text"
+                  placeholder="의미를 추측 해 보세요"
+                  className="border border-slate-300 rounded-md p-1 text-xs"
+                />
+                <button
+                  className="bg-white hover:bg-gray-100 text-gray-800 font-semibold px-4 border border-gray-400 rounded shadow disabled:cursor-not-allowed"
+                  onClick={() =>
+                    setGuessingMeaning(
+                      (
+                        document.getElementById(
+                          "guess-meaning-input"
+                        ) as HTMLInputElement
+                      )?.value
+                    )
+                  }
+                >
+                  guess
+                </button>
+              </div>
+            )}
           </div>
           {/* <div className="w-full flex flex-row ">
             
