@@ -108,6 +108,8 @@ export default function RootLayout({
         )}
         {/* sortable */}
         <script defer src="/js/sortable/Sortable.min.js"></script>
+        {/* mobile scale */}
+        <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width" />
       </head>
       <body className={nanumGothic.className}>
         {children}
