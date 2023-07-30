@@ -78,7 +78,7 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
     (args?: { skip?: boolean }) => {
       const spokenStr = spoken.trim().toLowerCase().replace(" ", "");
       const screenStr = screenExpression
-        .replace("+", " ")
+        .replace("+root", "")
         .trim()
         .toLowerCase()
         .replace(" ", "");
@@ -152,7 +152,7 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
         {/* <DeviceControl/> */}
         <p>※ 마이크 변경(크롬) chrome://settings/content/microphone</p>
         <p>
-          ※ have to + root 와 같이 나오면 + 를 없다고 생각하고 발음 해 주세요
+          ※ have to + root 와 같이 나오면 + root 를 없다고 생각하고 발음 해 주세요
         </p>
         <p>
           ※ 단어 발음은 가능하면 dictionary 사이트를 사용하시는 걸 권장드려요
