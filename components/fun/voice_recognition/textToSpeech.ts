@@ -11,6 +11,7 @@ export function textToSpeech(word: string) {
   const utterThis = new SpeechSynthesisUtterance(word);
   utterThis.volume = 1
   utterThis.lang = configuration.lang
+  utterThis.rate = 0.5 // 0.5~2
 
   synth.speak(utterThis);
 }
