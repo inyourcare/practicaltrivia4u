@@ -20,7 +20,10 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
   const [spoken, setSpoken] = useState("");
   const [filteredLevels, setFilteredLevels] = useState(new Set<string>());
   const [filteredWords, setFilteredWords] = useState(null as unknown as Word[]);
-  const [screenExpression, setScreenExpression] = useState("");
+  const [screenExpression, setScreenExpression] = useState({
+    spell: "",
+    meaning: "",
+  });
   const [todayResult, setTodayResult] = useState(new Array<WordResult>());
   const [result, setResult] = useState(null as unknown as WordResult);
   function startAndRefreshSpeechRecognition() {
@@ -77,20 +80,22 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
   const setResultAndChangeExporession = useCallback(
     (args?: { skip?: boolean }) => {
       const spokenStr = spoken.trim().toLowerCase().replace(" ", "");
-      const screenStr = screenExpression
+      const screenStr = screenExpression.spell
         .replace("+root", "")
         .trim()
         .toLowerCase()
         .replace(" ", "");
       if (args?.skip) {
         setResult({
-          tried: words.filter((w) => w.spell === screenExpression)[0],
+          tried: words.filter((w) => w.spell === screenExpression.spell)[0],
           spoken: spokenStr,
           pass: false,
         });
-        setScreenExpression(
-          filteredWords[getRandomIndexOfFilteredWords()].spell
-        );
+        const idx = getRandomIndexOfFilteredWords();
+        setScreenExpression({
+          spell: filteredWords[idx].spell,
+          meaning: filteredWords[idx].korean,
+        });
       } else {
         if (
           filteredWords &&
@@ -100,13 +105,15 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
         ) {
           if (spokenStr === screenStr) {
             setResult({
-              tried: words.filter((w) => w.spell === screenExpression)[0],
+              tried: words.filter((w) => w.spell === screenExpression.spell)[0],
               spoken: spokenStr,
               pass: true,
             });
-            setScreenExpression(
-              filteredWords[getRandomIndexOfFilteredWords()].spell
-            );
+            const idx = getRandomIndexOfFilteredWords();
+            setScreenExpression({
+              spell: filteredWords[idx].spell,
+              meaning: filteredWords[idx].korean,
+            });
           }
         }
       }
@@ -135,8 +142,13 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
     setFilteredWords(words.filter((word) => filteredLevels.has(word.level)));
   }, [filteredLevels, words]);
   const initiateScreenExpression = useEffect(() => {
-    if (filteredWords && filteredWords.length > 0)
-      setScreenExpression(filteredWords[getRandomIndexOfFilteredWords()].spell);
+    if (filteredWords && filteredWords.length > 0) {
+      const idx = getRandomIndexOfFilteredWords();
+      setScreenExpression({
+        spell: filteredWords[idx].spell,
+        meaning: filteredWords[idx].korean,
+      });
+    }
   }, [filteredWords, getRandomIndexOfFilteredWords]);
   const eventWhenSpokenAndScreenSame = useEffect(() => {
     setResultAndChangeExporession();
@@ -152,7 +164,8 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
         {/* <DeviceControl/> */}
         <p>※ 마이크 변경(크롬) chrome://settings/content/microphone</p>
         <p>
-          ※ have to + root 와 같이 나오면 + root 를 없다고 생각하고 발음 해 주세요
+          ※ have to + root 와 같이 나오면 + root 를 없다고 생각하고 발음 해
+          주세요
         </p>
         <p>
           ※ 단어 발음은 가능하면 dictionary 사이트를 사용하시는 걸 권장드려요
@@ -188,16 +201,20 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
       <br />
 
       {screenExpression && (
-        <div className="flex items-center justify-center">
+        <div className="flex items-center justify-center flex-col">
           <div className="w-full flex flex-row ">
-            {screenExpression}
+            {screenExpression.spell}
             <button
-              className="border ml-3"
-              onClick={() => textToSpeech(screenExpression)}
+              className="border ml-2 mr-5"
+              onClick={() => textToSpeech(screenExpression.spell)}
             >
               <GiSpeaker />
             </button>
+            {screenExpression.meaning}
           </div>
+          {/* <div className="w-full flex flex-row ">
+            
+          </div> */}
         </div>
       )}
       <br />
@@ -215,7 +232,7 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
       <br />
       <div className="flex justify-center items-center">
         <button
-          onClick={() => setResultAndChangeExporession({skip:true})}
+          onClick={() => setResultAndChangeExporession({ skip: true })}
           className="bg-white hover:bg-gray-100 text-gray-800 font-semibold px-4 border border-gray-400 rounded shadow disabled:cursor-not-allowed"
         >
           skip
