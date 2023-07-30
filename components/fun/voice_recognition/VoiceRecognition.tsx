@@ -273,7 +273,11 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
       <div className="flex justify-center items-center">
         <button
           onClick={() => setGuessMode(!guessMode)}
-          className="bg-white hover:bg-gray-100 text-gray-800 font-semibold px-4 border border-gray-400 rounded shadow disabled:cursor-not-allowed"
+          className={
+            (guessMode &&
+              `bg-white hover:bg-gray-100 text-gray-800 font-semibold px-4 border border-gray-400 rounded shadow disabled:cursor-not-allowed`) ||
+            `bg-gray-400 hover:bg-white hover:text-gray-800 text-white font-semibold px-4 border border-gray-400 rounded shadow disabled:cursor-not-allowed`
+          }
         >
           guess 모드
         </button>
