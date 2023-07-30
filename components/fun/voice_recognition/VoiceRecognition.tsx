@@ -170,29 +170,37 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
     <div className="w-full flex justify-center items-center flex-col">
       <div className="flex items-center justify-center flex-col">
         {/* <DeviceControl/> */}
-        <p>※ 마이크 변경(크롬) chrome://settings/content/microphone</p>
-        <p>
-          ※ have to + root 와 같이 나오면 + root 를 없다고 생각하고 발음 해
-          주세요
-        </p>
-        <p>
-          ※ 단어 발음은 가능하면 dictionary 사이트를 참조하시는 걸 권장드려요
-        </p>
-        <div className="flex flex-row">
+        <div className="w-full">
+          <p>※ 마이크 변경(크롬) chrome://settings/content/microphone</p>
+        </div>
+        <div className="w-full">
+          <p>
+            ※ have to + root 와 같이 나오면 + root 를 없다고 생각하고 발음 해
+            주세요
+          </p>
+        </div>
+        <div className="w-full">
+          <p>
+            ※ 단어 발음은 가능하면 dictionary 사이트를 참조하시는 걸 권장드려요
+          </p>
+        </div>
+        <div className="w-full flex flex-row">
           <p>{`※ 마이크 새로고침 -> `}</p>{" "}
           <div className="ml-2 flex justtify-center items-center">
             <RefreshMicrophoneIcon />
           </div>
         </div>
-        <a href="mailto: practicaltrivia@gmail.com">
-          ※ 문의메일(practicaltrivia@gmail.com)
-        </a>
+        <div className="w-full">
+          <a href="mailto: practicaltrivia@gmail.com">
+            ※ 문의메일(practicaltrivia@gmail.com)
+          </a>
+        </div>
         {/* <a href="https://www.freecodecamp.org/" target="_blank"></a> */}
       </div>
       <br />
 
       <div className="flex items-center justify-center">
-        <div className="text-gray-900 dark:text-white w-full flex flex-wrap">
+        <div className="text-gray-900 dark:text-white w-full flex flex-wrap justify-center items-center text-xs sm:text-lg md:text-lg lg:text-lg xl:text-lg 2xl:text-lg">
           levels:{" "}
           {Object.keys(levels).map((key) => (
             <button
@@ -307,26 +315,6 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
               <ul className="divide-y divide-gray-200 dark:divide-gray-700">
                 {todayResult.map((result) => (
                   <li key={result.time.getTime()} className="w-full p-3 sm:p-4">
-                    {/* <div className="flex items-center space-x-4">
-                    <div className="flex-shrink-0">
-                      <img
-                        className="w-8 h-8 rounded-full"
-                        src="/docs/images/people/profile-picture-1.jpg"
-                        alt="Neil image"
-                      />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <p className="text-sm font-medium text-gray-900 truncate dark:text-white">
-                        Neil Sims
-                      </p>
-                      <p className="text-sm text-gray-500 truncate dark:text-gray-400">
-                        email@flowbite.com
-                      </p>
-                    </div>
-                    <div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
-                      $320
-                    </div>
-                  </div> */}
                     <div className="flex-1 min-w-0 justify-center items-center">
                       <p className="text-sm font-medium text-gray-900 truncate dark:text-white">
                         {`"${result.tried.spell}" vs "${
