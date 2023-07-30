@@ -3,17 +3,26 @@
 import { useEffect, useState, useCallback } from "react";
 import { Word } from "@prisma/client";
 import { levels } from "./levels";
-import DeviceControl from "./DeviceControl";
 import { textToSpeech } from "./textToSpeech";
 import { configuration } from "./configuration";
 import { GiSpeaker } from "react-icons/gi";
 import RefreshMicrophoneIcon from "./RefreshMicrophoneIcon";
+import GoogleAd from "@/components/adsense/GoogleAd";
+import { GoogldAdType } from "@/components/adsense/type";
+
+type WordResult = {
+  tried: Word;
+  spoken?: string;
+  pass: boolean;
+};
 
 export default function VoiceRecognition({ words }: { words: Word[] }) {
   const [spoken, setSpoken] = useState("");
   const [filteredLevels, setFilteredLevels] = useState(new Set<string>());
   const [filteredWords, setFilteredWords] = useState(null as unknown as Word[]);
   const [screenExpression, setScreenExpression] = useState("");
+  const [todayResult, setTodayResult] = useState(new Array<WordResult>());
+  const [result, setResult] = useState(null as unknown as WordResult);
   function startAndRefreshSpeechRecognition() {
     if (
       window &&
@@ -65,6 +74,17 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
       0
     );
   }, [filteredWords]);
+  // const addResult = useCallback(
+  //   (r_screen: string, r_spoken: string, r_pass: boolean) => {
+  //     todayResult.push({
+  //       tried: words.filter((w) => w.spell === r_screen)[0],
+  //       spoken: r_spoken,
+  //       pass: r_pass,
+  //     });
+  //     setTodayResult(Array.from(todayResult))
+  //   },
+  //   [todayResult, words]
+  // );
 
   /////////////////////////////////////// use effect ////////////////////////////////////////////////////////////
   const initiateAudioInput = useEffect(() => {
@@ -87,10 +107,27 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
   const eventWhenSpokenAndScreenSame = useEffect(() => {
     const spokenStr = spoken.trim().toLowerCase();
     const screenStr = screenExpression.replace("+", " ").trim().toLowerCase();
-    if (filteredWords && filteredWords.length > 0 && spokenStr === screenStr) {
+    if (filteredWords && filteredWords.length > 0 && spokenStr && screenStr && spokenStr === screenStr) {
+      setResult({
+        tried: words.filter((w) => w.spell === screenExpression)[0],
+        spoken: spokenStr,
+        pass: true,
+      });
       setScreenExpression(filteredWords[getRandomIndexOfFilteredWords()].spell);
     }
-  }, [spoken, screenExpression, filteredWords, getRandomIndexOfFilteredWords]);
+  }, [
+    spoken,
+    screenExpression,
+    filteredWords,
+    getRandomIndexOfFilteredWords,
+    setResult,
+    words,
+  ]);
+  const addResult = useEffect(() => {
+    console.log("result::", result);
+    todayResult.push(result);
+    // setTodayResult(Array.from(todayResult))
+  }, [result, todayResult]);
   return (
     <div className="w-full flex justify-center items-center flex-col">
       <div className="flex items-center justify-center flex-col">
@@ -106,31 +143,12 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
           <p>{`※ 마이크 새로고침 -> `}</p> <RefreshMicrophoneIcon />
         </div>
         {/* <a href="https://www.freecodecamp.org/" target="_blank"></a> */}
-        <button
-          className="border"
-          onClick={() => startAndRefreshSpeechRecognition()}
-        >
-          <RefreshMicrophoneIcon />
-        </button>
       </div>
       <br />
-      {spoken.toLowerCase()}
-      <br />
-      {screenExpression && (
-        <div className="flex items-center justify-center">
-          <div className="w-full flex flex-row ">
-            {screenExpression}
-            <button
-              className="border ml-3"
-              onClick={() => textToSpeech(screenExpression)}
-            >
-              <GiSpeaker />
-            </button>
-          </div>
-        </div>
-      )}
+
       <div className="flex items-center justify-center">
-        <div className="w-full flex flex-raw ">
+        <div className="text-gray-900 dark:text-white w-full flex flex-wrap">
+          levels:{" "}
           {Object.keys(levels).map((key) => (
             <button
               className={`border ml-1 ${
@@ -149,6 +167,44 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
           ))}
         </div>
       </div>
+      <br />
+
+      {screenExpression && (
+        <div className="flex items-center justify-center">
+          <div className="w-full flex flex-row ">
+            {screenExpression}
+            <button
+              className="border ml-3"
+              onClick={() => textToSpeech(screenExpression)}
+            >
+              <GiSpeaker />
+            </button>
+          </div>
+        </div>
+      )}
+      <br />
+      <div className="flex justify-center items-center flex-row">
+        <div className="mx-3">
+          <h5>you speak:</h5>
+        </div>
+        {spoken.toLowerCase()}
+        <button className="" onClick={() => startAndRefreshSpeechRecognition()}>
+          <div className="mx-3">
+            <RefreshMicrophoneIcon />
+          </div>
+        </button>
+      </div>
+      <br />
+      <div className="flex justify-center items-center">
+        <button
+          onClick={() => console.log(todayResult)}
+          className="bg-white hover:bg-gray-100 text-gray-800 font-semibold px-4 border border-gray-400 rounded shadow disabled:cursor-not-allowed"
+        >
+          결과보기
+        </button>
+      </div>
+
+      <GoogleAd type={`${GoogldAdType.Display}`} />
     </div>
   );
 }
