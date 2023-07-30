@@ -31,7 +31,7 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
   const [todayResult, setTodayResult] = useState(new Array<WordResult>());
   const [result, setResult] = useState(null as unknown as WordResult);
   const [guessingMeaning, setGuessingMeaning] = useState("");
-  const [guessMode, setGuessMode] = useState(true);
+  const [guessMode, setGuessMode] = useState(false);
   const guessOffMsg = "guess off";
   const [resultsDialogOpen, setResultsDialogOpen] = useState(false);
   const resultDivOuter = useRef<HTMLDivElement>(null);
@@ -204,7 +204,7 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
 
       <div className="flex items-center justify-center">
         <div className="text-gray-900 dark:text-white w-full flex flex-wrap justify-center items-center text-xs sm:text-lg md:text-lg lg:text-lg xl:text-lg 2xl:text-lg">
-          levels:{" "}
+          <div className="text-gray-900">levels:{" "}</div>
           {Object.keys(levels).map((key) => (
             <button
               className={`border ml-1 ${
@@ -324,7 +324,7 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
                       className="w-full p-3 sm:p-4"
                     >
                       <div className="flex-1 min-w-0 justify-center items-center">
-                        <p className="text-sm font-medium text-gray-900 truncate dark:text-white">
+                        <p className="text-sm font-medium text-black truncate ">
                           {`"${result.tried.spell}" vs "${
                             result.spoken || "not spoken"
                           }"`}
