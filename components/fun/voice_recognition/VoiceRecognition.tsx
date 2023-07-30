@@ -9,6 +9,7 @@ import { GiSpeaker } from "react-icons/gi";
 import RefreshMicrophoneIcon from "./RefreshMicrophoneIcon";
 import GoogleAd from "@/components/adsense/GoogleAd";
 import { GoogldAdType } from "@/components/adsense/type";
+import Dialog from "@/components/dialog/Dialog";
 
 type WordResult = {
   tried: Word;
@@ -31,6 +32,7 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
   const [guessingMeaning, setGuessingMeaning] = useState("");
   const [guessMode, setGuessMode] = useState(true);
   const guessOffMsg = "guess off";
+  const [resultsDialogOpen, setResultsDialogOpen] = useState(false);
   function startAndRefreshSpeechRecognition() {
     if (
       window &&
@@ -287,7 +289,7 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
           skip
         </button>
         <button
-          onClick={() => console.log(todayResult)}
+          onClick={() => setResultsDialogOpen(true)}
           className="ml-1 bg-white hover:bg-gray-100 text-gray-800 font-semibold px-4 border border-gray-400 rounded shadow disabled:cursor-not-allowed"
         >
           결과보기
@@ -295,6 +297,58 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
       </div>
 
       <GoogleAd type={`${GoogldAdType.Display}`} />
+
+      {todayResult.length > 0 && (
+        <Dialog open={resultsDialogOpen} setOpen={setResultsDialogOpen}>
+          <div
+            className={`w-[80vw] max-w-md max-h-[80vh] overflow-y-scroll bg-white p-10 cursor-auto`}
+          >
+            <div>
+              <ul className="divide-y divide-gray-200 dark:divide-gray-700">
+                {todayResult.map((result) => (
+                  <li key={result.time.getTime()} className="w-full p-3 sm:p-4">
+                    {/* <div className="flex items-center space-x-4">
+                    <div className="flex-shrink-0">
+                      <img
+                        className="w-8 h-8 rounded-full"
+                        src="/docs/images/people/profile-picture-1.jpg"
+                        alt="Neil image"
+                      />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-sm font-medium text-gray-900 truncate dark:text-white">
+                        Neil Sims
+                      </p>
+                      <p className="text-sm text-gray-500 truncate dark:text-gray-400">
+                        email@flowbite.com
+                      </p>
+                    </div>
+                    <div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
+                      $320
+                    </div>
+                  </div> */}
+                    <div className="flex-1 min-w-0 justify-center items-center">
+                      <p className="text-sm font-medium text-gray-900 truncate dark:text-white">
+                        {`"${result.tried.spell}" vs "${
+                          result.spoken || "not spoken"
+                        }"`}
+                      </p>
+                      <p className="text-sm text-gray-500 truncate dark:text-gray-400">
+                        {` "${result.tried.korean}" vs "${result.guessedMeaning}"`}
+                      </p>
+                      <p className="text-sm text-gray-500 truncate dark:text-gray-400">
+                        {`${
+                          (result.pass && "passed") || "Not passed"
+                        } at ${result.time.toLocaleString()}`}
+                      </p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </Dialog>
+      )}
     </div>
   );
 }
