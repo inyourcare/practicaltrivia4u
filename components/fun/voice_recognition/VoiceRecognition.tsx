@@ -105,8 +105,8 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
       setScreenExpression(filteredWords[getRandomIndexOfFilteredWords()].spell);
   }, [filteredWords, getRandomIndexOfFilteredWords]);
   const eventWhenSpokenAndScreenSame = useEffect(() => {
-    const spokenStr = spoken.trim().toLowerCase();
-    const screenStr = screenExpression.replace("+", " ").trim().toLowerCase();
+    const spokenStr = spoken.trim().toLowerCase().replace(' ','');
+    const screenStr = screenExpression.replace("+", " ").trim().toLowerCase().replace(' ','');
     if (filteredWords && filteredWords.length > 0 && spokenStr && screenStr && spokenStr === screenStr) {
       setResult({
         tried: words.filter((w) => w.spell === screenExpression)[0],
@@ -125,7 +125,8 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
   ]);
   const addResult = useEffect(() => {
     console.log("result::", result);
-    todayResult.push(result);
+    if (result)
+      todayResult.push(result);
     // setTodayResult(Array.from(todayResult))
   }, [result, todayResult]);
   return (
