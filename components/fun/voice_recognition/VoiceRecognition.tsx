@@ -105,9 +105,19 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
       setScreenExpression(filteredWords[getRandomIndexOfFilteredWords()].spell);
   }, [filteredWords, getRandomIndexOfFilteredWords]);
   const eventWhenSpokenAndScreenSame = useEffect(() => {
-    const spokenStr = spoken.trim().toLowerCase().replace(' ','');
-    const screenStr = screenExpression.replace("+", " ").trim().toLowerCase().replace(' ','');
-    if (filteredWords && filteredWords.length > 0 && spokenStr && screenStr && spokenStr === screenStr) {
+    const spokenStr = spoken.trim().toLowerCase().replace(" ", "");
+    const screenStr = screenExpression
+      .replace("+", " ")
+      .trim()
+      .toLowerCase()
+      .replace(" ", "");
+    if (
+      filteredWords &&
+      filteredWords.length > 0 &&
+      spokenStr &&
+      screenStr &&
+      spokenStr === screenStr
+    ) {
       setResult({
         tried: words.filter((w) => w.spell === screenExpression)[0],
         spoken: spokenStr,
@@ -125,8 +135,7 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
   ]);
   const addResult = useEffect(() => {
     console.log("result::", result);
-    if (result)
-      todayResult.push(result);
+    if (result) todayResult.push(result);
     // setTodayResult(Array.from(todayResult))
   }, [result, todayResult]);
   return (
@@ -198,8 +207,14 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
       <br />
       <div className="flex justify-center items-center">
         <button
-          onClick={() => console.log(todayResult)}
+          // onClick={() => console.log(todayResult)}
           className="bg-white hover:bg-gray-100 text-gray-800 font-semibold px-4 border border-gray-400 rounded shadow disabled:cursor-not-allowed"
+        >
+          skip
+        </button>
+        <button
+          onClick={() => console.log(todayResult)}
+          className="ml-1 bg-white hover:bg-gray-100 text-gray-800 font-semibold px-4 border border-gray-400 rounded shadow disabled:cursor-not-allowed"
         >
           결과보기
         </button>
