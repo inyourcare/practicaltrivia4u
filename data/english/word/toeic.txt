@@ -327,7 +327,7 @@ quality 품질, 질
 accurate 정확한
 reliable 믿을 만한 
 advance 진보, 전진
-be schedule to+root ~하기로 되어있는 
+be scheduled to+root ~하기로 되어있는 
 allow 허락하다
 research 연구, 조사 
 appearance 외관 외모
@@ -555,7 +555,7 @@ establish 설립하다
 deficit 적자
 expansion 확장
 discrepancy 불일치, 차이
-be force to+root ~강제로 시키다 
+be forced to+root ~강제로 시키다 
 excess 초과
 go through (고난)겪다 
 expenditure 지출, 비용
