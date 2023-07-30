@@ -34,7 +34,7 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
   const [guessMode, setGuessMode] = useState(true);
   const guessOffMsg = "guess off";
   const [resultsDialogOpen, setResultsDialogOpen] = useState(false);
-  const resultViewDivId = "result-view-div-id"
+  const resultViewDivId = "result-view-div-id";
   function startAndRefreshSpeechRecognition() {
     if (
       window &&
@@ -299,7 +299,7 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
           skip
         </button>
         <button
-          onClick={() => setResultsDialogOpen(true)}
+          onClick={() => todayResult.length>0 && setResultsDialogOpen(true)}
           className="ml-1 bg-white hover:bg-gray-100 text-gray-800 font-semibold px-4 border border-gray-400 rounded shadow disabled:cursor-not-allowed"
         >
           결과보기
@@ -336,7 +336,17 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
                   </li>
                 ))}
               </ul>
-              <button onClick={()=>clickToScreenShot(resultViewDivId,'vocastudyresult(US)')}>이미지 저장</button>
+              <div
+                className={"w-full h-10 flex flex-row-reverse items-end mt-5"}
+              >
+                <button
+                  onClick={() =>
+                    clickToScreenShot(resultViewDivId, "vocastudyresult(US)")
+                  }
+                >
+                  이미지 저장
+                </button>
+              </div>
             </div>
           </div>
         </Dialog>
