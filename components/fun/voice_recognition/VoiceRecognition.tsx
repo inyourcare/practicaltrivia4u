@@ -332,11 +332,24 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
                         <p className="text-sm text-gray-500 truncate dark:text-gray-400">
                           {` "${result.tried.korean}" vs "${result.guessedMeaning}"`}
                         </p>
-                        <p className="text-sm text-gray-500 truncate dark:text-gray-400">
-                          {`${
-                            (result.pass && "passed") || "Not passed"
-                          } at ${result.time.toLocaleString()}`}
-                        </p>
+                        <div className="block md:hidden">
+                          <p className="text-sm text-gray-500 truncate dark:text-gray-400">
+                            {`${(result.pass && "passed") || "Not passed"}`}
+                          </p>
+                          <p className="text-sm text-gray-500 truncate dark:text-gray-400">
+                            {`${result.time.toLocaleDateString()}`}
+                          </p>
+                          <p className="text-sm text-gray-500 truncate dark:text-gray-400">
+                            {`${result.time.toLocaleTimeString()}`}
+                          </p>
+                        </div>
+                        <div className="hidden md:block">
+                          <p className="text-sm text-gray-500 truncate dark:text-gray-400">
+                            {`${
+                              (result.pass && "passed") || "Not passed"
+                            } at ${result.time.toLocaleString()}`}
+                          </p>
+                        </div>
                       </div>
                     </li>
                   ))}
