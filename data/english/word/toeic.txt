@@ -477,7 +477,7 @@ inaugurate ~을 개시하다
 inventory 재고품
 incorrect 부정확한 
 invoice 송장
-be oblige to+root ~에게 강요하다 
+be obliged to+root ~에게 강요하다 
 particularly 특히
 decline 감소, 하락 
 postage 우편요금
