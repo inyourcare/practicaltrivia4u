@@ -29,6 +29,7 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
   const [todayResult, setTodayResult] = useState(new Array<WordResult>());
   const [result, setResult] = useState(null as unknown as WordResult);
   const [guessingMeaning, setGuessingMeaning] = useState("");
+  const [guessMode, setGuessMode] = useState(true);
   function startAndRefreshSpeechRecognition() {
     if (
       window &&
@@ -81,7 +82,7 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
     );
   }, [filteredWords]);
   const setResultAndChangeExporession = useCallback(
-    (args?: { skip?: boolean, guess?: string }) => {
+    (args?: { skip?: boolean; guess?: string }) => {
       const spokenStr = spoken.trim().toLowerCase().replace(" ", "");
       const screenStr = screenExpression.spell
         .replace("+root", "")
@@ -94,13 +95,15 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
           spoken: spokenStr,
           pass: false,
           time: new Date(),
-          guessedMeaning: args.guess
+          guessedMeaning: args.guess,
         });
         const idx = getRandomIndexOfFilteredWords();
         setScreenExpression({
           spell: filteredWords[idx].spell,
           meaning: filteredWords[idx].korean,
         });
+
+        setGuessingMeaning("");
       } else {
         if (
           filteredWords &&
@@ -114,17 +117,18 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
               spoken: spokenStr,
               pass: true,
               time: new Date(),
-              guessedMeaning: args?.guess
+              guessedMeaning: args?.guess,
             });
             const idx = getRandomIndexOfFilteredWords();
             setScreenExpression({
               spell: filteredWords[idx].spell,
               meaning: filteredWords[idx].korean,
             });
+
+            setGuessingMeaning("");
           }
         }
       }
-      setGuessingMeaning("");
     },
     [
       filteredWords,
@@ -267,6 +271,12 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
       </div>
       <br />
       <div className="flex justify-center items-center">
+        <button
+          onClick={() => setGuessMode(!guessMode)}
+          className="bg-white hover:bg-gray-100 text-gray-800 font-semibold px-4 border border-gray-400 rounded shadow disabled:cursor-not-allowed"
+        >
+          guess 모드
+        </button>
         <button
           onClick={() => setResultAndChangeExporession({ skip: true })}
           className="bg-white hover:bg-gray-100 text-gray-800 font-semibold px-4 border border-gray-400 rounded shadow disabled:cursor-not-allowed"
