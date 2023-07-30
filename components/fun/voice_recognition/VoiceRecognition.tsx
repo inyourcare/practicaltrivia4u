@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, useRef } from "react";
 import { Word } from "@prisma/client";
 import { levels } from "./levels";
 import { textToSpeech } from "./textToSpeech";
@@ -34,7 +34,8 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
   const [guessMode, setGuessMode] = useState(true);
   const guessOffMsg = "guess off";
   const [resultsDialogOpen, setResultsDialogOpen] = useState(false);
-  const resultViewDivId = "result-view-div-id";
+  const resultDivOuter = useRef<HTMLDivElement>(null);
+  const resultDivInner = useRef<HTMLDivElement>(null);
   function startAndRefreshSpeechRecognition() {
     if (
       window &&
@@ -299,7 +300,7 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
           skip
         </button>
         <button
-          onClick={() => todayResult.length>0 && setResultsDialogOpen(true)}
+          onClick={() => todayResult.length > 0 && setResultsDialogOpen(true)}
           className="ml-1 bg-white hover:bg-gray-100 text-gray-800 font-semibold px-4 border border-gray-400 rounded shadow disabled:cursor-not-allowed"
         >
           결과보기
@@ -311,37 +312,46 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
       {todayResult.length > 0 && (
         <Dialog open={resultsDialogOpen} setOpen={setResultsDialogOpen}>
           <div
-            id={resultViewDivId}
             className={`w-[80vw] max-w-md max-h-[80vh] overflow-y-scroll bg-white p-10 cursor-auto`}
+            ref={resultDivOuter}
           >
             <div>
-              <ul className="divide-y divide-gray-200 dark:divide-gray-700">
-                {todayResult.map((result) => (
-                  <li key={result.time.getTime()} className="w-full p-3 sm:p-4">
-                    <div className="flex-1 min-w-0 justify-center items-center">
-                      <p className="text-sm font-medium text-gray-900 truncate dark:text-white">
-                        {`"${result.tried.spell}" vs "${
-                          result.spoken || "not spoken"
-                        }"`}
-                      </p>
-                      <p className="text-sm text-gray-500 truncate dark:text-gray-400">
-                        {` "${result.tried.korean}" vs "${result.guessedMeaning}"`}
-                      </p>
-                      <p className="text-sm text-gray-500 truncate dark:text-gray-400">
-                        {`${
-                          (result.pass && "passed") || "Not passed"
-                        } at ${result.time.toLocaleString()}`}
-                      </p>
-                    </div>
-                  </li>
-                ))}
-              </ul>
+              <div ref={resultDivInner}>
+                <ul className="divide-y divide-gray-200 dark:divide-gray-700">
+                  {todayResult.map((result) => (
+                    <li
+                      key={result.time.getTime()}
+                      className="w-full p-3 sm:p-4"
+                    >
+                      <div className="flex-1 min-w-0 justify-center items-center">
+                        <p className="text-sm font-medium text-gray-900 truncate dark:text-white">
+                          {`"${result.tried.spell}" vs "${
+                            result.spoken || "not spoken"
+                          }"`}
+                        </p>
+                        <p className="text-sm text-gray-500 truncate dark:text-gray-400">
+                          {` "${result.tried.korean}" vs "${result.guessedMeaning}"`}
+                        </p>
+                        <p className="text-sm text-gray-500 truncate dark:text-gray-400">
+                          {`${
+                            (result.pass && "passed") || "Not passed"
+                          } at ${result.time.toLocaleString()}`}
+                        </p>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
               <div
                 className={"w-full h-10 flex flex-row-reverse items-end mt-5"}
               >
                 <button
                   onClick={() =>
-                    clickToScreenShot(resultViewDivId, "vocastudyresult(US)")
+                    clickToScreenShot(
+                      resultDivInner.current,
+                      resultDivOuter.current,
+                      "vocastudyresult(US)"
+                    )
                   }
                 >
                   이미지 저장
