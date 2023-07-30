@@ -3,6 +3,7 @@
 import { PrismaClient } from "@prisma/client";
 import { branchData } from "./branches";
 import { postData } from "./posts";
+import { exportWords } from "./word";
 // import { ROLE } from './types'
 // const hashPassword = (password: string) => {
 //     return sha256(password).toString();
@@ -14,11 +15,18 @@ async function main() {
     skipDuplicates: true,
   });
   console.log('branches',branches);
+
   const posts = await prisma.post.createMany({
     data: postData,
     skipDuplicates: true,
   });
   console.log('posts',posts);
+
+  const words = await prisma.word.createMany({
+    data: exportWords,
+    skipDuplicates: true,
+  });
+  console.log('words',words)
   
 }
 main()

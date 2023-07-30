@@ -1,0 +1,959 @@
+applicant 지원자, 신청자 
+custody 감금, 구류 
+associate 관련시키다 
+effect 효과, 영향 
+candidate 후보자, 지원자 
+enforce 시행하다 
+certification 증명서 
+exception 예외 
+confidence 확신, 자신감 
+fraud 사기 
+degree 학위
+legislation 법률
+eligible 자격이 있는
+legitimate 합법적인 
+employment 고용
+litigation 소송, 기소 
+entitle ~에게 자격을 주다
+observance 준수
+meet 만족시키다
+petition 진정서 
+occupation 직업
+policy 규정, 보험증권 
+paycheck 급료, 지불
+procedure 절차
+payroll 급료명부
+prohibit 금지하다 
+professional 직업의
+prosecute 기소하다 
+proficiency 능숙, 숙달
+regulation 규정
+prospective 미래의
+restrict 제한하다 
+reference 추천서, 참고
+thoroughly 철저하게 
+recruit 모집하다
+violate 위반하다 
+qualified 자격 있는
+accustomed ~에 익숙한 
+resume 이력서
+acquaint 잘 알게 하다 
+requirement 필요조건
+attendance 출석
+abolish 폐지하다
+check 조사하다 
+access 접근
+colleague 동료
+according to ~에 따라
+concentrate 집중하다 
+accuse 비난하다
+convey 전달하다 
+approval 승인, 인가
+corporation 법인
+at all times 항상, 언제나
+delegate 위임하다 
+attorney 변호사
+division 부서
+authorize ~을 인가하다
+efficiently 효율적으로 
+comply with ~따르다
+impending 임박한
+instruct 가르치다
+respective 각각의 
+involved 관계된
+responsible 책임이 있는 
+notify ~에게 통지하다
+subsequent 그 이후의 
+oversee 감독하다
+transform 바꾸다 
+release 발표하다
+undertake 떠맡다 
+reminder 상기시켜주는 것
+voluntarily 자발적으로 
+request 요청
+accessible 이용할 수 있는 
+revision 수정
+accidentally 우연히 
+submit 제출하다
+aggravate 악화시키다 
+subordinate 부하 직원
+apparently 외관상으로 
+supervision 감독
+compliance (명령)준수 
+translation 번역
+concerned 염려하는 
+accomplish 성취하다
+demonstrate 증명하다 
+adjust 적응하다
+division 나누다 
+assign 배정하다
+evacuate 대피하다 
+assist 돕다
+expertise 전문적 기술 
+assume 가정하다
+extended 연장한 
+conduct 수행하다
+feedback 의견, 반응 
+confidential 기밀의
+implement 실행하다 
+coordinate 조정하다
+information 정보
+disturb 방해하다
+Instead of ~대신에 
+duplicate 사본
+interruption 방해, 중단 
+endeavor 노력하다
+make sure 확인하다 
+engage 종사하다
+outstanding 우수한 
+execute 실행하다
+privilege 특권
+foster 촉진하다
+promptly 즉시
+friction 불화, 마찰
+sophisticated 정교한 
+intention 의도
+timely 시기적절한 
+occasionally 때때로
+violation 위반
+personnel 직원, 인원
+trigger 야기하다.
+adversity 역경, 불운
+admission 입장
+assert 단언하다
+advocate 옹호자 
+boost 상승시키다.
+anonymous 익명의 
+collapse 붕괴
+appear 나타나다 
+commerce 통상, 교역
+beneficial 유익한 
+consequence 결과
+celebrity 유명인사 
+depression 불황
+censorship 검열
+dramatically 극적으로
+collection 수집품 
+economical 경제적인
+contestant 경기자 
+entail ~을 수반하다
+contributor 기부자 
+flourish 번창하다
+current 현재의 
+implication 영향, 밀접한 관계
+donation 기부
+indicator 지표, 지수
+edition (간행물의)판 
+industrial 산업의
+enlightening 계몽적인 
+be likely to+root ~할 것 같은
+enthusiastically 열정적으로 
+overall 전반적인
+exhibition 전시회 
+promising 유망한
+fascinating 매혹적인 
+prospect 전망, 예상
+informative 유익한 
+prosperity 번영
+issue 발행하다 
+rapidly 급속히
+lend 빌려주다 
+ratio 비율
+local 지방의 
+remain 여전히~한 상태이다.
+note 주목하다 
+skyrocket (가격 등이)치솟다
+municipal 지방자치의 
+slowdown 경기 후퇴
+periodical 정기 간행물 
+soar (물가 등이) 치솟다
+popular 인기 있는 
+stagnant 침체된
+present 제시(발표)하다 
+supplement 보완하다
+publication 간행물, 출판물 
+thrive 번영하다
+subscription 정기 구독 
+volatile (가격)이 심하게 변동하는
+upcoming 앞으로 올 
+wane 감쇠, 쇠퇴
+variety 다양성 
+affect ~에 영향을 미치다
+respondent 응답자 
+analysis 분석
+survey 조사
+claim 주장하다
+adopt 채택하다 
+closely 면밀히, 엄밀히
+advantage 이점, 강점 
+comparison 비교
+advertisement 광고
+competition 경쟁
+advise 충고하다 
+consecutive 연속적인
+aggressively 적극적으로 
+consistently 일관되게
+aim ~을 겨누다 
+consolidate (권력을)강화하다
+attract 끌다, 유인하다 
+contend with (문제에)대처하다
+await 기다리다 
+demand 수요
+cater 요구를 들어주다 
+effective 효과적인
+confront ~에 직면하다 
+especially 특히
+consumer 소비자 
+examine 조사하다
+creative 창조적인 
+expand 확대하다
+customer 고객
+expectation 예상, 기대
+deliberate 고의적인 
+extremely 극도로, 대단히
+diversify 다양화하다 
+focus 집중하다
+effort 노력
+gauge 측정하다
+endorse 보증하다 
+impact 충격, 영향
+experiment 실험하다 
+intervention 간섭
+favorably 호의적으로 
+modestly 겸손하게
+feasible 실행 가능한 
+monopoly (상품의) 독점
+fortify 강화하다 
+mounting 오르는
+forward 전진하다 
+perception 인식, 지각
+incentive 혜택, 장려금 
+persistent 계속되는
+indicate 나타나다 
+probable 가능성 있는
+influence ~에 영향을 주다 
+raise 임금 인상
+instantly 즉각적으로 
+randomly 임의로
+introduce 소개(도입)하다 
+reflective 반영하는
+largely 주로, 대부분 
+majority 대부분
+refund 환불
+means 방법, 수단
+relatively 상대적으로 
+necessarily 반드시
+sturdy 튼튼한 
+need 필요, 요구
+thrifty 검소한 
+repeatedly 반복해서
+valid 유효한 
+strategy 전략
+value 가치, 가격 
+affordable 감당할 수 있는
+voucher 상품권 
+alter 고치다, 바꾸다
+venue 장소
+apply 적용(지원)하다
+warranty 보증서 
+auction 경매
+assemble 조립하다 
+authentic 진짜의
+attribute (원인을)~에 돌리다.
+benefit 혜택, 이익
+automate 자동화하다 
+carefully 주의 깊게
+capable ~을 할 수 있는 
+charge 요금, 부과
+capacity 수용력 
+delivery 배달
+carelessly 부주의하게 
+description 설명서, 해설
+chemical 화학제품 
+equivalent ~에 상당하는
+comparable 비교되는 
+exactly 정확히
+damaged 손상된 
+exclusively 독점적으로, 오로지
+device 장치
+installment 할부
+discontinue 중단하다 
+install 설치하다
+efficiency 효율, 능률 
+lately 최근에
+equipment 장비, 설비 
+merchandise 상품
+evidently 명백히 
+method 방법
+facility 시설
+notice 통지
+halt 중단, 정지 
+offer 제공하다
+launch (신제품을) 출시하다 
+officially 공식적으로
+material 재료, 물질 
+purchase 구매하다
+operate 작동하다 
+readily 쉽게
+operational 작동하는 
+receipt 영수증
+precaution 예방 조치 
+prevent ~을 막다
+grant 인정하다 
+processing 처리, 가공
+hold ~을 수용하다 
+produce 생산하다
+improve 향상시키다 
+properly 정확하게
+increasingly 점점 더 
+protective 보호하는
+indication 징후, 조짐 
+quota 할당량
+innovative 혁신적인 
+safety 안전
+inspect 검사하다 
+separately 개별적으로
+inspiration 영감
+specification 명세서
+interpretation 해석, 설명 
+stage 단계
+manufacturer 제조업자 
+tolerance 관용
+obsolete 구식의 
+utilize 이용하다
+patent 특허권 
+absolute 완전한
+quality 품질, 질 
+accurate 정확한
+reliable 믿을 만한 
+advance 진보, 전진
+be scheduled to+root ~하기로 되어있는 
+allow 허락하다
+research 연구, 조사 
+appearance 외관 외모
+be ready to+root ~하기로 되어있는 
+bewildering 당혹케 하는
+revolutionary 혁명적인 
+broad 넓히다
+sufficiently 충분히 
+compatible 호환성의
+vulnerable 취약한 
+complement 보완하다
+technical 기술적인 
+control 통제하다
+superior 우수한 
+corrosion 부식
+apologize 사과하다 
+development 개발, 발전
+appropriately 적절하게 
+devise 고안하다
+argumentative 논쟁적인 
+disruption 중단, 혼란
+blemish 흠, 결점 
+durable 내구성 있는
+cause 야기하다, 원인 
+envision 계획하다
+commitment 헌신
+feature 특징, 특색
+complaint 불평
+following ~후에
+complete 완료하다 
+compliment 칭찬
+customs 세관
+confident 자신 있는
+declare (세관에서)신고하다 
+courteous 예의 바른
+depart 출발하다 
+critical 비판적인
+destination 목적지 
+deal 거래(처리)하다
+diverse 다양한 
+defective 결함이 있는
+dramatic 극적인 
+evaluation 평가
+embassy 대사관 
+fix 수리하다
+emergency 비상사태 
+further 그 이상의
+exotic 이국적인 
+genuine 진짜의
+hospitality 환대, 친절 
+guarantee 보장하다
+indulge 탐닉하다 
+hesitate 주저하다
+itinerary 여행 일정 
+inconvenience 불편
+laundry 세탁물 
+inquire 질문하다
+locate ~을 위치시키다 
+insert 삽입하다
+prior to ~이전에
+mistakenly 잘못되게
+proximity 가까움 
+notification 통지
+superb 뛰어난 
+politely 정중하게
+unique 독특한 
+replace ~을 교체하다
+unavailable 이용할 수 없는 
+respond 응답하다
+agreement 계약, 협정 
+return 반송(왕복)하다
+arbitration 중재
+satisfaction 만족
+collaborate 협동하다 
+seriously 진지하게
+compromise 타협, 화해 
+specific 구체적인
+contract 계약
+accumulate 축척하다
+deadlock 교착 상태 
+approximately 대략
+dispute 논쟁, 분쟁 
+attraction 관광 명소
+embark 착수하다
+baggage 수화물
+expire (계약이)만기되다 
+board 탑승하다
+foundation 토대, 기초 
+brochure 소책자
+impartially 공명정대하게 
+imperative 필수적인
+order 주문하다 
+impression 인상
+provide 제공하다
+initially 처음에
+quote 견적애 
+moderator 중재자
+refuse 거절하다 
+modify 수정하다
+represent ~을 대표하다 
+narrow 좁히다
+retail 소매
+negotiation 협상
+selection 선택된 것 
+opposing 대립하는
+be subject to+root ~하기로 되어 있는 
+proceed 진척되다
+supply 공급하다 
+proposal 계획, 제안
+temporarily 일시적으로 
+renew 갱신하다
+accelerate 가속화하다 
+review 검토하다
+acknowledge 인정하다 
+rigid 엄격한
+adequately 적절히 
+settle 해결하다
+attach 붙이다, 첨부하다 
+solicit 요청하다
+carton 판지 상자
+term 조건, 기한
+caution 주의, 조심 
+terminate 종결시키다
+correspondence 편지, 통신문 
+acclaim 찬사, 호평
+courier 급송 택배 
+assure ~에게 보장하다
+detach 떼다
+attain (목표) 달성하다
+embargo 무역금지 
+commodity 상품, 생산
+enact 제정하다 
+completely 완전히
+enclose ~을 동봉하다 
+confirmation 확인
+ensure 보증하다 
+contact ~와 연락을 취하다
+envelope 봉투
+depot 창고, 저장소
+fragile 깨지기 쉬운 
+diminish 감소하다
+handle 다루다 
+distribute 배포하다
+impose 부과하다
+inevitable 불가피한
+inaugurate ~을 개시하다 
+inventory 재고품
+incorrect 부정확한 
+invoice 송장
+be obliged to+root ~에게 강요하다 
+particularly 특히
+decline 감소, 하락 
+postage 우편요금
+decrease 감소하다
+recipient 수신자
+depend on ~에 의존하다 
+reciprocal 상호의
+deviate 빗나가다 
+remarkable 두드러진
+disappointing 실망스러운 
+shipment 선적, 발송
+encouraging 용기를 주는 
+surplus 잉여, 흑자
+exceed ~을 초과하다 
+accommodate ~을 수용하다
+figure 합계 수, 총액 
+atmosphere 분위기, 환경
+growth 성장, 발전 
+available 이용 가능한
+illustrate 설명하다 
+belongings 소지품
+impressive 인상적인 
+choice 선택
+inaccurate 부정확한 
+compensate ~에게 보상하다
+increase 증가하다 
+complimentary 무료의
+make up for ~을 만회하다 
+confirm 확인하다
+offset 상쇄하다 
+cuisine 요리
+production 생산, 생산량 
+elegant 우아한
+profit 이익, 수익 
+entirely 완전히
+projection 예상, 예상치 
+extensive 광범위한
+proportion 부분, 몫 
+flavor 맛
+recent 최근의 
+forfeit 몰수당하다
+reduce 줄이다 
+freshness 신선함
+regular 정기적인 
+indigenous 지역 고유의
+representative 판매 대리인 
+occupancy (호텔 등의)이용률
+revenue 수입
+reception 접수처
+significantly 상당히 
+recipe 요리법
+slightly 약간
+reservation 예약
+substantial 상당한
+retain 보유(유지)하다,
+tend to+root ~하는 경향이 있다 
+utensil 도구, 기구
+accountant 회계사 
+anticipate 기대하다
+allocate 할당하다 
+audit 회계감사
+authority 권한, 당국 
+budget 예산
+considerable 상당한
+calculate 계산하다
+contribute 기여하다 
+committee 위원회
+dedicated 헌신적인 
+curtail ~을 줄이다
+emerge 나타나다 
+deduct 공제하다
+enhance 강화하다 
+deficient 부족한
+establish 설립하다 
+deficit 적자
+expansion 확장
+discrepancy 불일치, 차이
+be forced to+root ~강제로 시키다 
+excess 초과
+go through (고난)겪다 
+expenditure 지출, 비용
+independent 독립의 
+financial 재정의
+inform ~에게 알리다 
+fund 자금을 조달하다
+initiate 시작(착수)하다 
+generate 창출하다
+merge 합병하다
+incidental 부수적인
+productivity 생산성 
+inconsistency 불일치
+progressive 진보적인 
+liable 책임져야 할, ~하기 쉬운
+relocate 이전하다 
+liability 책임, 부채
+reveal 밝히다 
+monetary 금전의
+simultaneously 동시에 
+overcome 극복하다
+stance 입장, 태도 
+preferred 선호되는
+strategic 전략적인 
+reimburse 상환하다
+strike 동맹파업 
+rigorously 엄격히
+struggle 분투하다 
+substantially 크게, 상당히
+subsidize ~보조금을 지급하다 
+turnover 이직률, 거래액
+surpass ~을 능가하다 
+accept 승낙하다
+takeover 인수
+acquire 취득하다
+conserve 보존하다
+active 적극적인
+aid 원조, 도움
+announce 발표하다
+contaminate 오염시키다 
+asset 자산
+continually 계속적으로 
+damage 손해, 피해
+curb 억제하다 
+deplete 고갈시키다
+delinquent (세금) 연체된 
+disaster 재난
+deposit 입금하다 
+discharge 방출하다
+document 서류, 문서 
+dispose 처리하다
+expect 예상하다 
+drought 가뭄
+identification 신분증명서 
+ecology 자연 환경
+in common 공동으로 
+emission 방출, 배기가스
+investigation 조사
+endangered 멸종위기에 처한
+loan 대부, 대부금 
+environmental 환경적인
+lower (가격을)줄이다 
+extinction 멸종
+mortgage 주택 융자 
+forecast 날씨 예보
+overdue 미납의 
+inclement 날씨가 궂은
+payable 지불해야 하는 
+inflict 피해를 입히다
+previously 이전에
+migration 이주
+regrettably 유감스럽게도 
+occur to 발생하다
+statement 명세서 
+organization 단체
+sustain 지속하다 
+pollutant 오염물질
+transaction 거래, 업무 
+prominent 두드러진
+withdrawal 인출
+purify 정화시키다
+confusion 혼란
+recycling 재활용
+consent 동의
+resource 자원
+consider 고려하다 
+sewage 하수, 오수
+controversy 논란
+solution 해결책
+depreciation 가치 하락 
+account 계좌
+entrepreneur 사업가 
+accumulate 축적하다
+eventually 마침내 
+bill ~에게 청구서를 보내다
+inherently 본질적으로 
+confiscate 몰수하다
+innate 타고난
+convert 전환(변화)하다
+insecure 불안한 
+counterfeit 가짜, 모조품
+investor 투자자 
+justify 정당화하다
+obtain 얻다
+legacy 유산, 유물
+opportunity 기회
+manipulation 조작, 시장조작
+opposition 반대, 대항 
+on behalf of ~을 대신해서
+permit 허락하다 
+outlook 전망
+principal 주요한 
+possible 가능한
+reverse 반대의, 역의 
+prevalent 널리 퍼진
+securely 단단하게 
+property 재산
+simply 그저, 간단히 
+shareholder 주주
+tow 견인하다 
+somewhat 전적으로
+transportation 운송수단 
+speculation 추측
+vehicle 차량, 운송수단 
+stability 안전
+adjourn (회의 등을)휴회하다 
+unbiased 선입견 없는
+confine 제한하다 
+yield (이윤을)가져오다
+coherent 일관성 있는 
+alleviate 완화하다
+constraint 제한
+alternative 대안
+convince 확신시키다 
+clearly 명확히
+differ 다르다 
+commute 통근하다
+discuss 토론하다 
+conform (규칙 등에)따르다
+disperse 흩어지다 
+congestion 혼잡, 체중
+distract 흩뜨리다 
+designated 지정된
+elaborate 정교한, 공들인 
+detailed 상세한
+emphasis 강조, 중점 
+detour 우회
+irrelevant 무관한 
+divert 우회시키다
+opponent 반대자, 적수 
+fare 요금
+organize 조직하다 
+expense 비용, 지출
+persuasive 설득력 있는 
+equipment 설비, 장비
+presumably 아마, 생각컨대 
+malfunction 오작동
+suggestion 제안
+motivate 동기를 부여하다
+unanimous 만장일치의 
+normal 정상, 표준
+uphold 지지하다 
+justify 정당화하다
+obtain 얻다
+legacy 유산, 유물
+opportunity 기회
+manipulation 조작, 시장조작
+opposition 반대, 대항 
+on behalf of ~을 대신해서
+permit 허락하다 
+outlook 전망
+principal 주요한 
+possible 가능한
+reverse 반대의, 역의 
+prevalent 널리 퍼진
+securely 단단하게 
+property 재산
+simply 그저, 간단히 
+shareholder 주주
+tow 견인하다 
+somewhat 전적으로
+transportation 운송수단 
+speculation 추측
+vehicle 차량, 운송수단 
+stability 안전
+adjourn (회의 등을)휴회하다 
+unbiased 선입견 없는
+confine 제한하다 
+yield (이윤을)가져오다
+coherent 일관성 있는 
+alleviate 완화하다
+constraint 제한
+alternative 대안
+convince 확신시키다 
+clearly 명확히
+differ 다르다 
+commute 통근하다
+discuss 토론하다 
+conform (규칙 등에)따르다
+disperse 흩어지다 
+congestion 혼잡, 체중
+distract 흩뜨리다 
+designated 지정된
+elaborate 정교한, 공들인 
+detailed 상세한
+emphasis 강조, 중점 
+detour 우회
+irrelevant 무관한 
+divert 우회시키다
+opponent 반대자, 적수 
+fare 요금
+organize 조직하다 
+expense 비용, 지출
+persuasive 설득력 있는 
+equipment 설비, 장비
+presumably 아마, 생각컨대 
+malfunction 오작동
+suggestion 제안
+motivate 동기를 부여하다
+unanimous 만장일치의 
+normal 정상, 표준
+uphold 지지하다 
+justify 정당화하다
+obtain 얻다
+legacy 유산, 유물
+opportunity 기회
+manipulation 조작, 시장조작
+opposition 반대, 대항 
+on behalf of ~을 대신해서
+permit 허락하다 
+outlook 전망
+principal 주요한 
+possible 가능한
+reverse 반대의, 역의 
+prevalent 널리 퍼진
+securely 단단하게 
+property 재산
+simply 그저, 간단히 
+shareholder 주주
+tow 견인하다 
+somewhat 전적으로
+transportation 운송수단 
+speculation 추측
+vehicle 차량, 운송수단 
+stability 안전
+adjourn (회의 등을)휴회하다 
+unbiased 선입견 없는
+confine 제한하다 
+yield (이윤을)가져오다
+coherent 일관성 있는 
+alleviate 완화하다
+constraint 제한
+alternative 대안
+convince 확신시키다 
+clearly 명확히
+differ 다르다 
+commute 통근하다
+discuss 토론하다 
+conform (규칙 등에)따르다
+disperse 흩어지다 
+congestion 혼잡, 체중
+distract 흩뜨리다 
+designated 지정된
+elaborate 정교한, 공들인 
+detailed 상세한
+emphasis 강조, 중점 
+detour 우회
+irrelevant 무관한 
+divert 우회시키다
+opponent 반대자, 적수 
+fare 요금
+organize 조직하다 
+expense 비용, 지출
+persuasive 설득력 있는 
+equipment 설비, 장비
+presumably 아마, 생각컨대 
+malfunction 오작동
+suggestion 제안
+motivate 동기를 부여하다
+unanimous 만장일치의 
+normal 정상, 표준
+uphold 지지하다
+annual 매년의
+result 결과
+arise (문제 등이)일어나다
+tentative 임시적인 
+attend ~에 참석하다
+union 노동조합 
+attendee 참석자
+above all 무엇보다도 
+chronological 시간 순의
+appoint 지명하다 
+commence 시작되다
+award 상
+conference 회의
+appreciation 감사, 감상 
+conjunction 연합, 공동
+appraisal 평가
+discriminate 차별하다
+characteristic 특징, 특성 
+enroll 등록하다
+cordially 진심으로 
+existing 기존의, 현행의
+delicate 민감한 
+exploit 착취하다
+nomination 지명, 임명 
+function 작동하다
+level 지위, 수준 
+susceptible ~에 감염되기 쉬운
+incompetent 무능한
+host (대회 등을)주최하다
+dismiss 해고하다 
+include 포함하다
+participation 참여, 참가 labor 노동
+predict 예측하다 
+leave 떠나다
+performance 성과, 연기 
+lecture 강의
+promote 승진시키다 
+lessen 줄이다
+reorganize 재조직하다 
+morale 사기
+reward ~에 보답하다 
+objective 목적, 목표
+strictly 엄격한 
+participant 참가자
+resignation 사직
+purpose 목적, 의도
+search 연구, 탐색 
+refer 언급하다
+serve 근무하다 
+regard 간주하다
+progress 진척, 진전 
+registration 등록
+praise 칭찬
+require 요구하다
+exceptional 예외적인 
+respectfully 공손하게
+evaluate 평가하다 
+responsibility 부담, 책임, 의무
+dedication 헌신
+transfer 전근시키다
+adjacent 인접한 
+undoubtedly 틀림없이
+annex 증축 건물 
+arrange 마련하다, 배열하다
+community 지역사회 
+complex 복잡한
+compulsory 의무적인 
+consist 이루어지다
+district 지구, 지역 
+construction 건축
+desirable 바람직한 
+currently 현재
+describe 묘사하다 
+delay 지연되다
+demolish 파괴하다 
+densely 밀집하여
+tenant 임차인 
+urban 도시의
+utility 공공시설 
+finally 마침내
+unoccupied 비어 있는 
+furnished 가구가 비취된
+coverage 보상범위, 보도 
+install 설치하다
+deprivation 박탈, 상실 
+insulation 단열재
+deter 단념시키다 
+numerous 많은
+diagnosis 진단
+location 장소, 위치
+duration 지속, 기간 
+interfere 방해하다
+eliminate 제거하다 
+repair 수리하다
+eradicate 근절하다 
+residence 주택, 저택
+immune 면역의 
+permanent 영구적인
+induce 유발하다 
+renovation 보수, 수리
+insurance 보험
+premises 토지가 딸린 건물
+nutrition 영양
+restore 회복시키다
+prescribe 처방하다 
+spacious (공간이) 넓은
+prevention 예방
+structure 구조물
+reaction 반응
+antibiotic 항생제
+recommend 추천하다 
+checkup 건강 진단
+recovery 회복
+chronic 만성의
+relieve 완화시키다 
+comprehensive 종합적인
+remedy 치료법 
+conscious 알고 있는
+combination 결합, 연합

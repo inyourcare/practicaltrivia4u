@@ -21,7 +21,7 @@ linkMap.set(rootLinks.partners, {
 linkMap.set(rootLinks.post, { href: "/post/list/0", tagName: "POST" });
 linkMap.set(rootLinks.fun, {
   href: "/fun/food_roulette",
-  tagName: "점심추천",
+  tagName: "사유공간",
 });
 linkMap.set(rootLinks.ask, {
   href: "/ask",
@@ -40,6 +40,7 @@ subMap.set(rootLinks.partners, [
 subMap.set(rootLinks.post, [{ href: "/post/list/0", tagName: "POST" }]);
 subMap.set(rootLinks.fun, [
   { href: "/fun/food_roulette", tagName: "점심추천" },
+  { href: "/fun/voice_recognition", tagName: "영어공부" },
 ]);
 subMap.set(rootLinks.ask, [
   { href: "/ask", tagName: "상담신청(과외)" },
