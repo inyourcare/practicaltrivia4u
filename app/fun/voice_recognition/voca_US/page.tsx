@@ -4,7 +4,7 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 export default async function Home() {
-  const words = await prisma.word.findMany();
+  const words = await prisma.word.findMany({ where: { enable: true } });
   return (
     <>
       <header className="w-full flex flex-col py-5 bg-[rgba(35,46,82,0)]">
