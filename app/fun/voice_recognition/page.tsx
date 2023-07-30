@@ -14,7 +14,7 @@ export default async function Home() {
             <ul className="flex flex-wrap items-center justify-center text-gray-900 dark:text-white">
               <li>
                 <Link
-                  className="mr-4 hover:underline md:mr-6 "
+                  className="mr-4 hover:underline md:mr-6 text-gray-900"
                   href={"fun/voice_recognition/voca_US"}
                 >
                   Vocaburary(US)
