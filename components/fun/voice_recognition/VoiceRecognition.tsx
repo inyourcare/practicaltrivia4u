@@ -74,17 +74,51 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
       0
     );
   }, [filteredWords]);
-  // const addResult = useCallback(
-  //   (r_screen: string, r_spoken: string, r_pass: boolean) => {
-  //     todayResult.push({
-  //       tried: words.filter((w) => w.spell === r_screen)[0],
-  //       spoken: r_spoken,
-  //       pass: r_pass,
-  //     });
-  //     setTodayResult(Array.from(todayResult))
-  //   },
-  //   [todayResult, words]
-  // );
+  const setResultAndChangeExporession = useCallback(
+    (args?: { skip?: boolean }) => {
+      const spokenStr = spoken.trim().toLowerCase().replace(" ", "");
+      const screenStr = screenExpression
+        .replace("+", " ")
+        .trim()
+        .toLowerCase()
+        .replace(" ", "");
+      if (args?.skip) {
+        setResult({
+          tried: words.filter((w) => w.spell === screenExpression)[0],
+          spoken: spokenStr,
+          pass: false,
+        });
+        setScreenExpression(
+          filteredWords[getRandomIndexOfFilteredWords()].spell
+        );
+      } else {
+        if (
+          filteredWords &&
+          filteredWords.length > 0 &&
+          spokenStr &&
+          screenStr
+        ) {
+          if (spokenStr === screenStr) {
+            setResult({
+              tried: words.filter((w) => w.spell === screenExpression)[0],
+              spoken: spokenStr,
+              pass: true,
+            });
+            setScreenExpression(
+              filteredWords[getRandomIndexOfFilteredWords()].spell
+            );
+          }
+        }
+      }
+    },
+    [
+      filteredWords,
+      getRandomIndexOfFilteredWords,
+      screenExpression,
+      spoken,
+      words,
+    ]
+  );
 
   /////////////////////////////////////// use effect ////////////////////////////////////////////////////////////
   const initiateAudioInput = useEffect(() => {
@@ -105,34 +139,8 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
       setScreenExpression(filteredWords[getRandomIndexOfFilteredWords()].spell);
   }, [filteredWords, getRandomIndexOfFilteredWords]);
   const eventWhenSpokenAndScreenSame = useEffect(() => {
-    const spokenStr = spoken.trim().toLowerCase().replace(" ", "");
-    const screenStr = screenExpression
-      .replace("+", " ")
-      .trim()
-      .toLowerCase()
-      .replace(" ", "");
-    if (
-      filteredWords &&
-      filteredWords.length > 0 &&
-      spokenStr &&
-      screenStr &&
-      spokenStr === screenStr
-    ) {
-      setResult({
-        tried: words.filter((w) => w.spell === screenExpression)[0],
-        spoken: spokenStr,
-        pass: true,
-      });
-      setScreenExpression(filteredWords[getRandomIndexOfFilteredWords()].spell);
-    }
-  }, [
-    spoken,
-    screenExpression,
-    filteredWords,
-    getRandomIndexOfFilteredWords,
-    setResult,
-    words,
-  ]);
+    setResultAndChangeExporession();
+  }, [setResultAndChangeExporession]);
   const addResult = useEffect(() => {
     console.log("result::", result);
     if (result) todayResult.push(result);
@@ -207,7 +215,7 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
       <br />
       <div className="flex justify-center items-center">
         <button
-          // onClick={() => console.log(todayResult)}
+          onClick={() => setResultAndChangeExporession({skip:true})}
           className="bg-white hover:bg-gray-100 text-gray-800 font-semibold px-4 border border-gray-400 rounded shadow disabled:cursor-not-allowed"
         >
           skip
