@@ -10,6 +10,7 @@ import RefreshMicrophoneIcon from "./RefreshMicrophoneIcon";
 import GoogleAd from "@/components/adsense/GoogleAd";
 import { GoogldAdType } from "@/components/adsense/type";
 import Dialog from "@/components/dialog/Dialog";
+import { clickToScreenShot } from "./screenshot";
 
 type WordResult = {
   tried: Word;
@@ -33,6 +34,7 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
   const [guessMode, setGuessMode] = useState(true);
   const guessOffMsg = "guess off";
   const [resultsDialogOpen, setResultsDialogOpen] = useState(false);
+  const resultViewDivId = "result-view-div-id"
   function startAndRefreshSpeechRecognition() {
     if (
       window &&
@@ -309,6 +311,7 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
       {todayResult.length > 0 && (
         <Dialog open={resultsDialogOpen} setOpen={setResultsDialogOpen}>
           <div
+            id={resultViewDivId}
             className={`w-[80vw] max-w-md max-h-[80vh] overflow-y-scroll bg-white p-10 cursor-auto`}
           >
             <div>
@@ -333,6 +336,7 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
                   </li>
                 ))}
               </ul>
+              <button onClick={()=>clickToScreenShot(resultViewDivId,'vocastudyresult(US)')}>이미지 저장</button>
             </div>
           </div>
         </Dialog>
