@@ -96,14 +96,14 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
         .trim()
         .toLowerCase();
       const screenStr = screenStrNolized.replace(" ", "");
-      const resultWords = words.filter((w) => w.spell === screenWord.spell);
+      // const resultWords = words.filter((w) => w.spell === screenWord.spell);
 
       // skip
-      if (args?.skip && resultWords && resultWords.length > 0) {
+      if (args?.skip) {
         // result manage
         // console.log(resultWords);
         setResult({
-          tried: resultWords[0],
+          tried: screenWord,
           spoken: spokenStr,
           pass: false,
           time: new Date(),
@@ -124,7 +124,7 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
           if (spokenStr === screenStr || spoken.includes(screenStrNolized)) {
             // result manage
             setResult({
-              tried: words.filter((w) => w.spell === screenWord.spell)[0],
+              tried: screenWord,
               spoken: spokenStr,
               pass: true,
               time: new Date(),
