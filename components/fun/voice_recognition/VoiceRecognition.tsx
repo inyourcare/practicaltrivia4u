@@ -89,12 +89,12 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
   }, [filteredWords]);
   function setResultAndChangeExporession(args?: { skip?: boolean }) {
     const spokenStr = spoken.trim().toLowerCase().replace(" ", "");
-    const screenStr = screenExpression.spell
-      .replace("+root", "")
-      .trim()
-      .toLowerCase()
-      .replace(" ", "");
+    const screenStrNolized = screenExpression.spell
+    .replace("+root", "").trim().toLowerCase()
+    const screenStr = screenStrNolized.replace(" ", "");
     const resultWords = words.filter((w) => w.spell === screenExpression.spell);
+
+    // skip
     if (args?.skip && resultWords && resultWords.length > 0) {
       // result manage
       // console.log(resultWords);
@@ -114,7 +114,8 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
       setGuessingMeaning("");
     } else {
       if (filteredWords && filteredWords.length > 0 && spokenStr && screenStr) {
-        if (spokenStr === screenStr) {
+        // pass
+        if (spokenStr === screenStr || (spoken.includes(screenStrNolized))) {
           // result manage
           setResult({
             tried: words.filter((w) => w.spell === screenExpression.spell)[0],
@@ -185,6 +186,11 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
         <div className="w-full">
           <p>
             ※ 단어 발음은 가능하면 dictionary 사이트를 참조하시는 걸 권장드려요
+          </p>
+        </div>
+        <div className="w-full">
+          <p>
+            ※ 단어가 넘어가지지 않으면 단어가 포함된 문장을 말하고 해당 단어가 그 문장에 포함 된 경우에도 pass처리 됩니다.
           </p>
         </div>
         <div className="w-full flex flex-row">
