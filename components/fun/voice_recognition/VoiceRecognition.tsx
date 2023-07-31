@@ -328,29 +328,31 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
             ref={resultDivOuter}
           >
             <div>
-              <div className="w-full flex justify-between">
-                <div className="w-full flex justify-center items-center font-black">Voca(US)</div>
-                <div
-                  className="cursor-pointer w-[40px] h-[40px]"
-                  onClick={() => setResultsDialogOpen(false)}
-                >
-                  <Image
-                    width={40}
-                    height={40}
-                    style={{
-                      width: 50,
-                      height: 40,
-                      color: "black",
-                      backgroundColor: "white",
-                    }}
-                    src={`/images/icons/list-close-btn.svg`}
-                    priority
-                    alt=""
-                    className=""
-                  />
-                </div>
-              </div>
               <div ref={resultDivInner}>
+                <div className="w-full flex justify-between">
+                  <div className="w-full flex justify-center items-center font-black">
+                    Voca(US)
+                  </div>
+                  <div
+                    className="cursor-pointer w-[40px] h-[40px]"
+                    onClick={() => setResultsDialogOpen(false)}
+                  >
+                    <Image
+                      width={40}
+                      height={40}
+                      style={{
+                        width: 50,
+                        height: 40,
+                        color: "black",
+                        backgroundColor: "white",
+                      }}
+                      src={`/images/icons/list-close-btn.svg`}
+                      priority
+                      alt=""
+                      className=""
+                    />
+                  </div>
+                </div>
                 <ul className="divide-y divide-gray-200 dark:divide-gray-700">
                   {todayResult.map((result) => (
                     <li
