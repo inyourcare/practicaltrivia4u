@@ -85,7 +85,7 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
       console.log("speech recognition starts");
     }
   }
-  function getRandomIndexOfFilteredWords () {
+  function getRandomIndexOfFilteredWords() {
     return (
       (filteredWords &&
         filteredWords.length > 0 &&
@@ -175,7 +175,7 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
       const idx = getRandomIndexOfFilteredWords();
       setScreenWord(filteredWords[idx]);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filteredWords]);
   //spoken 이 바뀔때만 호출 되도록
   const eventWhenSpokenAndScreenSame = useEffect(() => {
@@ -191,6 +191,34 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
   return (
     <div className="w-full flex justify-center items-center flex-col">
       <div className="flex items-center justify-center flex-col">
+        <div className="relative w-full flex justify-center items-center flex-col p-5">
+          <div className="">
+            <Image
+              width={1280}
+              height={853}
+              style={{
+                width: 640,
+                height: 426,
+                color: "black",
+                backgroundColor: "white",
+              }}
+              src={`/images/fun/en_us/titleimg.jpg`}
+              priority
+              alt=""
+              className=""
+            />
+          </div>
+          <div className="absolute w-full">
+            <h1 className="text-5xl drop-shadow-2xl [text-shadow:_5px_5px_5px_rgb(0_0_0_/_100%)] text-white text-center font-black">
+              여... 영어 좀 치는놈인가?
+            </h1>
+            <div className="hidden md:block">
+            <p className="drop-shadow-2xl [text-shadow:_1px_1px_1px_rgb(0_0_0_/_100%)] text-white text-center font-black mt-3">
+              막상 말하려면 말문 막히는 영어는 이제 그만~ 여기서 스피킹 연습하세요~!
+            </p>
+            </div>
+          </div>
+        </div>
         {/* <DeviceControl/> */}
         <div className={`w-full ${isStart && "glow"}`}>
           <p>※ 먼저 level을 선택 해 주세요</p>
