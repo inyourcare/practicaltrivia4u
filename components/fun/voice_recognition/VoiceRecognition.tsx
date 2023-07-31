@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useCallback, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Word } from "@prisma/client";
 import { levels } from "./levels";
 import { textToSpeech } from "./textToSpeech";
@@ -85,14 +85,15 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
       console.log("speech recognition starts");
     }
   }
-  const getRandomIndexOfFilteredWords = useCallback(() => {
+  function getRandomIndexOfFilteredWords () {
+    result
     return (
       (filteredWords &&
         filteredWords.length > 0 &&
         Math.floor(Math.random() * filteredWords.length)) ||
       0
     );
-  }, [filteredWords]);
+  }
   function setResultAndChangeExporession(args?: { skip?: boolean }) {
     if (screenWord) {
       const spokenStr = spoken.trim().toLowerCase().replace(" ", "");
@@ -175,7 +176,8 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
       const idx = getRandomIndexOfFilteredWords();
       setScreenWord(filteredWords[idx]);
     }
-  }, [filteredWords, getRandomIndexOfFilteredWords]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [filteredWords]);
   //spoken 이 바뀔때만 호출 되도록
   const eventWhenSpokenAndScreenSame = useEffect(() => {
     setResultAndChangeExporession();
