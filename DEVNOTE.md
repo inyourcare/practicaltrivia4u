@@ -186,3 +186,7 @@ npx prisma studio
 yarn add -D typescript ts-node @types/node
 npx prisma db seed
 ```
+
+# 새로운 페이지가 생기면
+ -> link 수정
+ -> sitemap 수정

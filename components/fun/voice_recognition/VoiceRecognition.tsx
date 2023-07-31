@@ -13,6 +13,7 @@ import Dialog from "@/components/dialog/Dialog";
 import { clickToScreenShot } from "./screenshot";
 import Image from "next/image";
 import "./voicerecognition.css";
+import KakaoShare from "@/components/kakao/KakaoShare";
 
 type WordResult = {
   tried: Word;
@@ -351,20 +352,25 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
         </button>
       </div>
       <br />
-      <div className="flex justify-center items-center">
+      <div className="flex justify-center items-center flex-wrap">
+        <div className="ml-1 my-1 bg-white hover:bg-gray-100 text-gray-800 font-semibold px-4 border border-gray-400 rounded shadow disabled:cursor-not-allowed">
+          <KakaoShare>
+            <button>카카오 공유</button>
+          </KakaoShare>
+        </div>
         <button
           onClick={() => setGuessMode(!guessMode)}
           className={
             (guessMode &&
-              `bg-white text-gray-800 font-semibold px-4 border border-gray-400 rounded shadow disabled:cursor-not-allowed`) ||
-            `bg-gray-400 text-white font-semibold px-4 border border-gray-400 rounded shadow disabled:cursor-not-allowed`
+              `ml-1 my-1 bg-white text-gray-800 font-semibold px-4 border border-gray-400 rounded shadow disabled:cursor-not-allowed`) ||
+            `ml-1 my-1 bg-gray-400 text-white font-semibold px-4 border border-gray-400 rounded shadow disabled:cursor-not-allowed`
           }
         >
           guess 모드
         </button>
         <button
           onClick={() => setResultAndChangeExporession({ skip: true })}
-          className={`ml-1 bg-white hover:bg-gray-100 text-gray-800 font-semibold px-4 border border-gray-400 rounded shadow disabled:cursor-not-allowed ${
+          className={`ml-1 my-1 bg-white hover:bg-gray-100 text-gray-800 font-semibold px-4 border border-gray-400 rounded shadow disabled:cursor-not-allowed ${
             isStuck && "glow"
           }`}
         >
@@ -372,7 +378,7 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
         </button>
         <button
           onClick={() => todayResult.length > 0 && setResultsDialogOpen(true)}
-          className="ml-1 bg-white hover:bg-gray-100 text-gray-800 font-semibold px-4 border border-gray-400 rounded shadow disabled:cursor-not-allowed"
+          className="ml-1 my-1 bg-white hover:bg-gray-100 text-gray-800 font-semibold px-4 border border-gray-400 rounded shadow disabled:cursor-not-allowed"
         >
           결과보기
         </button>

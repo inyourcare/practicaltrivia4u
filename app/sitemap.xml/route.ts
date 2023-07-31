@@ -47,6 +47,12 @@ async function generateSiteMap() {
        <loc>${process.env.NEXT_PUBLIC_HOST_BASE_URL}/fun/food_roulette</loc>
      </url>
      <url>
+       <loc>${process.env.NEXT_PUBLIC_HOST_BASE_URL}/fun/voice_recognition</loc>
+     </url>
+     <url>
+       <loc>${process.env.NEXT_PUBLIC_HOST_BASE_URL}/fun/voice_recognition/voca_US</loc>
+     </url>
+     <url>
        <loc>${process.env.NEXT_PUBLIC_HOST_BASE_URL}/edu4u</loc>
      </url>
      <url>
