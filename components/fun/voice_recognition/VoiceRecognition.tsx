@@ -213,9 +213,10 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
               여... 영어 좀 치는놈인가?
             </h1>
             <div className="hidden md:block">
-            <p className="drop-shadow-2xl [text-shadow:_1px_1px_1px_rgb(0_0_0_/_100%)] text-white text-center font-black mt-3">
-              막상 말하려면 말문 막히는 영어는 이제 그만~ 여기서 스피킹 연습하세요~!
-            </p>
+              <p className="drop-shadow-2xl [text-shadow:_1px_1px_1px_rgb(0_0_0_/_100%)] text-white text-center font-black mt-3">
+                막상 말하려면 말문 막히는 영어는 이제 그만~ 여기서 스피킹
+                연습하세요~!
+              </p>
             </div>
           </div>
         </div>
@@ -292,7 +293,7 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
 
       {screenWord && (
         <div className="flex items-center justify-center flex-col">
-          <div className="w-full flex flex-row py-20">
+          <div className="w-full flex flex-row py-20 flex-wrap justify-center itmes-center">
             <div className="flex justify-center items-center flex-row">
               <p className="text-5xl">{screenWord.spell}</p>
             </div>
@@ -304,7 +305,7 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
             </button>
             {(guessMode &&
               ((guessingMeaning && screenWord.korean) || (
-                <div className="flex justify-center items-center flex-row">
+                <div className="flex justify-center items-center flex-row my-5">
                   <input
                     id="guess-meaning-input"
                     type="text"
@@ -418,16 +419,23 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
                       className="w-full p-3 sm:p-4"
                     >
                       <div className="flex-1 min-w-0 justify-center items-center">
-                        <p className="text-sm font-medium text-black truncate ">
-                          {`"${result.tried.spell}" vs "${
-                            result.spoken || "not spoken"
-                          }" from ${result.tried.level}`}
-                        </p>
-                        <p className="text-sm text-gray-500 truncate dark:text-gray-400">
-                          {` "${result.tried.korean}" vs "${result.guessedMeaning}"`}
-                        </p>
                         {/* mobile */}
                         <div className="block md:hidden">
+                          <p className="text-sm font-medium text-black truncate ">
+                            {`"${result.tried.spell}"`}
+                          </p>
+                          <p className="text-sm font-medium text-black truncate ">
+                            {`spoken: "${result.spoken || "not spoken"}"`}
+                          </p>
+                          <p className="text-sm font-medium text-black truncate ">
+                            {`from ${result.tried.level}`}
+                          </p>
+                          <p className="text-sm text-gray-500 truncate dark:text-gray-400">
+                            {`"${result.tried.korean}"`}
+                          </p>
+                          <p className="text-sm text-gray-500 truncate dark:text-gray-400">
+                            {`guess: "${result.guessedMeaning}"`}
+                          </p>
                           <p className="text-sm text-gray-500 truncate dark:text-gray-400">
                             {`${(result.pass && "passed") || "Not passed"}`}
                           </p>
@@ -440,6 +448,14 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
                         </div>
                         {/* pc */}
                         <div className="hidden md:block">
+                          <p className="text-sm font-medium text-black truncate ">
+                            {`"${result.tried.spell}" vs "${
+                              result.spoken || "not spoken"
+                            }" from ${result.tried.level}`}
+                          </p>
+                          <p className="text-sm text-gray-500 truncate dark:text-gray-400">
+                            {` "${result.tried.korean}" vs "${result.guessedMeaning}"`}
+                          </p>
                           <p className="text-sm text-gray-500 truncate dark:text-gray-400">
                             {`${
                               (result.pass && "passed") || "Not passed"
