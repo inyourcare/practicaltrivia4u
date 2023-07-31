@@ -86,7 +86,6 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
     }
   }
   function getRandomIndexOfFilteredWords () {
-    result
     return (
       (filteredWords &&
         filteredWords.length > 0 &&
