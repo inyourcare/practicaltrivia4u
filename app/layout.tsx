@@ -21,6 +21,12 @@ declare global {
 export const metadata: Metadata = {
   title: "4U - 사소하지만 유용한 Practical Trivia",
   description: "교육 서비스 및 사소하지만 유용한 것들을 다룹니다.",
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 1,
+    userScalable: false
+  },
 };
 
 function kakaoInit() { // 페이지가 로드되면 실행
@@ -109,7 +115,7 @@ export default function RootLayout({
         {/* sortable */}
         <script defer src="/js/sortable/Sortable.min.js"></script>
         {/* mobile scale */}
-        <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width" />
+        {/* <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width" /> */}
       </head>
       <body className={nanumGothic.className}>
         {children}
