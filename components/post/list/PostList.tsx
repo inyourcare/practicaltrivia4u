@@ -88,7 +88,7 @@ export default async function PostList({ pageIndex }: { pageIndex: string }) {
               imageAlt={post.imageAlt}
               author={post.author}
             />
-            {i+2%3===0 && <GoogleAd type={`${GoogldAdType.InFeed}`}/>}
+            {(i+1)%3===0 && <GoogleAd type={`${GoogldAdType.InFeed}`}/>}
           </>
         ))}
       {pages && (
