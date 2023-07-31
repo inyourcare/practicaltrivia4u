@@ -338,7 +338,7 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
                         <p className="text-sm font-medium text-black truncate ">
                           {`"${result.tried.spell}" vs "${
                             result.spoken || "not spoken"
-                          }"`}
+                          }" from ${result.tried.level}`}
                         </p>
                         <p className="text-sm text-gray-500 truncate dark:text-gray-400">
                           {` "${result.tried.korean}" vs "${result.guessedMeaning}"`}
