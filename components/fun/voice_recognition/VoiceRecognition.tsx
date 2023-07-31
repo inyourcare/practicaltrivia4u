@@ -203,14 +203,10 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
           </p>
         </div>
         <div className={`w-full ${isStuck && "glow"}`}>
-          <p>
-            ※ 단어가 포함된 문장을 말해보세요
-          </p>
+          <p>※ 단어가 포함된 문장을 말해보세요</p>
         </div>
         <div className={`w-full ${isStuck && "glow"}`}>
-          <p>
-            ※ 인식이 부정확한 경우 Skip 하세요
-          </p>
+          <p>※ 인식이 부정확한 경우 Skip 하세요</p>
         </div>
         <div className="w-full flex flex-row">
           <p>{`※ 마이크 새로고침 -> `}</p>{" "}
@@ -227,7 +223,7 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
       </div>
       <br />
 
-      <div className="flex items-center justify-center">
+      <div className="flex items-center justify-center flex-col">
         <div className="text-gray-900 dark:text-white w-full flex flex-wrap justify-center items-center text-xs sm:text-lg md:text-lg lg:text-lg xl:text-lg 2xl:text-lg">
           <div className="text-gray-900">levels: </div>
           {Object.keys(levels).map((key) => (
@@ -246,6 +242,12 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
               {key}
             </button>
           ))}
+        </div>
+        <div className="mt-[10px]">
+          지금 단어 수준:{" "}
+          {Array.from(filteredLevels)
+            .map((level) => level)
+            .join(",")}
         </div>
       </div>
       <br />
