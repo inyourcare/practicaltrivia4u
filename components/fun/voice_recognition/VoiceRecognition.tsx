@@ -41,6 +41,7 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
   const resultDivOuter = useRef<HTMLDivElement>(null);
   const resultDivInner = useRef<HTMLDivElement>(null);
   const [isStuck, setIsStuck] = useState(false);
+  const [isStart, setIsStart] = useState(true);
   function startAndRefreshSpeechRecognition() {
     if (
       window &&
@@ -119,6 +120,7 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
         setGuessingMeaning("");
         setIsStuck(false);
         failcount = 0;
+        setIsStart(false);
       } else {
         if (
           filteredWords &&
@@ -142,6 +144,7 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
             setGuessingMeaning("");
             setIsStuck(false);
             failcount = 0;
+            setIsStart(false);
           } else {
             failcount += 1;
             if (failcount > 2) {
@@ -188,6 +191,12 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
     <div className="w-full flex justify-center items-center flex-col">
       <div className="flex items-center justify-center flex-col">
         {/* <DeviceControl/> */}
+        <div className={`w-full ${isStart && "glow"}`}>
+          <p>※ 먼저 level을 선택 해 주세요</p>
+        </div>
+        <div className={`w-full ${isStart && "glow"}`}>
+          <p>※ 마이크로 해당 단어를 읽으면 다음 단어로 넘어갑니다.</p>
+        </div>
         <div className="w-full">
           <p>※ 마이크 변경(크롬) chrome://settings/content/microphone</p>
         </div>
