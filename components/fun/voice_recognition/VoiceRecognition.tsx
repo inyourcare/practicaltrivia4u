@@ -24,10 +24,11 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
   const [spoken, setSpoken] = useState("");
   const [filteredLevels, setFilteredLevels] = useState(new Set<string>());
   const [filteredWords, setFilteredWords] = useState(null as unknown as Word[]);
-  const [screenExpression, setScreenExpression] = useState({
-    spell: "",
-    meaning: "",
-  });
+  // const [screenExpression, setScreenExpression] = useState({
+  //   spell: "",
+  //   meaning: "",
+  // });
+  const [screenWord, setScreenWord] = useState(null as unknown as Word);
   const [todayResult, setTodayResult] = useState(new Array<WordResult>());
   const [result, setResult] = useState(null as unknown as WordResult);
   const [guessingMeaning, setGuessingMeaning] = useState("");
@@ -88,49 +89,52 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
     );
   }, [filteredWords]);
   function setResultAndChangeExporession(args?: { skip?: boolean }) {
-    const spokenStr = spoken.trim().toLowerCase().replace(" ", "");
-    const screenStrNolized = screenExpression.spell
-    .replace("+root", "").trim().toLowerCase()
-    const screenStr = screenStrNolized.replace(" ", "");
-    const resultWords = words.filter((w) => w.spell === screenExpression.spell);
+    if (screenWord) {
+      const spokenStr = spoken.trim().toLowerCase().replace(" ", "");
+      const screenStrNolized = screenWord.spell
+        .replace("+root", "")
+        .trim()
+        .toLowerCase();
+      const screenStr = screenStrNolized.replace(" ", "");
+      const resultWords = words.filter((w) => w.spell === screenWord.spell);
 
-    // skip
-    if (args?.skip && resultWords && resultWords.length > 0) {
-      // result manage
-      // console.log(resultWords);
-      setResult({
-        tried: resultWords[0],
-        spoken: spokenStr,
-        pass: false,
-        time: new Date(),
-        guessedMeaning: (guessMode && guessingMeaning) || guessOffMsg,
-      });
-      const idx = getRandomIndexOfFilteredWords();
-      setScreenExpression({
-        spell: filteredWords[idx].spell,
-        meaning: filteredWords[idx].korean,
-      });
+      // skip
+      if (args?.skip && resultWords && resultWords.length > 0) {
+        // result manage
+        // console.log(resultWords);
+        setResult({
+          tried: resultWords[0],
+          spoken: spokenStr,
+          pass: false,
+          time: new Date(),
+          guessedMeaning: (guessMode && guessingMeaning) || guessOffMsg,
+        });
+        const idx = getRandomIndexOfFilteredWords();
+        setScreenWord(filteredWords[idx]);
 
-      setGuessingMeaning("");
-    } else {
-      if (filteredWords && filteredWords.length > 0 && spokenStr && screenStr) {
-        // pass
-        if (spokenStr === screenStr || (spoken.includes(screenStrNolized))) {
-          // result manage
-          setResult({
-            tried: words.filter((w) => w.spell === screenExpression.spell)[0],
-            spoken: spokenStr,
-            pass: true,
-            time: new Date(),
-            guessedMeaning: (guessMode && guessingMeaning) || guessOffMsg,
-          });
-          const idx = getRandomIndexOfFilteredWords();
-          setScreenExpression({
-            spell: filteredWords[idx].spell,
-            meaning: filteredWords[idx].korean,
-          });
+        setGuessingMeaning("");
+      } else {
+        if (
+          filteredWords &&
+          filteredWords.length > 0 &&
+          spokenStr &&
+          screenStr
+        ) {
+          // pass
+          if (spokenStr === screenStr || spoken.includes(screenStrNolized)) {
+            // result manage
+            setResult({
+              tried: words.filter((w) => w.spell === screenWord.spell)[0],
+              spoken: spokenStr,
+              pass: true,
+              time: new Date(),
+              guessedMeaning: (guessMode && guessingMeaning) || guessOffMsg,
+            });
+            const idx = getRandomIndexOfFilteredWords();
+            setScreenWord(filteredWords[idx]);
 
-          setGuessingMeaning("");
+            setGuessingMeaning("");
+          }
         }
       }
     }
@@ -153,10 +157,7 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
   const initiateScreenExpression = useEffect(() => {
     if (filteredWords && filteredWords.length > 0) {
       const idx = getRandomIndexOfFilteredWords();
-      setScreenExpression({
-        spell: filteredWords[idx].spell,
-        meaning: filteredWords[idx].korean,
-      });
+      setScreenWord(filteredWords[idx]);
     }
   }, [filteredWords, getRandomIndexOfFilteredWords]);
   //spoken 이 바뀔때만 호출 되도록
@@ -190,7 +191,8 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
         </div>
         <div className="w-full">
           <p>
-            ※ 단어가 넘어가지지 않으면 단어가 포함된 문장을 말하고 해당 단어가 그 문장에 포함 된 경우에도 pass처리 됩니다.
+            ※ 단어가 넘어가지지 않으면 단어가 포함된 문장을 말하고 해당 단어가
+            그 문장에 포함 된 경우에도 pass처리 됩니다.
           </p>
         </div>
         <div className="w-full flex flex-row">
@@ -210,7 +212,7 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
 
       <div className="flex items-center justify-center">
         <div className="text-gray-900 dark:text-white w-full flex flex-wrap justify-center items-center text-xs sm:text-lg md:text-lg lg:text-lg xl:text-lg 2xl:text-lg">
-          <div className="text-gray-900">levels:{" "}</div>
+          <div className="text-gray-900">levels: </div>
           {Object.keys(levels).map((key) => (
             <button
               className={`border ml-1 ${
@@ -231,20 +233,20 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
       </div>
       <br />
 
-      {screenExpression && screenExpression.spell && (
+      {screenWord && (
         <div className="flex items-center justify-center flex-col">
           <div className="w-full flex flex-row ">
             <div className="flex justify-center items-center flex-row">
-              {screenExpression.spell}
+              {screenWord.spell}
             </div>
             <button
               className="border ml-2 mr-5"
-              onClick={() => textToSpeech(screenExpression.spell)}
+              onClick={() => textToSpeech(screenWord.spell)}
             >
               <GiSpeaker />
             </button>
             {(guessMode &&
-              ((guessingMeaning && screenExpression.meaning) || (
+              ((guessingMeaning && screenWord.korean) || (
                 <div className="flex justify-center items-center flex-row">
                   <input
                     id="guess-meaning-input"
@@ -268,7 +270,7 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
                   </button>
                 </div>
               ))) ||
-              screenExpression.meaning}
+              screenWord.korean}
           </div>
           {/* <div className="w-full flex flex-row ">
             
