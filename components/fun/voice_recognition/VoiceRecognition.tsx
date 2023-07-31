@@ -235,9 +235,9 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
 
       {screenWord && (
         <div className="flex items-center justify-center flex-col">
-          <div className="w-full flex flex-row ">
+          <div className="w-full flex flex-row py-20">
             <div className="flex justify-center items-center flex-row">
-              {screenWord.spell}
+              <p className="text-5xl">{screenWord.spell}</p>
             </div>
             <button
               className="border ml-2 mr-5"
@@ -269,8 +269,11 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
                     guess
                   </button>
                 </div>
-              ))) ||
-              screenWord.korean}
+              ))) || (
+              <div className="flex justify-center items-center flex-row">
+                {screenWord.korean}
+              </div>
+            )}
           </div>
           {/* <div className="w-full flex flex-row ">
             
