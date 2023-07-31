@@ -12,6 +12,7 @@ import { GoogldAdType } from "@/components/adsense/type";
 import Dialog from "@/components/dialog/Dialog";
 import { clickToScreenShot } from "./screenshot";
 import Image from "next/image";
+import "./voicerecognition.css";
 
 type WordResult = {
   tried: Word;
@@ -21,6 +22,7 @@ type WordResult = {
   guessedMeaning?: string;
 };
 
+let failcount = 0;
 export default function VoiceRecognition({ words }: { words: Word[] }) {
   const [spoken, setSpoken] = useState("");
   const [filteredLevels, setFilteredLevels] = useState(new Set<string>());
@@ -38,6 +40,7 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
   const [resultsDialogOpen, setResultsDialogOpen] = useState(false);
   const resultDivOuter = useRef<HTMLDivElement>(null);
   const resultDivInner = useRef<HTMLDivElement>(null);
+  const [isStuck, setIsStuck] = useState(false);
   function startAndRefreshSpeechRecognition() {
     if (
       window &&
@@ -114,6 +117,8 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
         setScreenWord(filteredWords[idx]);
 
         setGuessingMeaning("");
+        setIsStuck(false);
+        failcount = 0;
       } else {
         if (
           filteredWords &&
@@ -135,6 +140,13 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
             setScreenWord(filteredWords[idx]);
 
             setGuessingMeaning("");
+            setIsStuck(false);
+            failcount = 0;
+          } else {
+            failcount += 1;
+            if (failcount > 2) {
+              setIsStuck(true);
+            }
           }
         }
       }
@@ -190,10 +202,14 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
             ※ 단어 발음은 가능하면 dictionary 사이트를 참조하시는 걸 권장드려요
           </p>
         </div>
-        <div className="w-full">
+        <div className={`w-full ${isStuck && "glow"}`}>
           <p>
-            ※ 단어가 넘어가지지 않으면 단어가 포함된 문장을 말하고 해당 단어가
-            그 문장에 포함 된 경우에도 pass처리 됩니다.
+            ※ 단어가 포함된 문장을 말해보세요
+          </p>
+        </div>
+        <div className={`w-full ${isStuck && "glow"}`}>
+          <p>
+            ※ 인식이 부정확한 경우 Skip 하세요
           </p>
         </div>
         <div className="w-full flex flex-row">
@@ -307,7 +323,9 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
         </button>
         <button
           onClick={() => setResultAndChangeExporession({ skip: true })}
-          className="ml-1 bg-white hover:bg-gray-100 text-gray-800 font-semibold px-4 border border-gray-400 rounded shadow disabled:cursor-not-allowed"
+          className={`ml-1 bg-white hover:bg-gray-100 text-gray-800 font-semibold px-4 border border-gray-400 rounded shadow disabled:cursor-not-allowed ${
+            isStuck && "glow"
+          }`}
         >
           skip
         </button>
