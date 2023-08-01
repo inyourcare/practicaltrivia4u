@@ -157,6 +157,12 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
     }
   }
 
+  function MeaningDiv({ meaning }: { meaning: string }) {
+    return (
+      <div className="flex justify-center items-center flex-row">{meaning}</div>
+    );
+  }
+
   /////////////////////////////////////// use effect ////////////////////////////////////////////////////////////
   const initiateAudioInput = useEffect(() => {
     startAndRefreshSpeechRecognition();
@@ -305,7 +311,9 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
               <GiSpeaker />
             </button>
             {(guessMode &&
-              ((guessingMeaning && screenWord.korean) || (
+              ((guessingMeaning && (
+                <MeaningDiv meaning={screenWord.korean} />
+              )) || (
                 <div className="flex justify-center items-center flex-row my-5">
                   <input
                     id="guess-meaning-input"
@@ -328,11 +336,7 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
                     guess
                   </button>
                 </div>
-              ))) || (
-              <div className="flex justify-center items-center flex-row">
-                {screenWord.korean}
-              </div>
-            )}
+              ))) || <MeaningDiv meaning={screenWord.korean} />}
           </div>
           {/* <div className="w-full flex flex-row ">
             
