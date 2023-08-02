@@ -140,11 +140,11 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
         .trim()
         .toLowerCase()
         .replace(" ", "");
-      const screenStrNolized = screenWord.spell
+      const screenStrNomalized = screenWord.spell
         .replace("+root", "")
         .trim()
         .toLowerCase();
-      const screenStr = screenStrNolized.replace(" ", "");
+      const screenStr = screenStrNomalized.replace(" ", "");
       // const resultWords = words.filter((w) => w.spell === screenWord.spell);
 
       // skip
@@ -173,7 +173,10 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
           screenStr
         ) {
           // pass
-          if (spokenStr === screenStr || spoken.includes(screenStrNolized)) {
+          if (
+            spokenStr === screenStr ||
+            spoken.toLowerCase().includes(screenStrNomalized)
+          ) {
             // result manage
             setResult({
               tried: screenWord,
