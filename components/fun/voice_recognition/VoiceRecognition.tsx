@@ -43,6 +43,7 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
   const resultDivInner = useRef<HTMLDivElement>(null);
   const [isStuck, setIsStuck] = useState(false);
   const [isStart, setIsStart] = useState(true);
+  const [isSpeechStarted, setIsSpeechStarted] = useState(false);
   function startAndRefreshSpeechRecognition() {
     if (
       window &&
@@ -76,6 +77,14 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
             setSpoken(transcript);
           }
         }
+      });
+      recognition.addEventListener("speechstart", (e: any) => {
+        console.log("speechstart");
+        setIsSpeechStarted(true);
+      });
+      recognition.addEventListener("speechend", (e: any) => {
+        console.log("speechend");
+        setIsSpeechStarted(false);
       });
 
       // 음성인식이 끝나면 자동으로 재시작합니다.
@@ -257,7 +266,7 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
         <div className="w-full flex flex-row">
           <p>{`※ 마이크 새로고침 -> `}</p>{" "}
           <div className="ml-2 flex justtify-center items-center">
-            <RefreshMicrophoneIcon />
+            <RefreshMicrophoneIcon isSpeechStarted={true} />
           </div>
         </div>
         <div className="w-full">
@@ -351,7 +360,7 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
         {spoken.toLowerCase()}
         <button className="" onClick={() => startAndRefreshSpeechRecognition()}>
           <div className="mx-3">
-            <RefreshMicrophoneIcon />
+            <RefreshMicrophoneIcon isSpeechStarted={isSpeechStarted} />
           </div>
         </button>
       </div>
