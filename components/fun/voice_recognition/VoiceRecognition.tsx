@@ -44,6 +44,9 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
   const [isStuck, setIsStuck] = useState(false);
   const [isStart, setIsStart] = useState(true);
   const [isSpeechStarted, setIsSpeechStarted] = useState(false);
+  const [recognitionObj, setRecognitionObj] = useState(null as any);
+  const audioStartText = "지금 말하세요.";
+  const audioEndText = `버튼을 누른 후 '말하세요'문구가 나오면 말하세요.`;
   function startAndRefreshSpeechRecognition() {
     if (
       window &&
@@ -51,7 +54,8 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
     ) {
       const SpeechRecognition =
         window.SpeechRecognition || window.webkitSpeechRecognition;
-      const recognition = new SpeechRecognition();
+      const recognition = recognitionObj || new SpeechRecognition();
+      // const recognition = new SpeechRecognition();
       // true면 음절을 연속적으로 인식하나 false면 한 음절만 기록함
       recognition.interimResults = true;
       // 값이 없으면 HTML의 <html lang="en">을 참고합니다. ko-KR, en-US
@@ -64,6 +68,7 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
       // maxAlternatives가 크면 이상한 단어도 문장에 적합하게 알아서 수정합니다.
       recognition.maxAlternatives = 10000;
       // setSpeechRecognition(recognition);
+      setRecognitionObj(recognitionObj);
 
       let speechToText = "";
       recognition.addEventListener("result", (e: any) => {
@@ -86,6 +91,30 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
         console.log("speechend");
         setIsSpeechStarted(false);
       });
+      recognition.addEventListener("audiostart", (e: any) => {
+        console.log("audiostart");
+        setSpoken(audioStartText);
+      });
+      recognition.addEventListener("audioend", (e: any) => {
+        console.log("audioend");
+        setSpoken(audioEndText);
+      });
+      recognition.addEventListener("soundstart", (e: any) => {
+        console.log("soundstart");
+      });
+      recognition.addEventListener("soundend", (e: any) => {
+        console.log("soundend");
+      });
+      // recognition.addEventListener("end", (e: any) => {
+      //   console.log("start");
+      // });
+      // recognition.addEventListener("start", (e: any) => {
+      //   console.log("end");
+      //   recognition.start()
+      // });
+      recognition.addEventListener("error", (e: any) => {
+        console.error(`Speech recognition error detected: ${e.error}`);
+      });
 
       // 음성인식이 끝나면 자동으로 재시작합니다.
       // recognition.addEventListener("end", recognition.start);
@@ -105,7 +134,12 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
   }
   function setResultAndChangeExporession(args?: { skip?: boolean }) {
     if (screenWord) {
-      const spokenStr = spoken.trim().toLowerCase().replace(" ", "");
+      const spokenStr = spoken
+        .replace(audioEndText, "")
+        .replace(audioStartText, "")
+        .trim()
+        .toLowerCase()
+        .replace(" ", "");
       const screenStrNolized = screenWord.spell
         .replace("+root", "")
         .trim()
@@ -178,7 +212,8 @@ export default function VoiceRecognition({ words }: { words: Word[] }) {
 
     // console.log(words)
     // console.log();
-  }, [words]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   const syncronizeFilteredWords = useEffect(() => {
     // console.log(
     //   "filtered words",
