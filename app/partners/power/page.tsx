@@ -235,7 +235,7 @@ export default function Home() {
           <Image
             width={1011}
             height={498}
-            src={`/images/partners/power/13-1.png`}
+            src={`/images/partners/power/13-2.png`}
             alt=""
           />
         </div>
