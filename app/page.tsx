@@ -21,7 +21,7 @@ export default function Home() {
       <header className="w-full flex flex-col py-5 bg-[rgba(35,46,82,0)]">
         <Header />
       </header>
-      <Link id={linkId} href="/edu4u"></Link>
+      {/* <Link id={linkId} href="/edu4u"></Link> */}
     </main>
   );
 }

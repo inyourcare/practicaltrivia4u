@@ -3,8 +3,8 @@ const nextConfig = {
   async redirects() {
     return [
       {
-        source: '/',
-        destination: '/edu4u',
+        source: '/edu4u/:path*',
+        destination: '/',
         permanent: false,
       },{
         source: '/intro/wawa/:path*',
@@ -16,7 +16,7 @@ const nextConfig = {
         permanent: false,
       },{
         source: '/post/about.md',
-        destination: '/edu4u',
+        destination: '/',
         permanent: false,
       },{
         source: '/post/10_howcoding',

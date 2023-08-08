@@ -1,7 +1,8 @@
 export const rootLinks = {
   // education: "education",
   // academy: "academy",
-  edu4u: "edu4u",
+  // edu4u: "edu4u",
+  home: "home",
   partners: "partners",
   fun: "fun",
   post: "post",
@@ -13,7 +14,8 @@ type LinkProps = {
   tagName: string;
 };
 export const linkMap = new Map<string, LinkProps>();
-linkMap.set(rootLinks.edu4u, { href: "/edu4u", tagName: "과외4U" });
+// linkMap.set(rootLinks.edu4u, { href: "/edu4u", tagName: "과외4U" });
+linkMap.set(rootLinks.home, { href: "/", tagName: "HOME" });
 linkMap.set(rootLinks.partners, {
   href: "/partners/sangsang",
   tagName: "파트너스",
@@ -28,7 +30,8 @@ linkMap.set(rootLinks.ask, {
   tagName: "문의하기",
 });
 export const subMap = new Map<string, Array<LinkProps>>();
-subMap.set(rootLinks.edu4u, [{ href: "/edu4u", tagName: "과외4U" }]);
+// subMap.set(rootLinks.edu4u, [{ href: "/edu4u", tagName: "과외4U" }]);
+subMap.set(rootLinks.home, [{ href: "/", tagName: "HOME" }]);
 subMap.set(rootLinks.partners, [
   { href: "/partners/sangsang", tagName: "상상코칭" },
   { href: "/partners/howcoding", tagName: "하우코딩" },
