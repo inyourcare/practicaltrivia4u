@@ -11,7 +11,7 @@ export default function Home() {
         <Header />
       </header>
       {/* <Link id={linkId} href="/edu4u"></Link> */}
-      <div className="w-full h-screen relative">
+      <div className="w-full h-screen relative flex justify-center items-center flex-col overflow-hidden">
         <div className="noite"></div>
 
         <div className="constelacao">
@@ -48,6 +48,15 @@ export default function Home() {
             alt=""
           />
         </div> */}
+        <div className="absolute w-full">
+          <h1 className="text-5xl drop-shadow-2xl [text-shadow:_5px_5px_5px_rgb(0_0_0_/_100%)] text-white text-center font-black">
+            당신을 위한 사유공간
+          </h1>
+          {/* <p className="drop-shadow-2xl [text-shadow:_1px_1px_1px_rgb(0_0_0_/_100%)] text-white text-center font-black">
+            고민하고 결정하기도 아까운 시간. 오늘 뭐먹을지 대신 선택 해
+            드립니다.
+          </p> */}
+        </div>
       </div>
     </main>
   );
