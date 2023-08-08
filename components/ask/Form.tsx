@@ -270,9 +270,9 @@ export default function Form({
             >
               <option value={""}>선택없음</option>
 
-              <optgroup label="4U">
+              {/* <optgroup label="4U">
                 <option value={kinds.edu4u}>{`과외4U`}</option>
-              </optgroup>
+              </optgroup> */}
               <optgroup label="파트너스">
                 <option value={kinds.sangsang}>{`상상코칭`}</option>
                 <option value={kinds.howcoding}>{`하우코딩`}</option>
