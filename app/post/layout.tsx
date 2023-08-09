@@ -1,5 +1,6 @@
 import Header from "@/components/root/Header";
 import type { Metadata } from "next";
+import "./monokai-sublime.min.css"; // for highlight
 
 export const metadata: Metadata = {
   title: "4U(사소하지만 유용한) Posting 입니다.",
