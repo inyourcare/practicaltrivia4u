@@ -11,6 +11,7 @@ import Head from "next/head";
 import { Metadata } from "next";
 import GoogleAd from "@/components/adsense/GoogleAd";
 import { GoogldAdType } from "@/components/adsense/type";
+import { redirect } from "next/navigation";
 
 export interface PostMetadata {
   id: string;
@@ -61,6 +62,10 @@ export default async function PostHome({
 }) {
   const slug = params.slug;
   const { post } = await getData(slug);
+  if (post.enable === false ){
+    // alert('삭제된 포스트 입니다.')
+    redirect('/post/list/0')
+  }
   // const matterResult = matter(post.contents);
   // const [post, setPost] = useState(null as unknown as PostMetadata);
   // const [isLoading, setIsLoading] = useState(false);
