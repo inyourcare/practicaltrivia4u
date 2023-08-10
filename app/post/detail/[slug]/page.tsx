@@ -62,9 +62,9 @@ export default async function PostHome({
 }) {
   const slug = params.slug;
   const { post } = await getData(slug);
-  if (post.enable === false ){
+  if (post.enable === false) {
     // alert('삭제된 포스트 입니다.')
-    redirect('/post/list/0')
+    redirect("/post/list/0");
   }
   // const matterResult = matter(post.contents);
   // const [post, setPost] = useState(null as unknown as PostMetadata);
@@ -118,7 +118,20 @@ export default async function PostHome({
             {/* <h1>{post.title}</h1> */}
             {/* {matterResult.content} */}
             {/* <Markdown>{matterResult.content}</Markdown> */}
-            {parse(post.contents)}
+            {parse(post.contents.replace(
+                "<p>_____place_____ad______here______</p>",
+                `<ins className="adsbygoogle" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-8425397323378076" data-ad-slot="7670560399"></ins>`
+              ))}
+            {/* {parse(''.replace(
+                "<p>_____place_____ad______here______</p>",
+                `<ins className="adsbygoogle"
+    //  style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8425397323378076"
+     data-ad-slot="7670560399"></ins>`
+              )
+            )} */}
 
             <GoogleAd type={`${GoogldAdType.Display}`} />
           </div>
