@@ -120,7 +120,9 @@ export default async function PostHome({
             {/* <Markdown>{matterResult.content}</Markdown> */}
             {parse(post.contents.replace(
                 "<p>_____place_____ad______here______</p>",
-                `<ins className="adsbygoogle" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-8425397323378076" data-ad-slot="7670560399"></ins>`
+                `<div className='googleAd-container w-full overflow-hidden'>
+                <ins className="adsbygoogle flex justify-center items-center" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-8425397323378076" data-ad-slot="7670560399"></ins>
+                </div>`
               ))}
             {/* {parse(''.replace(
                 "<p>_____place_____ad______here______</p>",
