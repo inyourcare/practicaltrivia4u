@@ -118,7 +118,7 @@ export default async function PostHome({
             {/* <h1>{post.title}</h1> */}
             {/* {matterResult.content} */}
             {/* <Markdown>{matterResult.content}</Markdown> */}
-            {parse(post.contents.replace(
+            {parse(post.contents.replaceAll(
                 "<p>_____place_____ad______here______</p>",
                 `<div className='googleAd-container w-full overflow-hidden'>
                 <ins className="adsbygoogle flex justify-center items-center" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-8425397323378076" data-ad-slot="7670560399"></ins>
